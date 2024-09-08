@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="EyeClinic.WPF.Components.PatientList.PatientFile.SpecialNote.SpecialNoteView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EyeClinic.WPF.Components.PatientList.PatientFile.SpecialNote"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DataContext="{d:DesignInstance local:SpecialNoteViewModel,IsDesignTimeCreatable=True}"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <DockPanel>
+        <Grid DockPanel.Dock="Bottom" >
+            <Border Background="black"
+                        Margin="5" 
+                    Width="110"
+                        DockPanel.Dock="Bottom"
+                        HorizontalAlignment="Left"
+                        CornerRadius="10">
+                <Button 
+                            Foreground="LightYellow"                     
+                            Style="{StaticResource ButtonBase}"
+                            Background="Transparent"
+                            Command="{Binding CancelCommand}" 
+                            Content="{lex:Loc Back}"/>
+            </Border>
+            <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="Backburger" 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+Foreground="White" Width="50" 
+Height="40" />
+        </Grid>
+        <!--<TextBlock Text="||" Foreground="Red" FontSize="30"></TextBlock>-->
+        <Grid DockPanel.Dock="Bottom">
+            <Button Command="{Binding SaveCommand}"
+                Style="{StaticResource ButtonBase}"
+                Content="{lex:Loc Save}"
+                DockPanel.Dock="Bottom"
+                Margin="3 0 0 0"
+                Background="{StaticResource WordGreenBrush}" />
+        <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="ContentSave" 
+           Margin="100 0 0 0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+Foreground="White" Width="50" 
+Height="40" />
+        </Grid>
+        <!--<StackPanel Orientation="Horizontal"
+                    DockPanel.Dock="Top">
+            <TextBlock Text="{lex:Loc OperationRemaining}"
+                       DockPanel.Dock="Top"
+                       FontSize="26"
+                       FontWeight="Bold"
+                       Margin="0 0 0 3" />
+            <TextBlock Text="{Binding Remaining}"
+                       DockPanel.Dock="Top"
+                       FontSize="26"
+                       FontWeight="Bold"
+                       Margin="15 0 0 3" />
+        </StackPanel>-->
+        <TextBlock Text="{lex:Loc SpecialNote}"
+                   DockPanel.Dock="Top"
+                   FontSize="26"
+                   HorizontalAlignment="Center"
+                   FontWeight="Bold"
+                   Margin="0 0 0 3" />
+        <TextBox Text="{Binding SpecialNote}"
+                 TextWrapping="Wrap"
+                 Foreground="Black"
+                 AcceptsReturn="True"
+                 FlowDirection="RightToLeft"
+                 FontSize="22"
+                 FontFamily="Times New Roman"
+                 FontStretch="UltraExpanded"
+                 BorderBrush="Gray"
+                 Background="{StaticResource WhiteBrush}"
+                 BorderThickness="2"
+                 FontWeight="Bold"
+                 Padding="8"
+                 Height="Auto"
+                 Width="Auto"
+                 VerticalContentAlignment="Top"
+                 VerticalScrollBarVisibility="Visible" />
+    </DockPanel>
+</UserControl>

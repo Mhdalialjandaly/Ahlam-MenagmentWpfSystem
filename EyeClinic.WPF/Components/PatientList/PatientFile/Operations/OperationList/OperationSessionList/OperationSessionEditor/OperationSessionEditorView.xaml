@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="EyeClinic.WPF.Components.PatientList.PatientFile.Operations.OperationList.OperationSessionList.OperationSessionEditor.OperationSessionEditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EyeClinic.WPF.Components.PatientList.PatientFile.Operations.OperationList.OperationSessionList.OperationSessionEditor"
+             d:DataContext="{d:DesignInstance local:OperationSessionEditorViewModel, IsDesignTimeCreatable=True}"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             xmlns:core="clr-namespace:EyeClinic.Core;assembly=EyeClinic.Core"
+             Style="{StaticResource LocalizationStyle}"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <DockPanel>
+        <StackPanel Orientation="Horizontal"
+                    DockPanel.Dock="Top">
+            <TextBlock Text="{lex:Loc SessionDate}"
+                       VerticalAlignment="Center"
+                       Width="180" />
+            <DatePicker SelectedDate="{Binding SessionDate}"
+                        FontSize="18"
+                        Width="170"
+                        Margin="0 8"
+                        HorizontalAlignment="Right">
+                <DatePicker.Resources>
+                    <Style TargetType="{x:Type DatePickerTextBox}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <TextBox x:Name="PART_TextBox"
+                                             Text="{Binding Path=SelectedDate, 
+                                                        RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}, 
+                                                        StringFormat={x:Static core:Global.DateFormat}}" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </DatePicker.Resources>
+            </DatePicker>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    DockPanel.Dock="Top">
+            <TextBlock Text="{lex:Loc PaymentValue}"
+                       VerticalAlignment="Center"
+                       Width="180" />
+            <TextBox Text="{Binding PaymentValue}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    DockPanel.Dock="Top">
+            <TextBlock Text="{lex:Loc FinishOperation}"
+                       VerticalAlignment="Center"
+                       Width="180" />
+            <CheckBox IsChecked="{Binding FinishOperation}"
+                      Style="{StaticResource OnOffCheckBoxStyle}"
+                      DockPanel.Dock="Top"
+                      Margin="8" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    Margin="0 10"
+                    DockPanel.Dock="Top">
+            <TextBlock Text="{lex:Loc Notes}"
+                       VerticalAlignment="Center"
+                       Width="180" />
+            <TextBox Text="{Binding Note}"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     VerticalScrollBarVisibility="Visible"
+                     Width="300"
+                     Height="150" />
+        </StackPanel>
+    </DockPanel>
+</UserControl>

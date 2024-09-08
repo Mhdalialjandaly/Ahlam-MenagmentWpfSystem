@@ -1,0 +1,68 @@
+﻿<Window x:Class="EyeClinic.WPF.Components.Home.Reports.ClinicIncomeReport.ClinicIncomeReportView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EyeClinic.WPF.Components.Home.Reports.ClinicIncomeReport"
+        xmlns:controls="clr-namespace:EyeClinic.WPF.Components.Controls"
+        mc:Ignorable="d"
+        Title="ClinicIncomeReportView"
+        Height="450"
+        Width="800"
+        Background="#2C5364">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center">
+            <TextBlock Text="دخل العيادة "
+                       FontSize="28"
+                       Foreground="Black"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"></TextBlock>
+            <StackPanel HorizontalAlignment="Left"
+                        Orientation="Horizontal">
+                <DatePicker SelectedDate="{Binding FromDate}"
+                            Margin="3" />
+                <TextBlock Foreground="Wheat"
+                           Margin="3"
+                           HorizontalAlignment="Center"
+                           Text=":من تاريخ " />
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left"
+                        Orientation="Horizontal">
+                <DatePicker SelectedDate="{Binding ToDate}"
+                            Margin="3" />
+                <TextBlock Foreground="Wheat"
+                           Margin="3"
+                           HorizontalAlignment="Center"
+                           Text=":الى تاريخ" />
+            </StackPanel>
+            <DockPanel>
+                <StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Total Cost"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding TotalCost}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="Wheat" />
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Total Payment"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding TotalPayment}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="Wheat" />
+                    </StackPanel>
+                </StackPanel>
+            </DockPanel>
+            <Button Command="{Binding GetReportCommand}"
+                    Content="Get Report"
+                    Background="Green" />
+        </StackPanel>
+        <controls:BusyIndicator DataContext="{Binding}" />
+    </Grid>
+</Window>

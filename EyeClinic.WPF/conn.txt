@@ -1,0 +1,1 @@
+Server=asrvdc\amn;Database=AhlamCoDb;User Id=ah;Password=Asd123zxc;

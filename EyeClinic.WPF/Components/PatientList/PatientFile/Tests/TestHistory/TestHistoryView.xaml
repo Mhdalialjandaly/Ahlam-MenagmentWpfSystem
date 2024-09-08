@@ -1,0 +1,148 @@
+﻿<UserControl x:Class="EyeClinic.WPF.Components.PatientList.PatientFile.Tests.TestHistory.TestHistoryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EyeClinic.WPF.Components.PatientList.PatientFile.Tests.TestHistory"
+             d:DataContext="{d:DesignInstance local:TestHistoryViewModel, IsDesignTimeCreatable=True}"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             mc:Ignorable="d"
+             Height="370"
+             d:DesignHeight="600"
+             d:DesignWidth="1300">    
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+            <TextBlock    
+                Grid.Row="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            FontSize="22"   
+            FontWeight="Bold"
+            Foreground="Black"
+            Text="{lex:Loc TestHistory}"/>
+            <ListView
+                 Grid.Row="1" 
+                ItemsSource="{Binding PatientVisitsTest}"
+                  VirtualizingStackPanel.IsVirtualizing="True"
+                  ItemContainerStyle="{StaticResource TransparentListViewItem}"
+                  VirtualizingStackPanel.VirtualizationMode="Recycling">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel
+                         Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel>
+                            <StackPanel Width="300"
+                                    DockPanel.Dock="Top"
+                                    VerticalAlignment="Center">
+                                <TextBlock Text="{Binding VisitDate,
+                                                StringFormat={}{0:dd/MM/yyyy}}"
+                                       FontWeight="Bold"
+                                       FontSize="32" />
+                            </StackPanel>
+                            <ListView ItemsSource="{Binding PatientVisitLabTests}"
+                                  ItemContainerStyle="{StaticResource TransparentListViewItem}"
+                                  Height="Auto"
+                                  DockPanel.Dock="Top">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel
+                                            Height="auto"
+                                            Margin="10"
+                                            Width="1000"
+                                           >
+                                        <StackPanel  
+                                            Margin="1"
+                                            Visibility="{Binding PatientVisitLabTests ,Converter={StaticResource NullOrEmptyToVisibilityConverter}}"
+                                            Background="LightGreen" 
+                                                    HorizontalAlignment="Center">
+                                                <TextBlock Text="{Binding Test.EnName}"
+                                                           Foreground="Blue"
+                                                           FontWeight="Bold"
+                                                           FontSize="24" 
+                                                           HorizontalAlignment="Center"/>
+                                                <TextBlock Text="-------------------------------------"                                                          
+                                                           FontSize="22" 
+                                                           HorizontalAlignment="Center"
+                                                           Foreground="Black" 
+                                                           FontWeight="Bold"></TextBlock>
+                                                <DockPanel >
+                                              
+                                                    <StackPanel 
+                                                    Visibility="{Binding RightEyeNote ,Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
+                                                        <Label 
+                                                            Content="{lex:Loc RightEye}"                                                           
+                                                            FontWeight="Bold" 
+                                                              />
+                                                        <TextBox 
+                                                            Text="{Binding RightEyeNote}"
+                                                             AcceptsReturn="True"
+                                                             TextWrapping="Wrap"
+                                                             FontWeight="Bold"
+                                                             Background="LightGreen"
+                                                             Width="550"
+                                                             Height="180" />
+                                                    </StackPanel>
+                                                <StackPanel 
+                                                    Visibility="{Binding LeftEyeNote ,Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
+                                                        <Label 
+                                                            Content="{lex:Loc LeftEye}"
+                                                           FontWeight="Bold"
+                                                               />
+                                                        <TextBox 
+                                                            Text="{Binding LeftEyeNote}"
+                                                             AcceptsReturn="True"
+                                                             TextWrapping="Wrap"
+                                                             FontWeight="Bold"
+                                                             Background="LightGreen"
+                                                             Width="550"
+                                                             Height="180" />
+                                                    </StackPanel>
+                                            </DockPanel>
+                                            <StackPanel>
+                                                <TextBlock  Text="This Test Hase Uploaded Scan Image"
+                                                            HorizontalAlignment="Center"
+                                                            Foreground="Red"
+                                                            Visibility="{Binding ImageNumber,Converter={StaticResource NullOrEmptyToVisibilityConverter}}"/>
+                                                <DockPanel Margin="5">
+                                                    <TextBlock  Text="The Scan Image For Right Eye"
+                                                                Margin="5 0 175 0"
+                                                                Foreground="Red"
+             Visibility="{Binding ImageNameRight,Converter={StaticResource NullOrEmptyToVisibilityConverter}}"/>
+                                                    <TextBlock  Text="The Scan Image For Left Eye"
+                                                                Margin="5 0"
+                                                                Foreground="Blue"
+             Visibility="{Binding ImageNameLeft,Converter={StaticResource NullOrEmptyToVisibilityConverter}}"/>
+                                                    <TextBlock  Text="The Scan Image For Both Eye"
+                                                                Margin="175 0 5 0"
+                                                                Foreground="Green"
+             Visibility="{Binding ImageNameBoth,Converter={StaticResource NullOrEmptyToVisibilityConverter}}"/>
+                                                </DockPanel>
+
+                                            </StackPanel>
+
+                                        </StackPanel>                                      
+                                        </StackPanel>  
+                                        
+                                </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </DockPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <DockPanel Visibility="{Binding PatientVisitsTest,Converter={StaticResource NullOrEmptyToVisibilityBackConverter}}"
+                   Background="WhiteSmoke">
+                <TextBlock Text="NO DATA"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center" />
+            </DockPanel>
+       
+    </Grid>
+</UserControl>

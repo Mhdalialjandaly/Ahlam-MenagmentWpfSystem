@@ -1,0 +1,548 @@
+﻿<UserControl x:Class="EyeClinic.WPF.Components.PatientList.PatientEditor.PatientEditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             xmlns:patientEditor="clr-namespace:EyeClinic.WPF.Components.PatientList.PatientEditor" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DataContext="{d:DesignInstance patientEditor:PatientEditorViewModel, IsDesignTimeCreatable=True}"
+             Style="{StaticResource LocalizationStyle}"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Width"
+                    Value="300" />
+            <Setter Property="Height"
+                    Value="30" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+            <Setter Property="BorderBrush" Value="LightBlue"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Width"
+                    Value="200" />
+            <Setter Property="Height"
+                    Value="32" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+            <Setter Property="IsEditable"
+                    Value="True" />
+        </Style>
+        <Style TargetType="TextBlock">         
+            <Setter Property="Foreground"
+                    Value="Black" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="FontFamily" 
+                    Value="{StaticResource Arabic}"/>
+            <Setter Property="Background"
+                   Value="LightBlue" />
+        </Style>
+        <Style TargetType="DockPanel" x:Key="DS">
+            <Setter Property="Background"
+                    Value="LightBlue"/>
+            <Setter
+                Property="Margin"
+                Value="5"/>
+        </Style>
+        <Style TargetType="materialDesign:PackIcon">
+            <Setter Property="Width" Value="20"/>
+            <Setter Property="Margin" Value="0 0 30 0"/>
+            <!--<Setter Property="Opacity" Value="0.5"/>-->
+        </Style>
+    </UserControl.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <DockPanel>
+            <Grid IsEnabled="{Binding Operation, Converter={StaticResource OperationToBooleanConverter}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".46*" />
+                    <ColumnDefinition Width=".46*" />
+                    <ColumnDefinition Width=".06*" />
+                </Grid.ColumnDefinitions>
+                <DockPanel Grid.Column="0"
+                           Margin="0,0,32,0">
+                    <DockPanel Dock="Top"
+                              Style="{StaticResource DS}">
+                        <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="CodeArray"               
+HorizontalAlignment="Left"
+VerticalAlignment="Center"
+Foreground="Black"
+Height="40" />
+                        <TextBlock Text="{lex:Loc Code}"                                   
+                                  />
+                        <TextBox Text="{Binding Number}"
+                                 HorizontalAlignment="Right"
+                                 VerticalAlignment="Center"
+                                 PreviewTextInput="NumericOnlyInput" />
+                    </DockPanel>
+                    <DockPanel Dock="Top"
+                               Style="{StaticResource DS}">
+                        <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="Rename"              
+HorizontalAlignment="Left"
+VerticalAlignment="Center"
+Foreground="Black" 
+Height="40" />
+                        <TextBlock Text="{lex:Loc FirstName}"
+                                  />
+                       
+                        <TextBox Text="{Binding FirstName}"
+                                 HorizontalAlignment="Right"
+                                 VerticalAlignment="Center" />
+                    </DockPanel>
+                    <DockPanel Dock="Top"
+                               Style="{StaticResource DS}">
+                        <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="RenameBox"               
+HorizontalAlignment="Left"
+VerticalAlignment="Center"
+Foreground="Black"
+Height="40" />
+                        <TextBlock Text="{lex:Loc LastName}"
+                                   
+                                   VerticalAlignment="Center" />
+                        <TextBox Text="{Binding LastName}"
+                                 HorizontalAlignment="Right"
+                                 VerticalAlignment="Center" />
+                    </DockPanel>
+                    <DockPanel Dock="Top"
+                               Style="{StaticResource DS}">
+                        <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="RenameBox"               
+HorizontalAlignment="Left"
+VerticalAlignment="Center"
+Foreground="Black"
+Height="40" />
+                        <TextBlock Text="{lex:Loc OrderName}"
+                                   
+                                   VerticalAlignment="Center" />
+                        <TextBox Text="{Binding FatherName}"
+                                 HorizontalAlignment="Right"
+                                 VerticalAlignment="Center" />
+                    </DockPanel>
+                    <DockPanel Dock="Top"
+                               Style="{StaticResource DS}">
+                        <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="RenameBox"               
+HorizontalAlignment="Left"
+VerticalAlignment="Center"
+Foreground="Black"
+Height="40" />
+                        <TextBlock Text="{lex:Loc OrderPath}"
+                                   
+                                   VerticalAlignment="Center" />
+                        <TextBox Text="{Binding MotherName}"
+                                 HorizontalAlignment="Right"
+                                 VerticalAlignment="Center" />
+                    </DockPanel>
+                    <!--<DockPanel Dock="Top"
+                               Style="{StaticResource DS}">
+                        <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="GenderEnby"               
+HorizontalAlignment="Left"
+VerticalAlignment="Center"
+Foreground="Black"
+Height="40" />
+                        <TextBlock Text="{lex:Loc CustomerType}"
+                                   
+                                   VerticalAlignment="Center" />
+                        <ComboBox ItemsSource="{Binding GenderTypes}"
+                                  SelectedItem="{Binding SelectedGender}"
+                                  HorizontalAlignment="Right"
+                                  DisplayMemberPath="Name"
+                                  Width="160"
+                                  Height="34"
+                                  VerticalContentAlignment="Center"
+                                  FontSize="{StaticResource FontSizeMedium}"
+                                  VerticalAlignment="Center" />
+                    </DockPanel>-->
+                    <DockPanel Dock="Top"
+                               Visibility="Hidden"
+                               Style="{StaticResource DS}">
+                        <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="BabyCarriage"               
+HorizontalAlignment="Left"
+VerticalAlignment="Center"
+Foreground="Black"
+Height="40" />
+                        <TextBlock Text="{lex:Loc Age}"                                   
+                                  />
+                        <StackPanel HorizontalAlignment="Right"
+                                    Visibility="Hidden"
+                                    Orientation="Horizontal">
+                            <TextBox Text="{Binding Age}"
+                                     PreviewTextInput="NumericOnlyInput"
+                                     Background="LightCyan"
+                                     Width="40"
+                                     Height="32"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Left" />
+                            <ComboBox ItemsSource="{Binding AgeTypes}"
+                                      SelectedItem="سنة"/>
+                        </StackPanel>
+                    </DockPanel>
+                    <DockPanel Dock="Top"
+                                 Visibility="Hidden"
+                               Style="{StaticResource DS}">
+                        <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="PregnantWoman"               
+HorizontalAlignment="Left"
+VerticalAlignment="Center"
+Foreground="Black"
+Height="40" />
+                        <TextBlock Text="{lex:Loc Pregnant}"               />
+                        <StackPanel HorizontalAlignment="Right"
+                                    Orientation="Horizontal">
+                            <TextBox Text="{Binding PregnantMonth}"
+                                     PreviewTextInput="NumericOnlyInput"
+                                     Background="LightCyan"
+                                     Width="100"
+                                     Height="32"
+                                     BorderThickness="2"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Left" />
+                            <TextBlock Text="Months" />
+                        </StackPanel>
+                    </DockPanel>
+
+                    <DockPanel Dock="Top"
+                               Style="{StaticResource DS}">
+                        <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="Phone"               
+HorizontalAlignment="Left"
+VerticalAlignment="Center"
+Foreground="Black"
+Height="40" />
+                        <TextBlock Text="{lex:Loc HomePhone}"
+                                   
+                                   VerticalAlignment="Center" />
+                        <TextBox Text="{Binding HomePhone}"
+                                 HorizontalAlignment="Right"
+                                 VerticalAlignment="Center"
+                                 AcceptsReturn="True" />
+                    </DockPanel>
+                    <DockPanel Dock="Top"
+                               Style="{StaticResource DS}">
+                        <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="MobileDevices"               
+HorizontalAlignment="Left"
+VerticalAlignment="Center"
+Foreground="Black"
+Height="40" />
+                        <TextBlock Text="{lex:Loc EmailAddress}"
+                                  />
+                        <TextBox Text="{Binding WorkPhone}"
+                                 HorizontalAlignment="Right"
+                                 VerticalAlignment="Center" />
+                    </DockPanel>
+                    <DockPanel Dock="Top"
+                               Style="{StaticResource DS}">
+                        <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="ReflectHorizontal"               
+HorizontalAlignment="Left"
+VerticalAlignment="Center"
+Foreground="Black"
+Height="40" />
+                        <TextBlock Text="{lex:Loc Referral}"
+                                  />
+                        <CheckBox Style="{StaticResource OnOffCheckBoxStyle}"
+                                  IsChecked="{Binding Referral}"
+                                  HorizontalAlignment="Right"
+                                  Margin="2" />
+                    </DockPanel>
+                    <DockPanel Margin="5"
+                               Style="{StaticResource DS}"
+                               DockPanel.Dock="Top">
+                        <TextBlock Text="{lex:Loc Remaining}"
+                                   
+                                   DockPanel.Dock="Top"
+                                   Margin="5" />
+                        <TextBox Text="{Binding Notes}"
+                                 VerticalAlignment="Top"
+                                 AcceptsReturn="True"
+                                 TextWrapping="Wrap"
+                                 Height="150"
+                                 VerticalContentAlignment="Top"
+                                 DockPanel.Dock="Top"
+                                 Width="Auto"
+                                 VerticalScrollBarVisibility="Visible" />
+                    </DockPanel>
+                </DockPanel>
+                <DockPanel Grid.Column="1"
+                           Margin="32 0 0 0">
+                    <!--<StackPanel Margin="0 8 0 8"
+                                Background="LightBlue"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Top"
+                                DockPanel.Dock="Top">
+                        <CheckBox Content="{lex:Loc IsSmoking}"
+                                  IsChecked="{Binding IsSmoking}" />
+                        <Border Width="1"
+                                Margin="8 0"
+                                BorderBrush="Black"
+                                BorderThickness="1" />
+                        <CheckBox Content="{lex:Loc AgencyPatient}"
+                                  IsChecked="{Binding IsDrinking}" />
+                        <Border Width="1"
+                                Margin="8 0"
+                                BorderBrush="Black"
+                                BorderThickness="1" />
+                        <CheckBox Content="{lex:Loc PressureEyePatient}"
+                                  IsChecked="{Binding IsDrawing}" />
+                    </StackPanel>-->
+                    <DockPanel Dock="Top"
+                               Style="{StaticResource DS}"
+                               Visibility="Collapsed">
+                        <TextBlock Text="{lex:Loc Glass}"
+                                    />
+                        <ComboBox ItemsSource="{Binding Glasses}"
+                                  SelectedItem="{Binding SelectedGlass}"
+                                  SelectedIndex="0"
+                                  HorizontalAlignment="Right"
+                                  VerticalAlignment="Center" />
+                    </DockPanel>
+                    <!--<DockPanel Dock="Top"
+                               Style="{StaticResource DS}">
+                        <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="Work"               
+HorizontalAlignment="Left"
+VerticalAlignment="Center"
+Foreground="Black"
+Height="40" />
+                        <TextBlock Text="{lex:Loc JobTitle}"
+                                    />
+                        <TextBox Text="-"
+                                 HorizontalAlignment="Right"
+                                 VerticalAlignment="Center" />
+                    </DockPanel>-->
+                    <DockPanel Dock="Top"
+                               Visibility="Hidden"
+                               Style="{StaticResource DS}">
+                        <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="Mercury"               
+HorizontalAlignment="Left"
+VerticalAlignment="Center"
+Foreground="Black"
+Height="40" />
+                        <TextBlock Text="{lex:Loc MartialStatus}"
+                                    />
+                        <ComboBox ItemsSource="{Binding MartialStatusList}"
+                                  SelectedValue="-"
+                                  SelectedItem="-"
+                                  HorizontalAlignment="Right"
+                                  VerticalAlignment="Center" />
+                    </DockPanel>
+                    <DockPanel Dock="Top"
+                               Style="{StaticResource DS}">
+                        <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="City"               
+HorizontalAlignment="Left"
+VerticalAlignment="Center"
+Foreground="Black"
+Height="40" />
+                        <TextBlock Text="{lex:Loc Nationality}"
+                                   
+                                   VerticalAlignment="Center" />
+                        <TextBox Text="{Binding Nationality}"
+                                 HorizontalAlignment="Right"
+                                 VerticalAlignment="Center" />
+                    </DockPanel>
+                    <DockPanel Dock="Top"
+                               Style="{StaticResource DS}">
+                        <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="LocationAdd"               
+HorizontalAlignment="Left"
+VerticalAlignment="Center"
+Foreground="Black"
+Height="40" />
+                        <TextBlock Text="{lex:Loc Location}"
+                                   
+                                   VerticalAlignment="Center" />
+                        <ComboBox ItemsSource="{Binding Locations}"
+                                  SelectedItem="{Binding SelectedLocation}"
+                                  HorizontalAlignment="Right"
+                                  VerticalAlignment="Center" />
+                    </DockPanel>
+                    <!--<DockPanel Dock="Top"
+                               IsEnabled="True">
+                        <Grid>
+                            <Button Command="{Binding GetPatientGlassCommand}"
+                                Background="{Binding PatientGlass, Converter={StaticResource NullToColorConverter}}"
+                                Style="{StaticResource ButtonBase}"
+                                Content="{lex:Loc CurrentGlass}"
+                                VerticalAlignment="Top"
+                                Margin="0 4" />
+                            <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="Glasses"    
+                                Width="50"
+                                Margin="0 0 200 0"
+HorizontalAlignment="Center"
+VerticalAlignment="Center"
+Foreground="White"
+Height="40" />
+                        </Grid>
+                    </DockPanel>-->
+
+                    <!--<Border Background="Transparent"
+                            BorderThickness="0">
+                        <DockPanel
+                            Style="{StaticResource DS}">
+                            <DockPanel DockPanel.Dock="Top"
+                                  HorizontalAlignment="Center">
+                                <materialDesign:PackIcon 
+Kind="FaceSickOutline"                                   
+HorizontalAlignment="Left"
+VerticalAlignment="Center"
+Foreground="Black"
+Height="40" />
+                                <TextBlock Text="{lex:Loc DiseasesList}"                                       
+                                       HorizontalAlignment="Right"
+                                       />
+                              
+                            </DockPanel>
+                            <DockPanel DockPanel.Dock="Top">
+                                
+                                <StackPanel Margin="5 0">
+                                    <ComboBox ItemsSource="{Binding Diseases}"
+                                              SelectedItem="{Binding SelectedDisease}"
+                                              Width="Auto"
+                                              Height="34"
+                                              VerticalContentAlignment="Center" />
+                                    <StackPanel HorizontalAlignment="Left"
+                                                Margin="0 4"
+                                                Visibility="{Binding SelectedDisease, Converter={StaticResource NullOrEmptyToVisibilityConverter}}"
+                                                Orientation="Horizontal">
+                                        <StackPanel>
+                                            <TextBlock Text="{lex:Loc AgeOfInjury}"
+                                                        />
+                                            <TextBox Text="{Binding AgeOfInjury}"
+                                                     HorizontalAlignment="Center"
+                                                     FlowDirection="RightToLeft"
+                                                     Width="120" />
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <TextBlock Text="{lex:Loc MaxMeasure}"
+                                                        />
+                                            <TextBox Text="{Binding MaxMeasure}"
+                                                     HorizontalAlignment="Center"
+                                                     Width="40" />
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <TextBlock Text="{lex:Loc LastMeasure}"
+                                                        />
+                                            <TextBox Text="{Binding LastMeasure}"
+                                                     HorizontalAlignment="Center"
+                                                     Width="40" />
+                                        </StackPanel>
+                                        <Button Style="{StaticResource SmallAddButton}"
+                                                Command="{Binding AddDiseaseCommand}"
+                                                VerticalAlignment="Bottom"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </DockPanel>
+                            <ListView ItemsSource="{Binding PatientDiseases}"
+                                      Width="500"
+                                      HorizontalContentAlignment="Stretch"
+                                      BorderThickness="1"
+                                      BorderBrush="Wheat"
+                                      DockPanel.Dock="Top"
+                                      x:Name="PatientDiseaseList">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel />
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Disease.EnName}"
+                                                           TextWrapping="Wrap"
+                                                           FontWeight="Bold"
+                                                       HorizontalAlignment="Center"
+                                                           Foreground="DarkBlue"/>
+                                            <DockPanel Margin="5">
+                                               
+                                                <StackPanel Margin="5">
+                                                    <TextBlock Text="{lex:Loc AgeOfInjury}"
+                                                               TextWrapping="Wrap" />
+                                                    <TextBlock Text=" .. "
+                                                               HorizontalAlignment="Center"
+                                                               FontWeight="Bold"
+                                                               TextWrapping="Wrap" />
+                                                    <TextBlock Text="{Binding AgeOfInjury}"
+                                                               HorizontalAlignment="Center"
+                                                               
+                                                               TextWrapping="Wrap" />
+                                                </StackPanel>
+                                                <StackPanel Margin="5">
+                                                    <TextBlock Text="{lex:Loc MaxMeasure}"
+                                                               TextWrapping="Wrap" />
+                                                    <TextBlock Text=" .. "
+                                                               HorizontalAlignment="Center"
+                                                               
+                                                               FontWeight="Bold"
+                                                               TextWrapping="Wrap" />
+                                                    <TextBlock Text="{Binding MaxMeasure}"
+                                                               HorizontalAlignment="Center"
+                                                               
+                                                               TextWrapping="Wrap" />
+                                                </StackPanel>
+                                                <StackPanel Margin="5">
+                                                    <TextBlock Text="{lex:Loc LastCheckMeasure}"
+                                                               TextWrapping="Wrap" />
+                                                    <TextBlock Text=" .. "
+                                                               FontWeight="Bold"
+                                                               TextWrapping="Wrap" />
+                                                    <TextBlock Text="{Binding LastCheckMeasure}"
+                                                               TextWrapping="Wrap" />
+                                                </StackPanel>
+                                            </DockPanel>
+                                            <Button Style="{StaticResource SmallDeleteButton}"
+                                                    Command="{Binding ElementName=PatientDiseaseList, Path=DataContext.DeletePatientDiseaseCommand}"
+                                                    CommandParameter="{Binding}"
+                                                    HorizontalAlignment="Right" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </DockPanel>
+                    </Border>-->
+                </DockPanel>
+                <StackPanel Grid.Column="2">
+                    <Button Style="{StaticResource SmallAddButton}"
+                            Command="{Binding AddMartialStatusCommand}"
+                            Visibility="Collapsed"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Left"
+                            Margin="12 36 0 0" />
+                    <!--<Button Style="{StaticResource SmallAddButton}"
+                            Command="{Binding AddLocationCommand}"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Left"
+                            Margin="12 78 0 0" />-->
+                </StackPanel>
+            </Grid>
+        </DockPanel>
+    </ScrollViewer>
+</UserControl>

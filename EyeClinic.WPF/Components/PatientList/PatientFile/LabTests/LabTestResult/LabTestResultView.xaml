@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="EyeClinic.WPF.Components.PatientList.PatientFile.LabTests.LabTestResult.LabTestResultView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EyeClinic.WPF.Components.PatientList.PatientFile.LabTests.LabTestResult"
+             d:DataContext="{d:DesignInstance local:LabTestResultViewModel, IsDesignTimeCreatable=True}"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <ListView ItemsSource="{Binding PatientVisitLabTests}"
+              VirtualizingStackPanel.IsVirtualizing="True"
+              VirtualizingStackPanel.VirtualizationMode="Recycling"
+              x:Name="PatientVisitLabTests">
+        <ListView.ItemsPanel>
+            <ItemsPanelTemplate>
+                <VirtualizingStackPanel />
+            </ItemsPanelTemplate>
+        </ListView.ItemsPanel>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <DockPanel>
+                    <Label Content="{Binding LabTest.EnName}"
+                           Width="200"
+                           Margin="10 0 40 0"
+                           VerticalAlignment="Center" />
+                    <DockPanel>
+                        <TextBox Text="{Binding Result}"
+                                 AcceptsReturn="True"
+                                 TextWrapping="Wrap"
+                                 Width="220"
+                                 Height="Auto" />
+                        <StackPanel Margin="6 2">
+                            <TextBlock Text="Done"
+                                       HorizontalAlignment="Center" />
+                            <CheckBox Style="{StaticResource OnOffCheckBoxStyle}"
+                                      Margin="4 0"
+                                      IsChecked="{Binding Done}" />
+                        </StackPanel>
+                    </DockPanel>
+                </DockPanel>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</UserControl>

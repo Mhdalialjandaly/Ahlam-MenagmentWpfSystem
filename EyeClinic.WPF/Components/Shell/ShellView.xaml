@@ -1,0 +1,55 @@
+﻿<Window x:Class="EyeClinic.WPF.Components.Shell.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:EyeClinic.WPF.Components.Controls" 
+        xmlns:syncfusion="clr-namespace:Syncfusion.Windows.Controls.Notification;assembly=Syncfusion.SfBusyIndicator.WPF"
+        mc:Ignorable="d"
+        Style="{StaticResource LocalizationStyle}"
+        WindowStartupLocation="CenterOwner"
+        WindowState="Maximized"
+        WindowStyle="None"
+        Title="ShellView">
+    <Grid>
+        <DockPanel>
+            <ContentControl Content="{Binding Footer,UpdateSourceTrigger=PropertyChanged}"
+                            DockPanel.Dock="Bottom" />
+            <ContentControl Content="{Binding Header,UpdateSourceTrigger=PropertyChanged}"
+                            DockPanel.Dock="Top" />
+            <Grid>                
+                <Grid.Background>
+                    <!--<ImageBrush ImageSource="/Images/Backgrounds/bg1.jpg" />-->
+                    <LinearGradientBrush EndPoint="0.504,1.5"
+                                         StartPoint="0.504,0.03">
+                        <GradientStop Color="DarkBlue"
+                                      Offset="0" />
+                        <GradientStop Color="#3933"
+                                      Offset="0.300" />
+                        <GradientStop Color="#9799cf"
+                                      Offset="0.650" />
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Border Background="Transparent"
+                     CornerRadius="8"
+                     Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"
+                     Width="75"
+                     Height="50">
+                    <syncfusion:SfBusyIndicator 
+                     DataContext="{Binding}"
+                     IsBusy="{Binding IsBusy}"
+                     AnimationType="DotCircle"
+                     HorizontalAlignment="Center"
+                     HorizontalContentAlignment="Center"
+                     VerticalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     Foreground="Black"
+                     Width="75"
+                     Height="50" />
+                </Border>
+                <ContentControl Content="{Binding Content,UpdateSourceTrigger=PropertyChanged}" />
+                <ContentControl Content="{Binding Dialog,UpdateSourceTrigger=PropertyChanged}" />
+            </Grid>
+        </DockPanel>
+</Grid>
+</Window>

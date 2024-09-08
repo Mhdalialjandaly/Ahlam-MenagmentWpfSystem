@@ -1,0 +1,105 @@
+﻿<UserControl x:Class="EyeClinic.WPF.Components.Home.Setting.Operations.OperationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EyeClinic.WPF.Components.Home.Setting.Operations"
+             Style="{StaticResource LocalizationStyle}"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             d:DataContext="{d:DesignInstance local:OperationViewModel, IsDesignTimeCreatable=True}"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <DockPanel Background="White">
+        <DockPanel Dock="Top"
+                   Margin="4">
+            <TextBlock Text="{lex:Loc Search}"
+                       Margin="5 0"
+                       VerticalAlignment="Center" />
+            <DockPanel>
+                <Border Background="Black"
+                        Margin="4 0"
+                        DockPanel.Dock="Right"
+                        CornerRadius="10">
+                    <Button Content="{lex:Loc Search}"
+                        Style="{StaticResource ButtonBase}"
+                        Margin="4 0"
+                        DockPanel.Dock="Right"
+                        Command="{Binding SearchCommand}" />
+                </Border>
+                <TextBox Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}"
+                         Width="Auto"
+                         Height="30"
+                         VerticalContentAlignment="Center">
+                    <TextBox.InputBindings>
+                        <KeyBinding Key="Return"
+                                    Command="{Binding SearchCommand}" />
+                    </TextBox.InputBindings>
+                </TextBox>
+            </DockPanel>
+        </DockPanel>
+        <Border BorderBrush="Black"
+                DockPanel.Dock="Top"
+                Margin="20 2"
+                BorderThickness="2"
+                Height="2" />
+        <DockPanel DockPanel.Dock="Top"
+                   Background="WhiteSmoke">
+            <TextBlock Text="{lex:Loc DiagnosisList}"
+                       Margin="5"
+                       FontFamily="{StaticResource Arabic}"
+                       VerticalAlignment="Center" />
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Margin="5 0">
+                <Border Background="Black"
+                        Margin="4 0"
+                        DockPanel.Dock="Right"
+                        CornerRadius="10">
+                    <Button Style="{StaticResource SmallAddButton}"
+                            Background="Transparent"
+                        Command="{Binding AddOperationCommand}"
+                        Margin="5 0" />
+                </Border>
+                <Border Background="Black"
+                        Margin="4 0"
+                        DockPanel.Dock="Right"
+                        CornerRadius="10">
+                    <Button Style="{StaticResource SmallEditButton}"
+                            Background="Transparent"
+                        Command="{Binding EditDiseaseCommand}" />
+                </Border>
+
+            </StackPanel>
+        </DockPanel>
+        <ListView ItemsSource="{Binding DiseasesList}"
+                  SelectedItem="{Binding SelectedDisease}"
+                  VirtualizingStackPanel.IsVirtualizing="True"
+                  VirtualizingStackPanel.VirtualizationMode="Recycling"
+                  HorizontalContentAlignment="Stretch"
+                  DockPanel.Dock="Top"
+                  x:Name="PaymentTypeList">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <DockPanel Dock="Top">
+                            <TextBlock Text="{Binding Code}" />
+                            <TextBlock Text=" - " />
+                            <TextBlock Text="{Binding EnName}" />
+                            <Button Command="{Binding ElementName=PaymentTypeList, Path=DataContext.DeleteDiseaseCommand}"
+                                    CommandParameter="{Binding}"
+                                    Style="{StaticResource SmallDeleteButton}"
+                                    HorizontalAlignment="Right" />
+                        </DockPanel>
+                    </DockPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </DockPanel>
+</UserControl>

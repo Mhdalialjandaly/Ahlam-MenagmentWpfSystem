@@ -1,0 +1,237 @@
+﻿<UserControl x:Class="EyeClinic.WPF.Components.Home.Operation.PublicCustomer.PublicCustomerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EyeClinic.WPF.Components.Home.Operation.PublicCustomer"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:controls="clr-namespace:EyeClinic.WPF.Components.Controls"
+             d:DataContext="{d:DesignInstance local:PublicCustomerViewModel, IsDesignTimeCreatable=True}"
+            Style="{StaticResource LocalizationStyle}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.InputBindings>
+        <KeyBinding Key="Return"
+                 Command="{Binding SearchCommand}" />
+    </UserControl.InputBindings>
+    <Grid>
+        <DockPanel>
+            <Grid DockPanel.Dock="Bottom">
+                <Border Background="#333333"
+                 CornerRadius="10"
+                 Margin="3"
+                 DockPanel.Dock="Bottom">
+                    <Button Command="{Binding BackHomeCommand}"
+                     Background="Transparent"
+                     Content="{lex:Loc BackHome}"
+                     Style="{StaticResource ButtonBase}" 
+                     />
+                </Border>
+                <materialDesign:PackIcon 
+                 Grid.Column="0" 
+                 Kind="Home"
+                 Opacity="0.2"
+                 Margin="100 0 0 0"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center"
+                 Foreground="White" Width="50" 
+                 Height="40" />
+            </Grid>
+            <StackPanel DockPanel.Dock="Top"
+                     Background="LightBlue">
+                <DockPanel Margin="10 0">
+
+                    <Label Content="{lex:Loc Code}"
+                        HorizontalAlignment="Left" />
+                    <DockPanel HorizontalAlignment="Right">
+                        <materialDesign:PackIcon 
+                         Kind="Number0Box"     
+                         Width="30"
+                         VerticalAlignment="Center"
+                         Foreground="Black" 
+                         Height="40" />
+                        <TextBox  HorizontalAlignment="Right"
+                           VerticalContentAlignment="Center"
+                           Text="{Binding Code, UpdateSourceTrigger=PropertyChanged}" />
+
+                    </DockPanel>
+                </DockPanel>
+                <DockPanel Margin="10 0">
+
+                    <Label Content="{lex:Loc FirstName}"
+                        HorizontalAlignment="Left" />
+                    <DockPanel HorizontalAlignment="Right">
+                        <materialDesign:PackIcon        
+                         Kind="RenameBoxOutline"
+                         Width="30"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Foreground="Black" 
+                         Height="40" />
+
+                        <TextBox  HorizontalAlignment="Right"
+                           FlowDirection="RightToLeft"
+                           VerticalContentAlignment="Center"
+                           Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" />
+                    </DockPanel>
+
+                </DockPanel>
+                <DockPanel Margin="10 0">
+
+                    <Label Content="{lex:Loc LastName}"
+                        HorizontalAlignment="Left" />
+                    <DockPanel HorizontalAlignment="Right">
+                        <materialDesign:PackIcon 
+    
+                         Kind="RenameBoxOutline"
+                         Width="30"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Foreground="Black" 
+                         Height="40" />
+
+                        <TextBox  HorizontalAlignment="Right"
+                           VerticalContentAlignment="Center"
+                           FlowDirection="RightToLeft"
+                           Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" />
+                    </DockPanel>
+                </DockPanel>
+                
+                <Grid>
+                    <Border Margin="3"
+                     Background="#333333"
+                     CornerRadius="10">
+                        <Button Content="{lex:Loc Search}"
+                         Background="Transparent"
+                         Style="{StaticResource ButtonBase}"
+                         Command="{Binding SearchCommand}" />
+                    </Border>
+                    <materialDesign:PackIcon 
+                     Grid.Column="0" 
+                     Kind="Search" 
+                     Margin="110 0 0 0"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Center"
+                     Foreground="White" Width="50" 
+                     Height="40" />
+                </Grid>
+            </StackPanel>
+            <DockPanel DockPanel.Dock="Top"
+                    Background="LightGray">
+                <TextBlock Text="{lex:Loc CustomerMenu}"
+                        Margin="5 0"
+                        FontFamily="{StaticResource Arabic}"
+                        VerticalAlignment="Center" />
+                <StackPanel Orientation="Horizontal"                        
+                         HorizontalAlignment="Right"
+                         Margin="5 0">
+                    <Border CornerRadius="10"
+                         Background="#333333"
+                         Margin="5 0">
+                        <Button Style="{StaticResource SmallAddButton}"
+                             Background="Transparent"
+                             Command="{Binding AddPublicCustomerCommand}" />
+                    </Border>
+                    <Border CornerRadius="10"
+                         Background="#333333"
+                         Margin="5 0">
+                        <Button Style="{StaticResource SmallDeleteButton}"
+                     Command="{Binding DeletePublicCustomerCommand}" 
+                             Background="Transparent"/>
+                    </Border>
+
+                    <Border CornerRadius="10"
+                         Background="#333333"
+                         Margin="5 0">
+                        <Button Style="{StaticResource SmallEditButton}"
+                             Background="Transparent"
+                             Command="{Binding EditPublicCustomerCommand}" />
+                    </Border>
+
+                </StackPanel>
+            </DockPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <ListView SelectedItem="{Binding SelectedPublicCustomer}"
+                       ItemsSource="{Binding ElementName=DataPager,Path=PagedSource}"
+                       Grid.Row="0"
+                       VirtualizingStackPanel.IsVirtualizing="True"
+                       Background="LightBlue"
+                       VirtualizingStackPanel.VirtualizationMode="Recycling">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.Resources>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment"
+                                 Value="Stretch" />
+                        </Style>
+                    </ListView.Resources>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Background="Transparent">
+                                <StackPanel.InputBindings>
+                                    <MouseBinding MouseAction="LeftDoubleClick"
+                                               Command="{Binding ElementName=DataPager, Path=DataContext.GoPublicCustomerFileCommand}"
+                                               CommandParameter="{Binding}" />
+                                </StackPanel.InputBindings>
+                                <Label Content="{Binding Data.Number}"
+                                        VerticalAlignment="Center"
+                                        FontSize="28"
+                                        FontWeight="Bold"
+                                        Foreground="Blue"
+                                        HorizontalAlignment="Center"
+                                    />
+                                <DockPanel VerticalAlignment="Center">
+
+                                    <StackPanel VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding Data.FullName}"
+                                                Margin="0 4"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center" />
+                                   
+                                        <TextBlock Text="{Binding Data.LastModifiedDateDisplayName}"
+                                                Visibility="{Binding Data.LastModifiedDateDisplayName, Converter={StaticResource NullToVisibilityConverter}}"
+                                                Foreground="DarkRed"
+                                                FontSize="11"
+                                                Margin="4 0 0 4" />
+                                    </StackPanel>
+                                    <Border HorizontalAlignment="Right"
+                                         VerticalAlignment="Center"
+                                         Background="Black"
+                                         CornerRadius="10">
+                                        <Button Command="{Binding ElementName=DataPager, Path=DataContext.AddToQueueCommand}"
+                                             CommandParameter="{Binding}"
+                                             Visibility="{Binding ElementName=DataPager, Path=DataContext.EnableSearchByImageNumber, Converter={StaticResource BooleanToVisibilityReverseConverter}}"
+                                             Style="{StaticResource SmallButtonBase}"
+                                             Background="Transparent"
+                                              >
+                                            <materialDesign:PackIcon Kind="AccountArrowRight"
+                                                                  Width="40"
+                                                                  Height="30"/>
+                                        </Button>
+
+                                    </Border>
+                                </DockPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <syncfusion:SfDataPager x:Name="DataPager"
+                                     Source="{Binding PublicCustomers}"
+                                     PageSize="25"                                        
+                                     Foreground="Black"
+                                     Background="DarkBlue"
+                                     UseOnDemandPaging="True"
+                                     Grid.Row="1" />
+            </Grid>
+        </DockPanel>
+        <controls:BusyIndicator DataContext="{Binding}" />
+    </Grid>
+</UserControl>

@@ -1,0 +1,703 @@
+﻿<UserControl x:Class="EyeClinic.WPF.Components.PatientList.PatientFile.NewGlass.NewGlassView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EyeClinic.WPF.Components.PatientList.PatientFile.NewGlass"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             xmlns:attachedProperty="clr-namespace:EyeClinic.WPF.AttachedProperty" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Style="{StaticResource LocalizationStyle}"
+             d:DataContext="{d:DesignInstance local:NewGlassViewModel, IsDesignTimeCreatable=True}"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="1200">
+    <UserControl.Resources>
+        <Style TargetType="TextBox"
+            >
+            <Setter Property="Background" Value="LightBlue"></Setter>
+            <Setter Property="Width" Value="110"></Setter>
+            <Setter Property="TabIndex" Value="1"></Setter>
+            <Setter Property="Margin" Value="2"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="FontSize" Value="25"></Setter>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        </Style>
+        <Style TargetType="TextBlock"
+               x:Key="EyeGlassLabelsStyle">
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="FontWeight"
+                    Value="Bold" />
+            <Setter Property="Background"
+                    Value="#267664" />
+            <Setter Property="Foreground"
+                    Value="White" />
+            <Setter Property="Padding"
+                    Value="4 2" />
+            <Setter Property="Margin"
+                    Value="0 30 10 0" />            
+        </Style>
+        <Style x:Key="TextBoxStyle" TargetType="TextBox">
+            <Setter Property="Background" Value="LightBlue"></Setter>
+            <Setter Property="Width" Value="80"></Setter>
+            <Setter Property="TabIndex" Value="1"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="Height" Value="200"/>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="attachedProperty:FocusAdvancement.AdvancesByEnterKey" Value="True"></Setter>
+
+        </Style>
+    </UserControl.Resources>
+    <DockPanel 
+               >
+        <StackPanel DockPanel.Dock="Bottom">
+            <StackPanel Orientation="Horizontal"
+                        DockPanel.Dock="Bottom"
+                        HorizontalAlignment="Left"
+                        >
+                <Grid>
+                    <StackPanel
+                        Orientation="Horizontal"
+                        Visibility="{Binding IsPatientVisitGlass, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <Grid>
+                            <Border Background="black"
+                        Margin="5" 
+                                    Width="110"
+                        DockPanel.Dock="Bottom"
+                        HorizontalAlignment="Left"
+                        CornerRadius="10">
+                                <Button 
+                            Foreground="LightYellow"                     
+                            Style="{StaticResource ButtonBase}"
+                            Background="Transparent"
+                            Command="{Binding CancelCommand}" 
+                            Content="{lex:Loc Back}"/>
+                            </Border>
+                            <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="Backburger" 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+Foreground="White" Width="50" 
+Height="40" />
+                        </Grid>
+                        <TextBlock Text="||" Foreground="Red" FontSize="30"></TextBlock>
+                        <Grid>
+                            <Border CornerRadius="10"                                
+                                Margin="2"
+                                Visibility="{Binding HasCurrentGlass, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                Width="130"
+                                Background="{Binding HasCurrentGlass,Converter={StaticResource NotesToForegroundColorConverter} }"
+                                Height="45">
+                                <Button Command="{Binding CurrentGlassCommand}"                            
+                                    Style="{StaticResource ButtonBase}"
+                                    Content="{lex:Loc CurrentGlass}"                                     
+                                   />
+                            </Border>
+                            <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="Glass"
+                                Opacity="0.1"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+Foreground="White" Width="50" 
+Height="40" />
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Visibility="{Binding IsPatientVisitGlass, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <!--<Border CornerRadius="10"
+                                Visibility="{Binding HasCurrentGlass, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                Margin="2"
+                                Width="120"
+                                Background="Blue">
+                            <Button Command="{Binding CurrentGlassCommand}"                            
+                                    Style="{StaticResource ButtonBase}"
+                                    Content="{lex:Loc CurrentGlass}" />
+                        </Border>-->
+                    </StackPanel>
+                </Grid>
+                <Grid>
+                    <Border Background="{StaticResource PrimaryColorBrush3}"
+                        CornerRadius="10"
+                         Width="160"
+                        Visibility="{Binding IsPatientVisitGlass, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Margin="2">
+                        <Button Command="{Binding PatientVisitGlassHistoryCommand}"
+                            Style="{StaticResource ButtonBase}"
+                            Content="{lex:Loc GlassHistory}"
+                            Background="Transparent"
+                                HorizontalAlignment="Right"/>
+                        
+                    </Border>
+                    <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="History"                      
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+Foreground="White" Width="50" 
+Height="40" />
+                </Grid>
+                <Grid>
+                    <Border Background="{StaticResource WordGreenBrush}"
+                        CornerRadius="10"
+                        Width="200"
+                        Margin="2">
+                        <Button Command="{Binding SavePrintNewGlassCommand}"
+                            Style="{StaticResource ButtonBase}"
+                            Content="{lex:Loc SaveAndPrint}"
+                            Background="Transparent" />
+                    </Border>
+                    <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="Printer3d" 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+Foreground="White" Width="50" 
+Height="40" />
+                </Grid>
+                <Grid>
+                    <Border Background="{StaticResource WordLightBlueBrush}"
+                        CornerRadius="10"
+                        Width="150"
+                        Visibility="{Binding IsPatientVisitGlass, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Margin="2">
+                        <Button Command="{Binding SaveNewGlassCommand}"
+                            Visibility="{Binding IsPatientVisitGlass, Converter={StaticResource BooleanToVisibilityConverter}}"
+                            Style="{StaticResource ButtonBase}"
+                            Content="{lex:Loc Save}"
+                            Background="Transparent" />
+
+                    </Border>
+                    <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="ContentSave" 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+Foreground="White" Width="50" 
+Height="40" />
+                </Grid>
+                <!--<Border CornerRadius="10"
+                        Background="Black"
+                        Margin="5">
+                    -->
+                <!--<Button Command="{Binding PrintNewGlassCommand}"
+                            Style="{StaticResource ButtonBase}"
+                            Content="{lex:Loc Print}"
+                            Background="{StaticResource WordLightBlueBrush}" />-->
+                <!--
+                </Border>-->
+                <Border Background="{StaticResource WordOrangeBrush}"
+                        CornerRadius="10"
+                        Margin="2">
+                    <!--<Button Command="{Binding CancelNewGlassCommand}"
+                            Visibility="{Binding IsPatientVisitGlass, Converter={StaticResource BooleanToVisibilityConverter}}"
+                            Style="{StaticResource ButtonBase}"
+                            Content="{lex:Loc Cancel}"
+                            Background="Transparent" />-->
+                </Border>
+                <Grid>
+                    <Border Background="{StaticResource WordRedBrush}"
+                        CornerRadius="10"
+                        Width="150"
+                        Margin="0 0 70 0">
+                        <Button Command="{Binding DeleteNewGlassCommand}"
+                            Style="{StaticResource ButtonBase}"
+                            Content="{lex:Loc Delete}"
+                            Background="Transparent" />
+                    </Border>
+                    <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="Delete" 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+Foreground="White" Width="50" 
+Height="40" />
+                </Grid>
+                <DockPanel Margin="120 0 0 0">
+                    <TextBlock Text="||"
+                           Visibility="{Binding IsPatientVisitGlass, Converter={StaticResource BooleanToVisibilityConverter}}"
+                           Foreground="Red"
+                           FontSize="30"></TextBlock>
+                 
+                    <Border Background="black"
+                        Margin="5"
+                        Visibility="{Binding IsPatientVisitGlass, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        DockPanel.Dock="Right"
+                        HorizontalAlignment="Right"
+                        CornerRadius="10">
+                        <Button 
+                            Click="next_click"
+                            DockPanel.Dock="Right"
+                            HorizontalAlignment="Right"
+                            Style="{StaticResource ButtonBase}" >
+                            <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="NextTitle" 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+Foreground="White" Width="50" 
+Height="40" />
+                        </Button>
+                    </Border>
+                    <Border Background="black"
+                        Margin="5"
+                        Visibility="{Binding IsPatientVisitGlass, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        DockPanel.Dock="Right"
+                        HorizontalAlignment="Right"
+                        CornerRadius="10">
+                        <Button
+                            Click="Previous_click"
+                            DockPanel.Dock="Right"
+                            HorizontalAlignment="Right"
+                            Style="{StaticResource ButtonBase}" >
+                            <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="PreviousTitle" 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+Foreground="White" Width="50" 
+Height="40" />
+                        </Button>
+                    </Border>
+                </DockPanel>
+            </StackPanel>
+            <Button
+                    Background="Red"
+                    DockPanel.Dock="Bottom"
+                    Width="auto"
+                    Style="{StaticResource ButtonBase}"
+                    Click="FinishVisitClick" >
+                <materialDesign:PackIcon 
+Grid.Column="0" 
+Kind="DoneAll" 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+Foreground="White" Width="50" 
+Height="40" />
+            </Button>
+        </StackPanel>
+        <DockPanel Dock="Top"                   
+                   FlowDirection="LeftToRight">
+            <TextBlock Text="{lex:Loc CurrentGlasses}"
+                       DockPanel.Dock="Top"
+                       FontSize="32"
+                       Foreground="Red"
+                       Visibility="{Binding VisitDate, Converter={StaticResource BooleanToVisibilityConverter}}"
+                       FontWeight="Bold" />
+            <Grid DockPanel.Dock="Top">
+                <TextBlock Text="{Binding VisitDate,
+                                    StringFormat={}{0:dd/MM/yyyy}}"
+                       DockPanel.Dock="Top"
+                       FontSize="32"
+                       Margin="0"
+                       Foreground="Red"
+                       FontWeight="Bold" />
+                <TextBlock Text="{lex:Loc Glasses}" 
+                       Foreground="Black" 
+                       DockPanel.Dock="Top" 
+                       FontWeight="Bold" 
+                       FontSize="{StaticResource FontSizeXXLarge}"
+                       HorizontalAlignment="Center"/>
+            </Grid>
+            <StackPanel Width="50"
+                        Margin="0 45 0 0">
+                <TextBlock Text="D.V"
+                           Style="{StaticResource EyeGlassLabelsStyle}" />
+            </StackPanel>
+            <StackPanel 
+                        Margin="0 30">
+                <TextBlock Text="Right"
+                           Style="{StaticResource EyeGlassLabelsStyle}" />
+                <TextBlock Text="Left"
+                           Style="{StaticResource EyeGlassLabelsStyle}" />
+            </StackPanel>
+            <StackPanel >
+
+                <TextBlock Text="Sph."
+                           Style="{StaticResource EyeGlassLabelsStyle}"
+                           HorizontalAlignment="Center" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         Background="LightBlue"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="1"
+                    
+                         FontWeight="Bold"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding RSph}" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         Background="LightBlue"
+                         HorizontalContentAlignment="Center"
+                         FontWeight="Bold"
+                         TabIndex="8"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding LSph}" />
+            </StackPanel>
+            <StackPanel 
+                        Margin="15 0">
+                <TextBlock Text="Cyl."
+                           Style="{StaticResource EyeGlassLabelsStyle}"
+                           HorizontalAlignment="Center" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         Background="LightBlue"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="2"
+                         FontWeight="Bold"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding RCyl}" />
+                <TextBox
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="9"
+                         Background="LightBlue"
+                         FontWeight="Bold"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding LCyl}" />
+            </StackPanel>
+            <StackPanel >
+                <TextBlock Text="Axis."
+                           Style="{StaticResource EyeGlassLabelsStyle}"
+                           HorizontalAlignment="Center" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="3"
+                         Background="LightBlue"
+                         FontWeight="Bold"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding RAxis}" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="10"
+                         Background="LightBlue"
+                         FontWeight="Bold"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding LAxis}" />
+            </StackPanel>
+            <StackPanel 
+                        Margin="15 0">
+                <TextBlock Text="Prism."
+                           Style="{StaticResource EyeGlassLabelsStyle}"
+                           HorizontalAlignment="Center" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="4"
+                         FontWeight="Bold"
+                         Background="LightBlue"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding RPrism}" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="11"
+                         FontWeight="Bold"
+                         Background="LightBlue"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding LPrism}" />
+            </StackPanel>
+            <StackPanel >
+                <TextBlock Text="Base."
+                           Style="{StaticResource EyeGlassLabelsStyle}"
+                           HorizontalAlignment="Center" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="5"
+                         FontWeight="Bold"
+                         Background="LightBlue"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding RBase}" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         Background="LightBlue"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="12"
+                         FontWeight="Bold"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding LBase}" />
+            </StackPanel>
+            <StackPanel 
+                        Margin="15 0">
+                <TextBlock Text="I.P.D"
+                           Style="{StaticResource EyeGlassLabelsStyle}"
+                           HorizontalAlignment="Center" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         Background="LightBlue"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="6"
+                         FontWeight="Bold"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding RIpd}" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="13"
+                         Background="LightBlue"
+                         FontWeight="Bold"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding LIpd}" />
+            </StackPanel>
+            <StackPanel 
+                        HorizontalAlignment="Left">
+                <TextBlock Text="VA."
+                           Style="{StaticResource EyeGlassLabelsStyle}"
+                           HorizontalAlignment="Center" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="7"
+                         FontWeight="Bold"
+                         Background="LightBlue"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding RVa}" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         Background="LightBlue"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="14"
+                         FontWeight="Bold"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding LVa}" />
+            </StackPanel>
+        </DockPanel>
+        <CheckBox Content="{lex:Loc AddForNearVision}"
+                  TabIndex="15"
+                  DockPanel.Dock="Top"
+                  Margin="12 4"
+                  FontFamily="28"
+                  FontWeight="ExtraBold"
+                  Foreground="Red"
+                  IsChecked="{Binding AddVision}" />
+        <DockPanel Dock="Top"
+                   FlowDirection="LeftToRight">
+            <StackPanel Width="50"
+                        Margin="0 45 0 0">
+                <TextBlock Text="N.V"
+                           Style="{StaticResource EyeGlassLabelsStyle}" />
+            </StackPanel>
+            <StackPanel 
+                        Margin="0 30 0 0">
+                <TextBlock Text="Right"
+                           Style="{StaticResource EyeGlassLabelsStyle}" />
+                <TextBlock Text="Left"
+                           Style="{StaticResource EyeGlassLabelsStyle}" />
+            </StackPanel>
+            <StackPanel >
+                <TextBlock Text="Sph."
+                           Style="{StaticResource EyeGlassLabelsStyle}"
+                           HorizontalAlignment="Center" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="16"
+                         Background="LightBlue"
+                         FontWeight="Bold"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding RSph2}" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="23"
+                         Background="LightBlue"
+                         FontWeight="Bold"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding LSph2}" />
+            </StackPanel>
+            <StackPanel 
+                        Margin="15 0">
+                <TextBlock Text="Cyl."
+                           Style="{StaticResource EyeGlassLabelsStyle}"
+                           HorizontalAlignment="Center" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="17"
+                         FontWeight="Bold"
+                         Background="LightBlue"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding RCyl2}" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="24"
+                         FontWeight="Bold"
+                         Background="LightBlue"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding LCyl2}" />
+            </StackPanel>
+            <StackPanel >
+                <TextBlock Text="Axis."
+                           Style="{StaticResource EyeGlassLabelsStyle}"
+                           HorizontalAlignment="Center" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="18"
+                         FontWeight="Bold"
+                         Background="LightBlue"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding RAxis2}" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="25"
+                         Background="LightBlue"
+                         FontWeight="Bold"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding LAxis2}" />
+            </StackPanel>
+            <StackPanel 
+                        Margin="15 0">
+                <TextBlock Text="Prism."
+                           Style="{StaticResource EyeGlassLabelsStyle}"
+                           HorizontalAlignment="Center" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="19"
+                         FontWeight="Bold"
+                         Background="LightBlue"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding RPrism2}" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="26"
+                         FontWeight="Bold"
+                         Background="LightBlue"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding LPrism2}" />
+            </StackPanel>
+            <StackPanel >
+                <TextBlock Text="Base."
+                           Style="{StaticResource EyeGlassLabelsStyle}"
+                           HorizontalAlignment="Center" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="20"
+                         FontWeight="Bold"
+                         Background="LightBlue"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding RBase2}" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="27"
+                         FontWeight="Bold"
+                         Background="LightBlue"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding LBase2}" />
+            </StackPanel>
+            <StackPanel 
+                        Margin="15 0">
+                <TextBlock Text="I.P.D"
+                           Style="{StaticResource EyeGlassLabelsStyle}"
+                           HorizontalAlignment="Center" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="21"
+                         FontWeight="Bold"
+                         Background="LightBlue"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding RIpd2}" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="28"
+                         FontWeight="Bold"
+                         Background="LightBlue"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding LIpd2}" />
+            </StackPanel>
+            <StackPanel 
+                        HorizontalAlignment="Left">
+                <TextBlock Text="VA."
+                           Style="{StaticResource EyeGlassLabelsStyle}"
+                           HorizontalAlignment="Center" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         Background="LightBlue"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="22"
+                         FontWeight="Bold"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding RVa2}" />
+                <TextBox 
+                         BorderBrush="Black"
+                         BorderThickness="2"
+                         Background="LightBlue"
+                         HorizontalContentAlignment="Center"
+                         TabIndex="29"
+                         FontWeight="Bold"
+                         attachedProperty:FocusAdvancement.AdvancesByEnterKey="True"
+                         Text="{Binding LVa2}" />
+            </StackPanel>
+        </DockPanel>
+        <DockPanel 
+                   Dock="Top">          
+            <StackPanel DockPanel.Dock="Right"
+                        >
+                <TextBlock Text="{lex:Loc ContactLenses}" />
+                <CheckBox Focusable="False"
+                          TabIndex="31"
+                          DockPanel.Dock="Right"
+                        
+                          Style="{StaticResource OnOffCheckBoxStyle}"
+                          IsChecked="{Binding ContactLenses}" />
+            </StackPanel>
+            <Grid>
+                <TextBlock Text="{lex:Loc Note}"
+             FontSize="22"
+             FontWeight="Bold"
+             DockPanel.Dock="Top" />
+                <TextBox Text="{Binding Notes}"
+                     TabIndex="30"
+                     x:Name="GlassNotes"
+                     Background="#d2f7d0"
+                     FontSize="22"
+                     Padding="12"
+                     FontFamily="Times New Roman"
+                     FontStretch="UltraExpanded"
+                     VerticalContentAlignment="Top"
+                     AcceptsReturn="True"
+                     Height="Auto"
+                     MinWidth="900" />
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+</UserControl>

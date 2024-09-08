@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="EyeClinic.WPF.Components.Home.AddressBook.ContactAccountCategoryList.ContactAccountCategoryListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EyeClinic.WPF.Components.Home.AddressBook.ContactAccountCategoryList"
+             d:DataContext="{d:DesignInstance local:ContactAccountCategoryListViewModel,IsDesignTimeCreatable=True}"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <DockPanel Background="White">
+        <DockPanel DockPanel.Dock="Top"
+                   Background="LightGray">
+            <DockPanel Margin="4">
+                <TextBlock Text="{lex:Loc Categories}"
+                           FontSize="{StaticResource FontSizeXLarge}"
+                           Margin="8 0"
+                           FontWeight="Bold" />
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Margin="5 0">
+                    <Button Style="{StaticResource SmallAddButton}"
+                            Command="{Binding AddCategoryCommand}"
+                            Margin="5 0" />
+                    <Button Style="{StaticResource SmallEditButton}"
+                            Command="{Binding EditCategoryCommand}" />
+                </StackPanel>
+            </DockPanel>
+        </DockPanel>
+        <ListView ItemsSource="{Binding Categories}"
+                  SelectedItem="{Binding SelectedCategory,UpdateSourceTrigger=PropertyChanged}"
+                  VirtualizingStackPanel.IsVirtualizing="True"
+                  VirtualizingStackPanel.VirtualizationMode="Recycling"
+                  HorizontalContentAlignment="Stretch"
+                  Height="400"
+                  Width="1000"
+                  x:Name="AccountList">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <DockPanel Dock="Top">
+                            <StackPanel Margin="8 0">
+                                <TextBlock Text="{Binding CategoryName}"
+                                           TextWrapping="Wrap"
+                                           FontSize="18"
+                                           FontWeight="Bold"
+                                           VerticalAlignment="Center"
+                                           Margin="0 0 25 0" />
+                            </StackPanel>
+                            <Button Command="{Binding ElementName=AccountList, Path=DataContext.DeleteCategoryCommand}"
+                                    CommandParameter="{Binding}"
+                                    Style="{StaticResource SmallDeleteButton}"
+                                    HorizontalAlignment="Right" />
+                        </DockPanel>
+                        <Border BorderBrush="Black"
+                                BorderThickness="1"
+                                DockPanel.Dock="Bottom"
+                                Margin="8 0"
+                                VerticalAlignment="Bottom" />
+                    </DockPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </DockPanel>
+</UserControl>

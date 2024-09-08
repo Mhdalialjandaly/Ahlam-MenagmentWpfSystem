@@ -1,0 +1,106 @@
+﻿<Application x:Class="EyeClinic.WPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"  
+              xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
+             xmlns:converters="clr-namespace:EyeClinic.WPF.Converters" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Application.Resources>
+        
+        <ResourceDictionary>           
+            <FontFamily x:Key="FontAwesome">/Fonts/fontawesome-webfont.ttf#FontAwesome</FontFamily>
+            <Style x:Key="LocalizationStyle"
+                   TargetType="ContentControl">
+                <Setter Property="lex:ResxLocalizationProvider.DefaultAssembly"
+                        Value="EyeClinic.WPF" />
+                <Setter Property="lex:ResxLocalizationProvider.DefaultDictionary"
+                        Value="Strings" />
+                <Setter Property="FlowDirection"
+                        Value="{Binding Direction}" />
+            </Style>
+            <Style x:Key="AliStyle" TargetType="{x:Type TextBlock}">
+             
+                        <Setter Property="FontFamily" Value="Times New Roman"></Setter>
+                        <Setter Property="FontWeight" Value="Bold"></Setter>
+                        <Setter Property="FontSize" Value="31"></Setter>
+                <Setter Property="Background" Value="LightBlue"></Setter>
+                        <!-- TextBox Setters -->
+
+
+            </Style>
+            <Style  TargetType="{x:Type DatePicker}">
+
+                <Setter Property="FontFamily" Value="Times New Roman"></Setter>
+                <Setter Property="FontWeight" Value="Bold"></Setter>
+                <Setter Property="FontSize" Value="28"></Setter>
+                <!-- TextBox Setters -->
+
+
+            </Style>
+            <Style  TargetType="{x:Type ListView}">
+
+                <Setter Property="FontFamily" Value="Times New Roman"></Setter>
+                <Setter Property="FontWeight" Value="Bold"></Setter>
+                <Setter Property="FontSize" Value="28"></Setter>
+                <Setter Property="Selector.Background" Value="LightBlue"></Setter>
+                <!-- TextBox Setters -->
+
+
+            </Style>
+
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter2" />
+            <converters:RemainingToBackGroundConverter x:Key="RemainingToBackGroundConverter" />
+            <converters:BooleanToVisibilityReverseConverter x:Key="BooleanToVisibilityReverseConverter" />
+            <converters:VisitStatusToColorConverter x:Key="PatientVisitStatusToColorConverter" />
+            <converters:NotesToForegroundColorConverter x:Key="NotesToForegroundColorConverter" />
+            <converters:ReservedColorConverter x:Key="ReservedColorConverter" />
+            <converters:PercentageConverter x:Key="PercentageConverter" />
+
+            <converters:foregroundNoteConverter x:Key="foregroundNoteConverter"/>
+
+            <converters:ForeGroundRemaining x:Key="ForeGroundRemaining"/>
+
+            <converters:BackGroundRemaining x:Key="BackGroundRemaining"/>
+            
+            <converters:GenderToHiddenConverter x:Key="GenderToHiddenConverter"/>
+
+            <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+            <converters:NullOrEmptyToVisibilityConverter x:Key="NullOrEmptyToVisibilityConverter" />
+            <converters:NullOrEmptyToVisibilityBackConverter x:Key="NullOrEmptyToVisibilityBackConverter" />
+            <converters:HighlightServiceBackgroundConverter x:Key="HighlightServiceBackgroundConverter" />
+            <converters:HighlightServiceBackgroundConverter3 x:Key="HighlightServiceBackgroundConverter3" />
+            <converters:HighlightServiceBackgroundConverter4 x:Key="HighlightServiceBackgroundConverter4" />
+
+            <converters:HighlightServiceVisibilityConverter x:Key="HighlightServiceVisibilityConverter" />
+
+
+            <converters:ReverseBooleanConverter x:Key="ReverseBooleanConverter" />
+            <converters:OperationToBooleanConverter x:Key="OperationToBooleanConverter" />
+            <converters:OperationToVisibilityConverter x:Key="OperationToVisibilityConverter" />
+            <converters:NullToColorConverter x:Key="NullToColorConverter" />
+            <converters:PaidToColorConverter x:Key="PaidToColorConverter" />
+            <converters:PatientVisitTypeConverter x:Key="PatientVisitTypeConverter" />
+            <converters:LeftEyeBooleanToTextConverter x:Key="LeftEyeBooleanToTextConverter" />
+            <converters:ZeroToVisibilityConverter x:Key="ZeroToVisibilityConverter" />
+            <converters:ZeroToVisibilityConverter2 x:Key="ZeroToVisibilityConverter2" />
+            <converters:ReviewTypeColorConverter x:Key="ReviewTypeColorConverter" />
+            <converters:MedicineToColorConverter x:Key="MedicineToColorConverter" />
+            <converters:PayoutToTextConverter x:Key="PayoutToTextConverter" />
+            <ResourceDictionary.MergedDictionaries>              
+                <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="LightBlue" SecondaryColor="LightBlue" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />            
+                <ResourceDictionary Source="/Resources/Colors.xaml" />
+                <ResourceDictionary Source="/Resources/Fonts.xaml" />
+                <ResourceDictionary Source="/Resources/ScrollBar.xaml" />
+                <ResourceDictionary Source="/Resources/ControlsStyle.xaml" />
+                <ResourceDictionary Source="/Resources/Styles.xaml" />
+                <ResourceDictionary Source="/Resources/CheckBoxStyle.xaml" />
+                <ResourceDictionary Source="/Resources/DarkModeColor.xaml" />
+                <ResourceDictionary Source="/Resources/AliFuckingStyles.xaml" />
+                <ResourceDictionary Source="/Resources/ImageList.xaml" />
+                <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="LightBlue" SecondaryColor="LightBlue" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

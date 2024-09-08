@@ -1,0 +1,1507 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="PatientList" xml:space="preserve">
+    <value>Patients list</value>
+  </data>
+  <data name="FatherName" xml:space="preserve">
+    <value>Father Name</value>
+  </data>
+  <data name="MotherName" xml:space="preserve">
+    <value>Mother Name</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="Age" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="JobTitle" xml:space="preserve">
+    <value>Job Title</value>
+  </data>
+  <data name="MartialStatus" xml:space="preserve">
+    <value>Martial Status</value>
+  </data>
+  <data name="HomePhone" xml:space="preserve">
+    <value>Home Phone</value>
+  </data>
+  <data name="WorkPhone" xml:space="preserve">
+    <value>Work Phone</value>
+  </data>
+  <data name="Nationality" xml:space="preserve">
+    <value>Nationality</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="IsSmoking" xml:space="preserve">
+    <value>Smoking</value>
+  </data>
+  <data name="Glass" xml:space="preserve">
+    <value>Glasses</value>
+  </data>
+  <data name="IsDrinking" xml:space="preserve">
+    <value>Drinking</value>
+  </data>
+  <data name="IsDrawing" xml:space="preserve">
+    <value>Drawing</value>
+  </data>
+  <data name="DiseasesList" xml:space="preserve">
+    <value>Diseases List</value>
+  </data>
+  <data name="AgeOfInjury" xml:space="preserve">
+    <value>Age Of Injury</value>
+  </data>
+  <data name="MaxMeasure" xml:space="preserve">
+    <value>Max Measure</value>
+  </data>
+  <data name="LastMeasure" xml:space="preserve">
+    <value>Last Measure</value>
+  </data>
+  <data name="Notes" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="StartService" xml:space="preserve">
+    <value>Start Service</value>
+  </data>
+  <data name="PaymentDateShouldBeEqualOrLessToday" xml:space="preserve">
+    <value>Unable to set this payment as Paid, it must be equal or less than today date</value>
+  </data>
+  <data name="PreviousGlass" xml:space="preserve">
+    <value>Previous Glasses</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="EyeTestCode" xml:space="preserve">
+    <value>Eye Test Code</value>
+  </data>
+  <data name="EyeTest" xml:space="preserve">
+    <value>Eye Test</value>
+  </data>
+  <data name="LeftEyeResult" xml:space="preserve">
+    <value>L E </value>
+  </data>
+  <data name="RightEyeResult" xml:space="preserve">
+    <value>R E </value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="RequestNewTests" xml:space="preserve">
+    <value>Request New Tests</value>
+  </data>
+  <data name="SetLabTestResult" xml:space="preserve">
+    <value>Set Lab Test Result</value>
+  </data>
+  <data name="SaveAndPrint" xml:space="preserve">
+    <value>Save And Print</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="AddForNearVision" xml:space="preserve">
+    <value>Add For Near Vision</value>
+  </data>
+  <data name="TotalCost" xml:space="preserve">
+    <value>Total Cost </value>
+  </data>
+  <data name="Sessions" xml:space="preserve">
+    <value>Sessions :</value>
+  </data>
+  <data name="Remaining" xml:space="preserve">
+    <value>Remaining </value>
+  </data>
+  <data name="MedicalCenter" xml:space="preserve">
+    <value>Medical Center </value>
+  </data>
+  <data name="PhotoSource" xml:space="preserve">
+    <value>Photo Source :</value>
+  </data>
+  <data name="PaymentLocation" xml:space="preserve">
+    <value>Payment Location :</value>
+  </data>
+  <data name="LeftEye" xml:space="preserve">
+    <value>LE  :</value>
+  </data>
+  <data name="RightEye" xml:space="preserve">
+    <value>RE  :</value>
+  </data>
+  <data name="SickStory" xml:space="preserve">
+    <value>Midical History</value>
+  </data>
+  <data name="Prescriptions" xml:space="preserve">
+    <value>Treatment</value>
+  </data>
+  <data name="TestsAndLabTests" xml:space="preserve">
+    <value>Tests And Lab Tests</value>
+  </data>
+  <data name="PrescriptionDetails" xml:space="preserve">
+    <value>Treatment Details</value>
+  </data>
+  <data name="UsageName" xml:space="preserve">
+    <value>Usage Name</value>
+  </data>
+  <data name="AvailableUsage" xml:space="preserve">
+    <value>Available Usage</value>
+  </data>
+  <data name="MedicineType" xml:space="preserve">
+    <value>Medicine Type</value>
+  </data>
+  <data name="MedicineCode" xml:space="preserve">
+    <value>Medicine Code</value>
+  </data>
+  <data name="MedicineName" xml:space="preserve">
+    <value>Medicine Name</value>
+  </data>
+  <data name="ReadyPrescriptions" xml:space="preserve">
+    <value>Ready Prescriptions</value>
+  </data>
+  <data name="TestCode" xml:space="preserve">
+    <value>Test Code</value>
+  </data>
+  <data name="TestName" xml:space="preserve">
+    <value>TestName</value>
+  </data>
+  <data name="Dropped" xml:space="preserve">
+    <value>Dropped</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone :</value>
+  </data>
+  <data name="PatientFile" xml:space="preserve">
+    <value>Patient File</value>
+  </data>
+  <data name="Operations" xml:space="preserve">
+    <value>Operations</value>
+  </data>
+  <data name="PatientServiceGroup" xml:space="preserve">
+    <value>Patient Service Group</value>
+  </data>
+  <data name="LabTests" xml:space="preserve">
+    <value>Lab Tests</value>
+  </data>
+  <data name="NewGlass" xml:space="preserve">
+    <value>New Glasses</value>
+  </data>
+  <data name="Diagnosis" xml:space="preserve">
+    <value>Diagnosis</value>
+  </data>
+  <data name="FinishVisit" xml:space="preserve">
+    <value>Finish Visit</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="VisitNotes" xml:space="preserve">
+    <value>Visit Notes</value>
+  </data>
+  <data name="BackHome" xml:space="preserve">
+    <value>Back Home</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Paid</value>
+  </data>
+  <data name="RemindMe" xml:space="preserve">
+    <value>Remind Me</value>
+  </data>
+  <data name="NotPaid" xml:space="preserve">
+    <value>Not Paid</value>
+  </data>
+  <data name="ThisIsDebt" xml:space="preserve">
+    <value>This Is Debt</value>
+  </data>
+  <data name="PaymentsType" xml:space="preserve">
+    <value>Payments Type</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="ShowCompleted" xml:space="preserve">
+    <value>Show Completed</value>
+  </data>
+  <data name="Debt" xml:space="preserve">
+    <value>Debt</value>
+  </data>
+  <data name="EnterYourPassword" xml:space="preserve">
+    <value>r</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="ThisNoteIsRequired" xml:space="preserve">
+    <value>This Note Is Required</value>
+  </data>
+  <data name="StartCashAmount" xml:space="preserve">
+    <value>Start Cash Amount</value>
+  </data>
+  <data name="PassWord" xml:space="preserve">
+    <value>Password  :</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="ClinicCost" xml:space="preserve">
+    <value>Clinic Cost</value>
+  </data>
+  <data name="OperationsSchedule" xml:space="preserve">
+    <value>Operations Schedule</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="PatientName" xml:space="preserve">
+    <value>Patient Name</value>
+  </data>
+  <data name="Cost" xml:space="preserve">
+    <value>Cost</value>
+  </data>
+  <data name="Reserved" xml:space="preserve">
+    <value>Reserved</value>
+  </data>
+  <data name="LeftEyeOperation" xml:space="preserve">
+    <value>Left Eye Operation</value>
+  </data>
+  <data name="RightEyeOperation" xml:space="preserve">
+    <value>Right Eye Operation</value>
+  </data>
+  <data name="Started" xml:space="preserve">
+    <value>Started</value>
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="TotalPatients" xml:space="preserve">
+    <value>Total Patients</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="FilterBy" xml:space="preserve">
+    <value>Filter By :</value>
+  </data>
+  <data name="TotalIncome" xml:space="preserve">
+    <value>Total Income :</value>
+  </data>
+  <data name="TotalRemaining" xml:space="preserve">
+    <value>Total Remaining</value>
+  </data>
+  <data name="Visits" xml:space="preserve">
+    <value>Visits</value>
+  </data>
+  <data name="PatientCode" xml:space="preserve">
+    <value>P Code</value>
+  </data>
+  <data name="PatientInfo" xml:space="preserve">
+    <value>Patient Info</value>
+  </data>
+  <data name="Reviews" xml:space="preserve">
+    <value>Reviews</value>
+  </data>
+  <data name="TodayVisits" xml:space="preserve">
+    <value>Today Visits</value>
+  </data>
+  <data name="TodayPayouts" xml:space="preserve">
+    <value>Payment for the day</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="AppSetting" xml:space="preserve">
+    <value>App Setting</value>
+  </data>
+  <data name="PrintTestPage" xml:space="preserve">
+    <value>Print Test Page</value>
+  </data>
+  <data name="AddDiagnosis" xml:space="preserve">
+    <value>Add Diagnosis</value>
+  </data>
+  <data name="EnName" xml:space="preserve">
+    <value>En Name</value>
+  </data>
+  <data name="ArName" xml:space="preserve">
+    <value>Ar Name</value>
+  </data>
+  <data name="AvailableMedicines" xml:space="preserve">
+    <value>Available Medicines</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="NoData" xml:space="preserve">
+    <value>NO DATA</value>
+  </data>
+  <data name="AreYouSureExit" xml:space="preserve">
+    <value>Are you sure you wanna exit ?</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="PaymentList" xml:space="preserve">
+    <value>PaymentList</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="Reason" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+  <data name="PayOuts" xml:space="preserve">
+    <value>PayOuts</value>
+  </data>
+  <data name="Queue" xml:space="preserve">
+    <value>Queue</value>
+  </data>
+  <data name="DiagnosisList" xml:space="preserve">
+    <value>Diagnosis List</value>
+  </data>
+  <data name="Disease" xml:space="preserve">
+    <value>Disease</value>
+  </data>
+  <data name="EyeTestList" xml:space="preserve">
+    <value>Eye Test List</value>
+  </data>
+  <data name="LabTestList" xml:space="preserve">
+    <value>Lab Test List</value>
+  </data>
+  <data name="LocationList" xml:space="preserve">
+    <value>Location List</value>
+  </data>
+  <data name="MedicalCenterList" xml:space="preserve">
+    <value>Medical Center List</value>
+  </data>
+  <data name="MedicineUsage" xml:space="preserve">
+    <value>Medicine Usage</value>
+  </data>
+  <data name="MedicineList" xml:space="preserve">
+    <value>Medicine List</value>
+  </data>
+  <data name="MedicineUsageList" xml:space="preserve">
+    <value>Medicine Usage List</value>
+  </data>
+  <data name="Test" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="TestList" xml:space="preserve">
+    <value>Test List</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="IsActive" xml:space="preserve">
+    <value>Is Active</value>
+  </data>
+  <data name="UserList" xml:space="preserve">
+    <value>User List</value>
+  </data>
+  <data name="Medicines" xml:space="preserve">
+    <value>Medicines</value>
+  </data>
+  <data name="EyeTests" xml:space="preserve">
+    <value>Eye Tests</value>
+  </data>
+  <data name="Tests" xml:space="preserve">
+    <value>Tests</value>
+  </data>
+  <data name="Diseases" xml:space="preserve">
+    <value>Diseases</value>
+  </data>
+  <data name="Locations" xml:space="preserve">
+    <value>Locations</value>
+  </data>
+  <data name="MedicalCenters" xml:space="preserve">
+    <value>Medical Centers</value>
+  </data>
+  <data name="History" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="EeyTestHistory" xml:space="preserve">
+    <value>Eye Test History</value>
+  </data>
+  <data name="ReviewDate" xml:space="preserve">
+    <value>Review Date</value>
+  </data>
+  <data name="LabTestHistory" xml:space="preserve">
+    <value>Lab Test History</value>
+  </data>
+  <data name="OperationDate" xml:space="preserve">
+    <value>Operation Date</value>
+  </data>
+  <data name="LeftEyeNote" xml:space="preserve">
+    <value>Left Eye Note</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="RightEyeNote" xml:space="preserve">
+    <value>Right Eye Note</value>
+  </data>
+  <data name="TotalSessions" xml:space="preserve">
+    <value>Total Sessions</value>
+  </data>
+  <data name="SessionDate" xml:space="preserve">
+    <value>Session Date</value>
+  </data>
+  <data name="PaymentValue" xml:space="preserve">
+    <value>Payment Value</value>
+  </data>
+  <data name="PrescriptionsHistory" xml:space="preserve">
+    <value>Treatment History</value>
+  </data>
+  <data name="TestHistory" xml:space="preserve">
+    <value>Test History</value>
+  </data>
+  <data name="VisitNote" xml:space="preserve">
+    <value>Visit Note</value>
+  </data>
+  <data name="ViewAll" xml:space="preserve">
+    <value>View All Notes</value>
+  </data>
+  <data name="PaymentDate" xml:space="preserve">
+    <value>Payment Date</value>
+  </data>
+  <data name="TypeName" xml:space="preserve">
+    <value>Type Name</value>
+  </data>
+  <data name="BeneficiaryName" xml:space="preserve">
+    <value>Beneficiary Name</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="ContactLenses" xml:space="preserve">
+    <value>Contact Lenses</value>
+  </data>
+  <data name="LastCheckMeasure" xml:space="preserve">
+    <value>Last Check Measure</value>
+  </data>
+  <data name="FinishOperation" xml:space="preserve">
+    <value>Finish Operation</value>
+  </data>
+  <data name="RefreshN" xml:space="preserve">
+    <value>Refresh Date</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="VisitDate" xml:space="preserve">
+    <value>Visit Date</value>
+  </data>
+  <data name="Payed" xml:space="preserve">
+    <value>Payed</value>
+  </data>
+  <data name="NReason" xml:space="preserve">
+    <value>Reason : </value>
+  </data>
+  <data name="PatientFileHasNoData" xml:space="preserve">
+    <value>This Patient does not have visits</value>
+  </data>
+  <data name="ChooseTestToDrop" xml:space="preserve">
+    <value>Drop Selected Eye Tests</value>
+  </data>
+  <data name="ImageNumber" xml:space="preserve">
+    <value>Image Number</value>
+  </data>
+  <data name="DownPayment" xml:space="preserve">
+    <value>First Payment</value>
+  </data>
+  <data name="VisitType" xml:space="preserve">
+    <value>Visit Type  :</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Phone Number</value>
+  </data>
+  <data name="ReservationDate" xml:space="preserve">
+    <value>Reservation Date</value>
+  </data>
+  <data name="Reserve" xml:space="preserve">
+    <value>Reserve</value>
+  </data>
+  <data name="SavePrinter" xml:space="preserve">
+    <value>Save Printer</value>
+  </data>
+  <data name="LabtesLabTestNametName" xml:space="preserve">
+    <value>Lab Test Name</value>
+  </data>
+  <data name="NotPayReasons" xml:space="preserve">
+    <value>Not Pay Reasons</value>
+  </data>
+  <data name="Referral" xml:space="preserve">
+    <value>Referral</value>
+  </data>
+  <data name="OperationsList" xml:space="preserve">
+    <value>Operations List</value>
+  </data>
+  <data name="SpecialNote" xml:space="preserve">
+    <value>Special Note</value>
+  </data>
+  <data name="D_Payment" xml:space="preserve">
+    <value>Down Payment</value>
+  </data>
+  <data name="OperationHistory" xml:space="preserve">
+    <value>Operation History</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>Number</value>
+  </data>
+  <data name="CreateNew" xml:space="preserve">
+    <value>Create LabTest</value>
+  </data>
+  <data name="Option" xml:space="preserve">
+    <value>Option</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="ExportToExcel" xml:space="preserve">
+    <value>Export To Excel</value>
+  </data>
+  <data name="PaymentTypeList" xml:space="preserve">
+    <value>Payment Type List</value>
+  </data>
+  <data name="Accounts" xml:space="preserve">
+    <value>Accounts</value>
+  </data>
+  <data name="Payments" xml:space="preserve">
+    <value>Payments</value>
+  </data>
+  <data name="ContactName" xml:space="preserve">
+    <value>Contact Name</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="AccountName" xml:space="preserve">
+    <value>Account Name</value>
+  </data>
+  <data name="NotPayReason" xml:space="preserve">
+    <value>Not Pay Reason</value>
+  </data>
+  <data name="Reception" xml:space="preserve">
+    <value>Reception</value>
+  </data>
+  <data name="TestsImage" xml:space="preserve">
+    <value>Tests Image</value>
+  </data>
+  <data name="DiagnosisHistory" xml:space="preserve">
+    <value>Diagnosis History</value>
+  </data>
+  <data name="GlassHistory" xml:space="preserve">
+    <value>Glasses History</value>
+  </data>
+  <data name="SaveAll" xml:space="preserve">
+    <value>Save All</value>
+  </data>
+  <data name="SessionNumber" xml:space="preserve">
+    <value>Session Number</value>
+  </data>
+  <data name="ImageType" xml:space="preserve">
+    <value>ImageType</value>
+  </data>
+  <data name="Revenue" xml:space="preserve">
+    <value>Total Profit</value>
+  </data>
+  <data name="RequestNextpatient" xml:space="preserve">
+    <value>Request Next patient</value>
+  </data>
+  <data name="S.N" xml:space="preserve">
+    <value>S.N</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="Payout" xml:space="preserve">
+    <value>Pay out</value>
+  </data>
+  <data name="RetinalImage" xml:space="preserve">
+    <value>Retinal Image</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="RightEyeLensSize" xml:space="preserve">
+    <value>Right Eye Lens Size</value>
+  </data>
+  <data name="RightEyeLensType" xml:space="preserve">
+    <value>Right Eye Lens Type</value>
+  </data>
+  <data name="LeftEyeLensType" xml:space="preserve">
+    <value>Left Eye Lens Type</value>
+  </data>
+  <data name="LeftEyeLensSize" xml:space="preserve">
+    <value>Left Eye Lens Size</value>
+  </data>
+  <data name="OneOrMoreOperationIsNull" xml:space="preserve">
+    <value>There is operations without operation type</value>
+  </data>
+  <data name="YouHaveToChooseTheReasonOfNotPayment" xml:space="preserve">
+    <value>You Have To Choose The Reason Of Not Payment</value>
+  </data>
+  <data name="PaymentMustBeLessOrEqualToCost" xml:space="preserve">
+    <value>Payment Must Be Less Or Equal To Cost</value>
+  </data>
+  <data name="PaymentMustBeBiggerThanZero" xml:space="preserve">
+    <value>Payment Must Be Bigger Than Zero</value>
+  </data>
+  <data name="InvalidVisitType" xml:space="preserve">
+    <value>Invalid Visit Type</value>
+  </data>
+  <data name="CurrentGlass" xml:space="preserve">
+    <value> Current Glasses</value>
+  </data>
+  <data name="MedicalReports" xml:space="preserve">
+    <value>Medical Reports</value>
+  </data>
+  <data name="CategoryName" xml:space="preserve">
+    <value>Category Name</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="AddReview" xml:space="preserve">
+    <value>Add Review</value>
+  </data>
+  <data name="CenterCost" xml:space="preserve">
+    <value>Center Cost</value>
+  </data>
+  <data name="AddnewOperation" xml:space="preserve">
+    <value>Add new Operation</value>
+  </data>
+  <data name="Paytype" xml:space="preserve">
+    <value>Pay Type</value>
+  </data>
+  <data name="Manage" xml:space="preserve">
+    <value>Manage</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="VisitCost" xml:space="preserve">
+    <value>Visit Cost</value>
+  </data>
+  <data name="SummaryOfvisits" xml:space="preserve">
+    <value>Summary Of visits</value>
+  </data>
+  <data name="PatientAlreadyExistInQueue" xml:space="preserve">
+    <value>Patient Already Exist In Queue</value>
+  </data>
+  <data name="LastImageNumber" xml:space="preserve">
+    <value>Last Image Number :</value>
+  </data>
+  <data name="LastABScanNumber" xml:space="preserve">
+    <value>Last A\B Scan Number :</value>
+  </data>
+  <data name="OperationInfo" xml:space="preserve">
+    <value>Operation Info :</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="OperationRemaining" xml:space="preserve">
+    <value>Operation Remaining  :</value>
+  </data>
+  <data name="RUpLoadImageTest" xml:space="preserve">
+    <value>RE Image</value>
+  </data>
+  <data name="ToHospital" xml:space="preserve">
+    <value>To Hospital</value>
+  </data>
+  <data name="MidecalNote" xml:space="preserve">
+    <value>Midecal Note</value>
+  </data>
+  <data name="RightEyeImage" xml:space="preserve">
+    <value>REI</value>
+  </data>
+  <data name="LeftEyeImage" xml:space="preserve">
+    <value>LEI</value>
+  </data>
+  <data name="LUpLoadImageTest" xml:space="preserve">
+    <value>LE Image</value>
+    
+  </data>
+  <data name="ReceptionWindow" xml:space="preserve">
+    <value>Reception Window</value>
+  </data>
+  <data name="PatientsList" xml:space="preserve">
+    <value>Patients List</value>
+  </data>
+  <data name="Treatment" xml:space="preserve">
+    <value>Treatment</value>
+  </data>
+  <data name="LastQueue" xml:space="preserve">
+    <value>Last Queue</value>
+  </data>
+  <data name="NowTurn" xml:space="preserve">
+    <value>Now Turn : =&gt;</value>
+  </data>
+  <data name="LastPatientName" xml:space="preserve">
+    <value>Last Patient Name</value>
+  </data>
+  <data name="Locked" xml:space="preserve">
+    <value>Not For Delete</value>
+  </data>
+  <data name="ShowAllNotes" xml:space="preserve">
+    <value>Show All Visits Notes</value>
+  </data>
+  <data name="VisitsNotes" xml:space="preserve">
+    <value>Visits Notes</value>
+  </data>
+  <data name="TotalPayment" xml:space="preserve">
+    <value>Total Payment</value>
+  </data>
+  <data name="LabTestsHistory" xml:space="preserve">
+    <value>Lab Tests History</value>
+  </data>
+  <data name="CurrentGlasses" xml:space="preserve">
+    <value> Current Glasses</value>
+  </data>
+  <data name="AddOperationPayment" xml:space="preserve">
+    <value>Add Operation Payment</value>
+  </data>
+  <data name="AddPayment" xml:space="preserve">
+    <value>Add Payment</value>
+  </data>
+  <data name="Pregnant" xml:space="preserve">
+    <value>Pregnant</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="Times" xml:space="preserve">
+    <value>Times</value>
+  </data>
+  <data name="VisitStatus" xml:space="preserve">
+    <value>Visit Status</value>
+  </data>
+  <data name="PatientVisitType" xml:space="preserve">
+    <value>Patient Visit Type</value>
+  </data>
+  <data name="ReferralPatient" xml:space="preserve">
+    <value>Referral Patient</value>
+  </data>
+  <data name="AgencyPatient" xml:space="preserve">
+    <value>Agency Patient</value>
+  </data>
+  <data name="PressureEyePatient" xml:space="preserve">
+    <value>Pressure Eye Patient</value>
+  </data>
+  <data name="PleaseCloseYourPhone" xml:space="preserve">
+    <value>Please Close Your Phone</value>
+  </data>
+  <data name="ReservePage" xml:space="preserve">
+    <value>Reserve Page</value>
+  </data>
+  <data name="Moneyintake" xml:space="preserve">
+    <value>Money intake</value>
+  </data>
+  <data name="VertualIncome" xml:space="preserve">
+    <value>Vertual Income</value>
+  </data>
+  <data name="TotalDiscount" xml:space="preserve">
+    <value>Total Discount</value>
+  </data>
+  <data name="RealIncome" xml:space="preserve">
+    <value>Real Income</value>
+  </data>
+  <data name="TodayPayment" xml:space="preserve">
+    <value>Today Payment</value>
+  </data>
+  <data name="RemainingIncome" xml:space="preserve">
+    <value>Remaining Income </value>
+  </data>
+  <data name="Patientnumber" xml:space="preserve">
+    <value>Patient Number</value>
+  </data>
+  <data name="RALUpLoadImageTest" xml:space="preserve">
+    <value>Upload Twice Eye Image</value>
+  </data>
+  <data name="BothEyeImage" xml:space="preserve">
+    <value>Both Eye Image</value>
+  </data>
+  <data name="IfRemaining" xml:space="preserve">
+    <value>Pay Remain</value>
+  </data>
+  <data name="TotalRemainingHasPayed" xml:space="preserve">
+    <value>Remaining Payed</value>
+  </data>
+  <data name="MedicalHistory" xml:space="preserve">
+    <value>Medical History</value>
+  </data>
+  <data name="AllTotal" xml:space="preserve">
+    <value>All total</value>
+  </data>
+  <data name="RemainPayValue" xml:space="preserve">
+    <value>Remain Payed</value>
+  </data>
+  <data name="DeniedUsers" xml:space="preserve">
+    <value>Denied Users</value>
+  </data>
+  <data name="CouseOfVisit" xml:space="preserve">
+    <value>Why</value>
+  </data>
+  <data name="EyeOperation" xml:space="preserve">
+    <value>Eye Operation</value>
+  </data>
+  <data name="Eye" xml:space="preserve">
+    <value>Eye</value>
+  </data>
+  <data name="NumberOfPatient" xml:space="preserve">
+    <value>Number Of Patient :</value>
+  </data>
+  <data name="AddNewTest" xml:space="preserve">
+    <value>Add New Test</value>
+  </data>
+  <data name="AddNewEyeTest" xml:space="preserve">
+    <value>Add New Eye Test</value>
+  </data>
+  <data name="AddEyeTest" xml:space="preserve">
+    <value>Add Eye Test</value>
+  </data>
+  <data name="AddMedicine" xml:space="preserve">
+    <value>Add Medicine</value>
+  </data>
+  <data name="AddNewDiagnosis" xml:space="preserve">
+    <value>Add New Diagnosis</value>
+  </data>
+  <data name="SV" xml:space="preserve">
+    <value>SV</value>
+  </data>
+  <data name="ImagesPage" xml:space="preserve">
+    <value>ImagesPage</value>
+  </data>
+  <data name="Glasses" xml:space="preserve">
+    <value>Glasses</value>
+  </data>
+  <data name="OrdersMenue" xml:space="preserve">
+    <value>Orders Menue</value>
+  </data>
+  <data name="OrderInfo" xml:space="preserve">
+    <value>Customer Info</value>
+  </data>
+  <data name="Customer" xml:space="preserve">
+    <value>Customer</value>
+  </data>
+  <data name="TheReservedOrder" xml:space="preserve">
+    <value>The Reserved Order</value>
+  </data>
+  <data name="TodayOrders" xml:space="preserve">
+    <value>Today Orders</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="OrderType" xml:space="preserve">
+    <value>Order Type</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="ProductType" xml:space="preserve">
+    <value>Product Type</value>
+  </data>
+  <data name="CustomerMenu" xml:space="preserve">
+    <value>Customer Menu</value>
+  </data>
+  <data name="LastCustomerName" xml:space="preserve">
+    <value>Last Customer Name</value>
+  </data>
+  <data name="OrderName" xml:space="preserve">
+    <value>Order Name</value>
+  </data>
+  <data name="OrderPath" xml:space="preserve">
+    <value>Order Path</value>
+  </data>
+  <data name="OrderTime" xml:space="preserve">
+    <value>Order Time</value>
+  </data>
+  <data name="OrderNote" xml:space="preserve">
+    <value>Order Note</value>
+  </data>
+  <data name="AddProductToOrder" xml:space="preserve">
+    <value>Add Product To Order</value>
+  </data>
+  <data name="AddNewProducts" xml:space="preserve">
+    <value>Add New Products</value>
+  </data>
+  <data name="ProductNumber" xml:space="preserve">
+    <value>Product Number</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Email Address</value>
+  </data>
+  <data name="SO" xml:space="preserve">
+    <value>S.O</value>
+  </data>
+  <data name="CustomerName" xml:space="preserve">
+    <value>Customer Name</value>
+  </data>
+  <data name="ProductsType" xml:space="preserve">
+    <value>Products Type</value>
+  </data>
+  <data name="OrderMenu" xml:space="preserve">
+    <value>Order Menu</value>
+  </data>
+  <data name="FinishOrder" xml:space="preserve">
+    <value>Finish Order</value>
+  </data>
+  <data name="OrderNumberd" xml:space="preserve">
+    <value>Order Numberd</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Company Name</value>
+  </data>
+  <data name="EmailAdress" xml:space="preserve">
+    <value>Email Adress</value>
+  </data>
+  <data name="WebSite" xml:space="preserve">
+    <value>Web Site</value>
+  </data>
+  <data name="CompanyType" xml:space="preserve">
+    <value>Company Type</value>
+  </data>
+  <data name="PeopleList" xml:space="preserve">
+    <value>People List</value>
+  </data>
+  <data name="People" xml:space="preserve">
+    <value>People</value>
+  </data>
+  <data name="TotalOrders" xml:space="preserve">
+    <value>Total Orders</value>
+  </data>
+  <data name="MessageBody" xml:space="preserve">
+    <value>Message Body</value>
+  </data>
+  <data name="MessageTitle" xml:space="preserve">
+    <value>Message Title</value>
+  </data>
+  <data name="ThePNumber" xml:space="preserve">
+    <value>The Wallet Number</value>
+  </data>
+  <data name="Enrty" xml:space="preserve">
+    <value>Entry</value>
+  </data>
+  <data name="Extry" xml:space="preserve">
+    <value>Extry</value>
+  </data>
+  <data name="TheFirstValue" xml:space="preserve">
+    <value>The First Value</value>
+  </data>
+  <data name="CartoonList" xml:space="preserve">
+    <value>Cartoon List</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="ItemValue" xml:space="preserve">
+    <value>Item Value</value>
+  </data>
+  <data name="ThePaperCode" xml:space="preserve">
+    <value>The Receipt Code</value>
+  </data>
+  <data name="Entry" xml:space="preserve">
+    <value>Entry</value>
+  </data>
+  <data name="InPut" xml:space="preserve">
+    <value>InPut</value>
+  </data>
+  <data name="OutPut" xml:space="preserve">
+    <value>OutPut</value>
+  </data>
+  <data name="TheValueOfTheFirstTerm" xml:space="preserve">
+    <value>The Value Of The First Term</value>
+  </data>
+  <data name="MinimumValue" xml:space="preserve">
+    <value>Minimum Value</value>
+  </data>
+  <data name="OrderDate" xml:space="preserve">
+    <value>Order Date</value>
+  </data>
+  <data name="ValuesList" xml:space="preserve">
+    <value>Values List</value>
+  </data>
+  <data name="FirstDayValue" xml:space="preserve">
+    <value>The Value Of The First Term</value>
+  </data>
+  <data name="CreatedDate" xml:space="preserve">
+    <value>CreatedDate</value>
+  </data>
+  <data name="CurrentValue" xml:space="preserve">
+    <value>Current Value</value>
+  </data>
+  <data name="AddValue" xml:space="preserve">
+    <value>Add Value</value>
+  </data>
+  <data name="Edite" xml:space="preserve">
+    <value>Edite</value>
+  </data>
+  <data name="Result" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <data name="MinimumValueFalse" xml:space="preserve">
+    <value>Minimum Value False</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="AddReceipt" xml:space="preserve">
+    <value>Add Receipt</value>
+  </data>
+  <data name="EditeProduct" xml:space="preserve">
+    <value>Edite Product</value>
+  </data>
+  <data name="CustomersList" xml:space="preserve">
+    <value>Customers List</value>
+  </data>
+  <data name="CustomerList" xml:space="preserve">
+    <value>Customer List</value>
+  </data>
+  <data name="ContactId" xml:space="preserve">
+    <value>Customer Id</value>
+  </data>
+  <data name="AddCustomer" xml:space="preserve">
+    <value>Add Customer</value>
+  </data>
+  <data name="EditeCustomer" xml:space="preserve">
+    <value>Edite Customer</value>
+  </data>
+  <data name="DeleteCustomer" xml:space="preserve">
+    <value>Delete Customer</value>
+  </data>
+  <data name="TheCustomersMenu" xml:space="preserve">
+    <value>The Customers Menu</value>
+  </data>
+  <data name="ItemsNumber" xml:space="preserve">
+    <value>Items Number</value>
+  </data>
+  <data name="OrederType" xml:space="preserve">
+    <value>OrederType</value>
+  </data>
+  <data name="AddNewItem" xml:space="preserve">
+    <value>Add New Item</value>
+  </data>
+  <data name="ShowCounter" xml:space="preserve">
+    <value>Show Products Counts</value>
+  </data>
+  <data name="ReadyProducts" xml:space="preserve">
+    <value>Ready Products</value>
+  </data>
+  <data name="Quintity" xml:space="preserve">
+    <value>Quintity</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="ItemsList" xml:space="preserve">
+    <value>Items List</value>
+  </data>
+  <data name="TheProductingNumber" xml:space="preserve">
+    <value>The Producting Number</value>
+  </data>
+  <data name="ShowItemsList" xml:space="preserve">
+    <value>Show Items List</value>
+  </data>
+  <data name="ProductingNumber" xml:space="preserve">
+    <value>Producting Number</value>
+  </data>
+  <data name="ProductingValue" xml:space="preserve">
+    <value>Producting Value</value>
+  </data>
+  <data name="AddReadyProducts" xml:space="preserve">
+    <value>Add Ready Products</value>
+  </data>
+  <data name="ProductId" xml:space="preserve">
+    <value>Product Id</value>
+  </data>
+  <data name="CreatedValue" xml:space="preserve">
+    <value>Created Value</value>
+  </data>
+  <data name="ProductValue" xml:space="preserve">
+    <value>Product Value</value>
+  </data>
+  <data name="EditeItem" xml:space="preserve">
+    <value>Edite Item</value>
+  </data>
+  <data name="ProductedValue" xml:space="preserve">
+    <value>Producted Value</value>
+  </data>
+  <data name="OrderProducts" xml:space="preserve">
+    <value>Order Products</value>
+  </data>
+  <data name="AddProduct" xml:space="preserve">
+    <value>Add Product</value>
+  </data>
+  <data name="AddNewProduct" xml:space="preserve">
+    <value>Add New Product</value>
+  </data>
+  <data name="SID" xml:space="preserve">
+    <value>SID</value>
+  </data>
+  <data name="ReceiptList" xml:space="preserve">
+    <value>Receipt List</value>
+  </data>
+  <data name="FirstTermBalance" xml:space="preserve">
+    <value>First Term Balance</value>
+  </data>
+  <data name="Image1" xml:space="preserve">
+    <value>Image1</value>
+  </data>
+  <data name="Image2" xml:space="preserve">
+    <value>Image2</value>
+  </data>
+  <data name="Image3" xml:space="preserve">
+    <value>Image3</value>
+  </data>
+  <data name="ExportedValue" xml:space="preserve">
+    <value>ExportedValue</value>
+  </data>
+  <data name="ProductName" xml:space="preserve">
+    <value>Product Name</value>
+  </data>
+  <data name="DaylyQuintity" xml:space="preserve">
+    <value>Daily Quantity</value>
+  </data>
+  <data name="WasteValue" xml:space="preserve">
+    <value>Waste Value</value>
+  </data>
+  <data name="ProductDogma" xml:space="preserve">
+    <value>Product Dogma</value>
+  </data>
+  <data name="AddDogmaProducts" xml:space="preserve">
+    <value>Add Dogma Products</value>
+  </data>
+  <data name="DogmaList" xml:space="preserve">
+    <value>Dogma List</value>
+  </data>
+  <data name="KG" xml:space="preserve">
+    <value>kg</value>
+  </data>
+  <data name="ArchiveList" xml:space="preserve">
+    <value>Archive List</value>
+  </data>
+  <data name="DetailedCurrentValue" xml:space="preserve">
+    <value>Detailed Current Value</value>
+  </data>
+  <data name="AvailableWight" xml:space="preserve">
+    <value>Available Wight</value>
+  </data>
+  <data name="AvailableProduct" xml:space="preserve">
+    <value>Available Product</value>
+  </data>
+  <data name="ProductDepartment" xml:space="preserve">
+    <value>Product Department</value>
+  </data>
+  <data name="ProductUnit" xml:space="preserve">
+    <value>Product Unit</value>
+  </data>
+  <data name="UnitName" xml:space="preserve">
+    <value>Unit Name</value>
+  </data>
+  <data name="ReadyProductsForOrder" xml:space="preserve">
+    <value>Ready Products For Order</value>
+  </data>
+  <data name="ReadyProduct" xml:space="preserve">
+    <value>Ready Product</value>
+  </data>
+  <data name="AddItem" xml:space="preserve">
+    <value>Add Item</value>
+  </data>
+  <data name="TheDifference" xml:space="preserve">
+    <value>The Difference</value>
+  </data>
+  <data name="TotalWaste" xml:space="preserve">
+    <value>Total Waste</value>
+  </data>
+  <data name="TotalValue" xml:space="preserve">
+    <value>Total Value</value>
+  </data>
+  <data name="TotalWight" xml:space="preserve">
+    <value>Total Wight</value>
+  </data>
+  <data name="Difference" xml:space="preserve">
+    <value>Difference</value>
+  </data>
+  <data name="TotalExported" xml:space="preserve">
+    <value>Total Exported</value>
+  </data>
+  <data name="InsufficientFunds" xml:space="preserve">
+    <value>Insufficient Funds</value>
+  </data>
+  <data name="SidProducts" xml:space="preserve">
+    <value>Sid Products</value>
+  </data>
+  <data name="PdfFile1" xml:space="preserve">
+    <value>PdfFile 1</value>
+  </data>
+  <data name="PdfFile2" xml:space="preserve">
+    <value>PdfFile 2</value>
+  </data>
+  <data name="PdfFile3" xml:space="preserve">
+    <value>PdfFile 3</value>
+  </data>
+  <data name="ProductImage" xml:space="preserve">
+    <value>Product Image</value>
+  </data>
+  <data name="ThePdfFileIsNotExist" xml:space="preserve">
+    <value>The Pdf File Is Not Exist</value>
+  </data>
+  <data name="Producting" xml:space="preserve">
+    <value>Producting</value>
+  </data>
+  <data name="AddProductDogma" xml:space="preserve">
+    <value>Add Dogma</value>
+  </data>
+  <data name="Wight" xml:space="preserve">
+    <value>Wight</value>
+  </data>
+  <data name="PDfFile" xml:space="preserve">
+    <value>PDf </value>
+  </data>
+  <data name="TimedDifference" xml:space="preserve">
+    <value>Timed Difference</value>
+  </data>
+  <data name="PdfViewer" xml:space="preserve">
+    <value>Pdf Viewer</value>
+  </data>
+  <data name="Ordercustomsdeclaration" xml:space="preserve">
+    <value>Order customs declaration</value>
+  </data>
+  <data name="Dowload" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="MarketsList" xml:space="preserve">
+    <value>Markets List</value>
+  </data>
+  <data name="RealValue" xml:space="preserve">
+    <value>Real Value</value>
+  </data>
+  <data name="MarketType" xml:space="preserve">
+    <value>Market Type</value>
+  </data>
+  <data name="MarketsProductName" xml:space="preserve">
+    <value>Markets Product Name</value>
+  </data>
+  <data name="FirstTermValue" xml:space="preserve">
+    <value>First Term Value</value>
+  </data>
+  <data name="MarketsEntryList" xml:space="preserve">
+    <value>Markets Entry List</value>
+  </data>
+  <data name="GoBackHome" xml:space="preserve">
+    <value>Go Back Home</value>
+  </data>
+  <data name="UniteName" xml:space="preserve">
+    <value>Unite Name</value>
+  </data>
+  <data name="MarketsExtryList" xml:space="preserve">
+    <value>Markets Extry List</value>
+  </data>
+  <data name="Recipter" xml:space="preserve">
+    <value>Recipter</value>
+  </data>
+  <data name="Descreption" xml:space="preserve">
+    <value>Descreption</value>
+  </data>
+  <data name="InvoiceNumber" xml:space="preserve">
+    <value>Invoice Number</value>
+  </data>
+  <data name="CheckPath" xml:space="preserve">
+    <value>Check Path</value>
+  </data>
+  <data name="OrderPdf" xml:space="preserve">
+    <value>Order Pdf</value>
+  </data>
+  <data name="MergerTools" xml:space="preserve">
+    <value>Merger Tools</value>
+  </data>
+  <data name="ProductPDFFile" xml:space="preserve">
+    <value>Product PDF File</value>
+  </data>
+  <data name="MergeAllFile" xml:space="preserve">
+    <value>Merge All File</value>
+  </data>
+  <data name="ImageFile" xml:space="preserve">
+    <value>Image File</value>
+  </data>
+  <data name="NumberOfProduct" xml:space="preserve">
+    <value>Number Of Products</value>
+  </data>
+  <data name="Readymaterialswarehouse" xml:space="preserve">
+    <value>Ready materials warehouse</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start =&gt;</value>
+  </data>
+  <data name="SendToWareHouse" xml:space="preserve">
+    <value>Send To WareHouse</value>
+  </data>
+  <data name="ReturnToProducting" xml:space="preserve">
+    <value>Return To Producting</value>
+  </data>
+  <data name="WareHouse" xml:space="preserve">
+    <value>Ware House</value>
+  </data>
+  <data name="WareHouseList" xml:space="preserve">
+    <value>Ware House List</value>
+  </data>
+  <data name="TheRest" xml:space="preserve">
+    <value>The Rest</value>
+  </data>
+  <data name="AddedValue" xml:space="preserve">
+    <value>Added Value</value>
+  </data>
+</root>

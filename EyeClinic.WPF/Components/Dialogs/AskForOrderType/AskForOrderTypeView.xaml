@@ -1,0 +1,196 @@
+﻿<UserControl x:Class="EyeClinic.WPF.Components.Dialogs.AskForOrderType.AskForOrderTypeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EyeClinic.WPF.Components.Dialogs.AskForOrderType"
+              d:DataContext="{d:DesignInstance local:AskForOrderTypeViewModel, IsDesignTimeCreatable=True}"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:core="clr-namespace:EyeClinic.Core;assembly=EyeClinic.Core" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Style="{StaticResource LocalizationStyle}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+        <materialDesign:PackIcon         
+Kind="Cod"
+       Opacity="0.5"
+HorizontalAlignment="Center"
+VerticalAlignment="Center"
+Foreground="Blue" 
+Height="40"
+           Width="100"
+           />
+        <DockPanel>
+            <DockPanel.Resources>
+                <Style TargetType="TextBox">
+                    <Setter Property="Width"
+                       Value="160" />
+                    <Setter Property="Height"
+                       Value="34" />
+                    <Setter Property="FontSize"
+                       Value="{StaticResource FontSizeMedium}" />
+                    <Setter Property="VerticalContentAlignment"
+                       Value="Center" />
+                </Style>
+                <Style TargetType="DatePicker">
+                    <Setter Property="Height"
+                       Value="34" />
+                    <Setter Property="FontSize"
+                       Value="{StaticResource FontSizeMedium}" />
+                    <Setter Property="VerticalContentAlignment"
+                       Value="Center" />
+                </Style>
+                <Style TargetType="ComboBox">
+                    <Setter Property="Width"
+                       Value="160" />
+                    <Setter Property="Height"
+                       Value="34" />
+                    <Setter Property="FontSize"
+                       Value="{StaticResource FontSizeMedium}" />
+                    <Setter Property="VerticalContentAlignment"
+                       Value="Center" />
+                    <Setter Property="IsEditable"
+                       Value="True" />
+                </Style>
+            </DockPanel.Resources>
+            <StackPanel Orientation="Horizontal"
+                   DockPanel.Dock="Top">
+
+                <Grid>
+                    <TextBlock Text="{lex:Loc OrderType}"
+                      VerticalAlignment="Center"
+                      Width="160" />
+                    <materialDesign:PackIcon 
+           Grid.Column="0" 
+           Kind="Accessibility" 
+           Margin="200 0 0 0"
+                   Width="30"
+           HorizontalAlignment="Left"
+           VerticalAlignment="Center"
+           Foreground="Black" 
+           Height="40" />
+                </Grid>
+
+                <ComboBox ItemsSource="{Binding VisitTypes}"
+                     SelectedItem="{Binding SelectedVisitType}"
+                     IsEditable="False"
+                     Width="250"
+                     MinWidth="170"
+                     SelectedIndex="0"/>
+                <!--<CheckBox Style="{x:Null}"
+                     VerticalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     Margin="12 0"
+                     Content="{lex:Loc RetinalImage}"
+                     IsChecked="{Binding IncludeRetinalImageService}"/>-->
+                <DockPanel Visibility="Hidden">
+                    <TextBlock Text="{Binding Cost}"
+                      Margin="12 0"
+                      Width="80"
+                      Height="30"
+                      Background="WhiteSmoke"
+                      Padding="4 0"
+                      FontWeight="Bold"
+                      FontSize="18"
+                      VerticalAlignment="Center" />
+                    <materialDesign:PackIcon         
+                       Kind="Money"
+                       Width="30"                      
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Foreground="Black" 
+                       Height="40" />
+                </DockPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                   DockPanel.Dock="Top"
+                   Margin="0 10">
+                <Grid Visibility="Hidden">
+                    <TextBlock Text="{lex:Loc Payment}"
+                      VerticalAlignment="Center"
+                      Width="160" />
+                    <materialDesign:PackIcon 
+                       Grid.Column="0" 
+                       Kind="Money"
+                               Width="30"
+                       Margin="200 0 0 0"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Foreground="Black" 
+                       Height="40" />
+                </Grid>
+                <TextBox Text="{Binding Payment}" />
+            </StackPanel>
+            <StackPanel Visibility="Collapsed"
+                   Orientation="Horizontal"
+                   DockPanel.Dock="Top">
+                <TextBlock Text="{lex:Loc VisitDate}"
+                      VerticalAlignment="Center"
+                      Width="160" />
+                <DatePicker Width="130"
+                       SelectedDate="{Binding VisitDate}">
+                    <DatePicker.Resources>
+                        <Style TargetType="{x:Type DatePickerTextBox}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <TextBox x:Name="PART_TextBox"
+                                            Text="{Binding Path=SelectedDate, 
+                                                       RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}, 
+                                                       StringFormat={x:Static core:Global.DateFormat}}" />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DatePicker.Resources>
+                </DatePicker>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                   DockPanel.Dock="Top"
+                   Margin="0 10">
+                <Grid>
+                    <TextBlock Text="{lex:Loc OrderType}"
+                      VerticalAlignment="Center"
+                      Width="160" />
+                    <materialDesign:PackIcon 
+           Grid.Column="0" 
+           Kind="MoneyOff"
+                   Width="30"
+           Margin="200 0 0 0"
+           HorizontalAlignment="Left"
+           VerticalAlignment="Center"
+           Foreground="Black" 
+           Height="40" />
+                </Grid>
+                <ComboBox ItemsSource="{Binding NotPayReasons}"
+                     Width="250"
+                     SelectedItem="{Binding SelectedNotPayReason}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                   DockPanel.Dock="Top"
+                   VerticalAlignment="Top"
+                   Margin="0 4">
+                <Grid>
+                    <TextBlock Text="{lex:Loc Note}"
+                      VerticalAlignment="Center"
+                      Width="160" />
+                    <materialDesign:PackIcon 
+           Grid.Column="0" 
+           Kind="Note"
+                   Width="30"
+           Margin="200 0 0 0"
+           HorizontalAlignment="Left"
+           VerticalAlignment="Center"
+           Foreground="Black" 
+           Height="40" />
+                </Grid>
+                <TextBox Text="{Binding Note}"
+                    Width="240"
+                    Height="120"
+                    VerticalContentAlignment="Top"
+                    AcceptsReturn="True" />
+            </StackPanel>
+        </DockPanel>
+    </StackPanel>
+</UserControl>

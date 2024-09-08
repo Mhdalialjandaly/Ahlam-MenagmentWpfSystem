@@ -1,0 +1,132 @@
+﻿<UserControl x:Class="EyeClinic.WPF.Components.Home.OperationSchedule.OperationScheduleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EyeClinic.WPF.Components.Home.OperationSchedule"
+             Style="{StaticResource LocalizationStyle}"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             xmlns:core="clr-namespace:EyeClinic.Core;assembly=EyeClinic.Core"
+             xmlns:controls="clr-namespace:EyeClinic.WPF.Components.Controls"
+             d:DataContext="{d:DesignInstance local:OperationScheduleViewModel, IsDesignTimeCreatable=True}"
+             mc:Ignorable="d"
+             Background="WhiteSmoke"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <Grid>
+        <DockPanel Background="LightBlue">
+            <StackPanel Orientation="Horizontal"
+                        DockPanel.Dock="Bottom">
+                <Border CornerRadius="10" Background="Black" Margin="2">
+                <Button Command="{Binding BackHomeCommand}"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource ButtonBase}"
+                        Margin="4"
+                        Padding="12 0"
+                        Content="{lex:Loc BackHome}" />
+                </Border>
+                <Border CornerRadius="10" Background="Black" Margin="2">
+                    <Button Command="{Binding PrintScheduleCommand}"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource ButtonBase}"
+                        Margin="4"
+                        Padding="12 0"
+                        Content="{lex:Loc ExportToExcel}" />
+                </Border>
+            </StackPanel>
+            <DockPanel Dock="Top">
+                <TextBlock Text="{lex:Loc OperationsSchedule}"
+                           Margin="4"
+                           FontSize="{StaticResource FontSizeXXLarge}" />
+                <StackPanel HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                    <DatePicker SelectedDate="{Binding TargetDate}"
+                                VerticalAlignment="Center"
+                                FontWeight="Bold"
+                                Margin="16 0"
+                                Width="190">
+                        <DatePicker.Resources>
+                            <Style TargetType="{x:Type DatePickerTextBox}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate>
+                                            <TextBox x:Name="PART_TextBox"
+                                                     Text="{Binding Path=SelectedDate, 
+                                                        RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}, 
+                                                        StringFormat={x:Static core:Global.DateFormat}}" />
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DatePicker.Resources>
+                    </DatePicker>
+                    <Border CornerRadius="10" Background="Black" Margin="2">
+                        <Button Command="{Binding FilterCommand}"
+                            Content="{lex:Loc Filter}"
+                            Style="{StaticResource ButtonBase}" />
+                    </Border>
+                </StackPanel>
+            </DockPanel>
+            <syncfusion:SfDataGrid ItemsSource="{Binding Operations}"
+                                   RowHeight="50"
+                                   HeaderRowHeight="50"
+                                   x:Name="OperationList"
+                                   ColumnSizer="AutoWithLastColumnFill"
+                                   AutoGenerateColumns="False"
+                                   AllowEditing="False"
+                                   AllowResizingColumns="True"
+                                   DockPanel.Dock="Top">
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:GridTextColumn HeaderText="{lex:Loc Date}"
+                                               Width="100"
+                                               ValueBinding="{Binding OperationDate, StringFormat={}{0:dd/MM/yyyy}}" />
+                    <syncfusion:GridTemplateColumn Width="225"
+                                                   HeaderText="{lex:Loc PatientName}">
+                        <syncfusion:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Style="{StaticResource SmallEditButton}"
+                                        MouseDoubleClick="Control_OnMouseDoubleClick"
+                                        Width="225"
+                                        Command="{Binding ElementName=OperationList, Path=DataContext.EditOperationCommand}"
+                                        CommandParameter="{Binding}">
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <TextBlock Text="{Binding Patient.FullName}"
+                                                       HorizontalAlignment="Center"
+                                                       TextWrapping="Wrap" />
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </DataTemplate>
+                        </syncfusion:GridTemplateColumn.CellTemplate>
+                    </syncfusion:GridTemplateColumn>
+                    <syncfusion:GridTextColumn HeaderText="{lex:Loc Cost}"
+                                               Width="100"
+                                               ValueBinding="{Binding TotalCost,
+                            StringFormat={}{0:N0}}" />
+                    <syncfusion:GridTextColumn HeaderText="{lex:Loc MedicalCenter}"
+                                               Width="100"
+                                               TextAlignment="Center"
+                                               ValueBinding="{Binding MedicalCenter.EnName}" />
+                    <syncfusion:GridCheckBoxColumn ValueBinding="{Binding MedicalCenterReserved}"
+                                                   HeaderText="{lex:Loc Reserved}" />
+                    <syncfusion:GridTextColumn HeaderText="{lex:Loc EyeOperation}"
+                                               Width="250"                                               
+                                               TextAlignment="Center"
+                                               ValueBinding="{Binding EyeOperationDisplayName}" />
+                    <syncfusion:GridTextColumn HeaderText="{lex:Loc Eye}"
+                                               Width="250"
+                                               TextAlignment="Center"
+                                               ValueBinding="{Binding EyeDisplayName}" />
+
+                    <syncfusion:GridTextColumn HeaderText="{lex:Loc S.N}"
+                                               Width="100"
+                                               TextAlignment="Center"
+                                               ValueBinding="{Binding SessionNumber}" />
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+        </DockPanel>
+        <controls:BusyIndicator DataContext="{Binding}" />
+    </Grid>
+</UserControl>

@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="EyeClinic.WPF.AppServices.DialogService.Wizard.WizardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EyeClinic.WPF.AppServices.DialogService.Wizard"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <DockPanel Background="WhiteSmoke">
+        <DockPanel DockPanel.Dock="Bottom"
+                   Margin="5">
+            <Button Content="الغاء"
+                    Command="{Binding CancelCommand}"
+                    Style="{StaticResource ButtonBase}"
+                    Background="DarkRed"
+                    Margin="15 5 10 5" />
+            <Button Content="السابق"
+                    Command="{Binding PreviousCommand}"
+                    Style="{StaticResource ButtonBase}" />
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <Button Content="التالي"
+                        Command="{Binding NextCommand}"
+                        Style="{StaticResource ButtonBase}" />
+                <Button Content="حفظ"
+                        Command="{Binding SaveCommand}"
+                        Style="{StaticResource ButtonBase}"
+                        Margin="10 5 15 5" />
+            </StackPanel>
+        </DockPanel>
+        <ContentPresenter Margin="10 10 10 0"
+                          Content="{Binding Content,UpdateSourceTrigger=PropertyChanged}" />
+    </DockPanel>
+</UserControl>

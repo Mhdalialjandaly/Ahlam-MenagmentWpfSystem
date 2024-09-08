@@ -1,0 +1,334 @@
+﻿<Window x:Class="EyeClinic.WPF.Components.Home.Reports.PatientVisitTestReport.PatientVisitTestReportView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EyeClinic.WPF.Components.Home.Reports.PatientVisitTestReport"
+        d:DataContext="{d:DesignInstance local:PatientVisitTestReportViewModel,IsDesignTimeCreatable=True}"
+        xmlns:controls="clr-namespace:EyeClinic.WPF.Components.Controls"
+        mc:Ignorable="d"
+        Title="PatientVisitTestReportView"
+        Height="450"
+        Width="800"
+        Background="#2C5364">
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <StackPanel HorizontalAlignment="Center">
+            <TextBlock Text="صور العين التي تم تصويرها "
+                       FontSize="12"
+                       Foreground="White"
+                       
+                       HorizontalAlignment="Center"/>
+            <StackPanel HorizontalAlignment="Left"
+                        Orientation="Horizontal">
+                <DatePicker SelectedDate="{Binding FromDate}"
+                            Margin="3" />
+                <TextBlock Foreground="Wheat"
+                           Margin="3"
+                           HorizontalAlignment="Center"
+                           Text=":من تاريخ" />
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left"
+                        Orientation="Horizontal">
+                <DatePicker SelectedDate="{Binding ToDate}"
+                            Margin="3" />
+                <TextBlock Foreground="Wheat"
+                           Margin="3"
+                           HorizontalAlignment="Center"
+                           Text=":الى تاريخ "/>
+            </StackPanel>
+            <DockPanel  HorizontalAlignment="Left">
+                <ComboBox ItemsSource="{Binding Tests}"
+                          SelectedItem="{Binding SelectedTest}" />
+                <TextBlock Text="صورة العين  "
+                           Foreground="Wheat"
+                           Margin="3"
+                            />
+            </DockPanel>
+            <TextBlock Text="{Binding NameImage}" HorizontalAlignment="Center" Foreground="White"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+
+                <DockPanel>
+                    <StackPanel  Orientation="Horizontal">
+
+                        <DockPanel>
+                            <StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Total Patients For Both Eye"                                   
+                                   HorizontalAlignment="Center"
+                                               FontSize="12"
+                                               Foreground="Wheat"
+                                   VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding TotalPatients}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="Wheat" />
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Total Images For Both Eye"
+                                   FontSize="12"
+                                               Foreground="Wheat"                                               
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding TotalImages}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="Wheat" />
+                                </StackPanel>
+                            </StackPanel>
+                        </DockPanel>
+
+                        <StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Total Patients Right Eye"
+                                   FontSize="12"
+                                           Foreground="Wheat"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding TotalPatientsRightEye}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="Wheat" />
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Total Images Right Eye"
+                                   FontSize="12"
+                                           Foreground="Wheat"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding TotalImagesRightEye}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="Wheat" />
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Total Patients Left Eye"
+                                   FontSize="12"
+                                           Foreground="Wheat"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding TotalPatientsLeftEye}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="Wheat" />
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Total Images Left Eye"
+                                   FontSize="12"
+                                           Foreground="Wheat"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding TotalImagesLeftEye}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="Wheat" />
+                            </StackPanel>
+                        </StackPanel>
+
+
+                    </StackPanel>
+
+                </DockPanel>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Command="{Binding GetReportCommand}"
+                    Content="Get Report For Both Eye"
+                        Margin="2"
+                    Background="Green" />
+                <Button Command="{Binding GetReportRightEyeCommand}"
+                        Margin="2"
+                    Content="Get Report Right Eye"/>
+                <Button Command="{Binding GetReportLeftEyeCommand}"
+                        Margin="2"
+                    Content="Get Report LeftEye"/>
+            </StackPanel>
+            <DataGrid ItemsSource="{Binding ReportData}"
+                      Height="400"
+                      Width="1200"
+                      FontSize="12"
+                      AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Visit Date"
+                                        Binding="{Binding VisitDate, StringFormat={}{0:dd/MM/yyyy}}" />
+                    <DataGridTextColumn Header="Patient Name"
+                                        Binding="{Binding PatientName}" />
+                    <DataGridTextColumn Header="Test Name"
+                                        Binding="{Binding ImageName}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <!--<Button 
+                    Command="{Binding GetReportCommand}"
+                    Content="Get Report"
+                    Background="Green" />
+            <Button Command="{Binding GetReportRightEyeCommand}"
+                    Content="get report right eye"/>-->
+        </StackPanel>
+        <controls:BusyIndicator DataContext="{Binding}" />
+        <StackPanel Grid.Column="1">
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock Text="صور العين التي تم طلبها  "
+                       FontSize="12"
+                       Foreground="White"
+                       
+                       HorizontalAlignment="Center"/>
+                <StackPanel HorizontalAlignment="Left"
+                            
+                        Orientation="Horizontal">
+                    <DatePicker SelectedDate="{Binding FromDateD}"
+                            Margin="3" />
+                    <TextBlock Foreground="Wheat"
+                           Margin="3"
+                           HorizontalAlignment="Center"
+                           Text=":  من تاريخ " />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left"
+                        Orientation="Horizontal">
+                    <DatePicker SelectedDate="{Binding ToDateD}"
+                            Margin="3" />
+                    <TextBlock Foreground="Wheat"
+                           Margin="3"
+                           HorizontalAlignment="Center"
+                           Text=": الى تاريخ " />
+                </StackPanel>
+                <DockPanel  HorizontalAlignment="Left">
+                    <ComboBox ItemsSource="{Binding Tests}"
+                          SelectedItem="{Binding SelectedTest2}" />
+                    <TextBlock Text=": اختيار الصورة"
+                           Foreground="Wheat"
+                           Margin="3"
+                            />
+                </DockPanel>
+                <TextBlock Text="{Binding NameImage2}" 
+                           HorizontalAlignment="Center" 
+                           Foreground="White"/>
+                <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Center">
+
+                    <DockPanel Margin="0 20 0 0">
+                        <StackPanel  Orientation="Horizontal">
+
+                            <DockPanel>
+                                <StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock 
+                                            Text="Total Patients For Both Eye"
+                                            Foreground="Wheat"
+                                   FontSize="12"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                                        <TextBlock Text="{Binding TotalPatientsD}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="Wheat" />
+                                    </StackPanel>
+                                    <!--<StackPanel Orientation="Vertical">
+                                        <TextBlock Text="Total Images For Both Eye"
+                                   
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                                        <TextBlock Text="{Binding TotalImagesD}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="Wheat" />
+                                    </StackPanel>-->
+                                </StackPanel>
+                            </DockPanel>
+
+                            <StackPanel>
+                                <StackPanel                                    
+                                    Orientation="Vertical">
+                                    <TextBlock Text="Total Patients Right Eye"
+                                               Foreground="Wheat"
+                                   FontSize="12"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding TotalPatientsRightEyeD}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="Wheat" />
+                                </StackPanel>
+                                <!--<StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Total Images Right Eye"
+                                   
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding TotalImagesRightEye}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="Wheat" />
+                                </StackPanel>-->
+                            </StackPanel>
+
+                            <StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Total Patients Left Eye"
+                                               Foreground="Wheat"
+                                   FontSize="12"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding TotalPatientsLeftEyeD}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="Wheat" />
+                                </StackPanel>
+                                <!--<StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Total Images Left Eye"
+                                   
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding TotalImagesLeftEye}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="Wheat" />
+                                </StackPanel>-->
+                            </StackPanel>
+
+
+                        </StackPanel>
+
+                    </DockPanel>
+
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Command="{Binding GetReportCommandD}"
+                    Content="Report For Both Eye "
+                        Margin="2"                           
+                    Background="Green" />
+                    <Button Command="{Binding GetReportRightEyeCommandD}"
+                        Margin="2"
+                    Content="Report Right Eye "/>
+                    <Button Command="{Binding GetReportLeftEyeCommandD}"
+                        Margin="2"
+                    Content="Report Left Eye "/>
+                </StackPanel>
+                <DataGrid ItemsSource="{Binding ReportDataD}"
+                      Height="400"
+                      Width="1200"
+                          Margin="0 20  0 0"
+                      FontSize="12"
+                      AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Visit Date"
+                                        Binding="{Binding VisitDate, StringFormat={}{0:dd/MM/yyyy}}" />
+                        <DataGridTextColumn Header="Patient Name"
+                                        Binding="{Binding PatientName}" />
+                        <DataGridTextColumn Header="Test Name"
+                                        Binding="{Binding ImageName}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <!--<Button Command="{Binding GetReportCommand}"
+                    Content="Get Report"
+                    Background="Green" />
+            <Button Command="{Binding GetReportRightEyeCommand}"
+                    Content="get report right eye"/>-->
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

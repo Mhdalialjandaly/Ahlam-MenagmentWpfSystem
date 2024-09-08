@@ -1,0 +1,361 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x86;x64</Platforms>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Components\Home\Payments\**" />
+    <Compile Remove="Components\PatientList\PatientFile\LabTests\LabTestResult\**" />
+    <EmbeddedResource Remove="Components\Home\Payments\**" />
+    <EmbeddedResource Remove="Components\PatientList\PatientFile\LabTests\LabTestResult\**" />
+    <None Remove="Components\Home\Payments\**" />
+    <None Remove="Components\PatientList\PatientFile\LabTests\LabTestResult\**" />
+    <Page Remove="Components\Home\Payments\**" />
+    <Page Remove="Components\PatientList\PatientFile\LabTests\LabTestResult\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Components\PatientList\PatientFile\Prescriptions\TempPrescriptionsViewModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\AC_01.png" />
+    <None Remove="Assets\AC_02.png" />
+    <None Remove="Assets\AC_03.png" />
+    <None Remove="Assets\AT_04.png" />
+    <None Remove="Assets\A_01.png" />
+    <None Remove="Assets\A_02.png" />
+    <None Remove="Assets\A_03.png" />
+    <None Remove="Assets\CL_01.png" />
+    <None Remove="Assets\CT_03.png" />
+    <None Remove="Assets\C_01.png" />
+    <None Remove="Assets\C_02.png" />
+    <None Remove="Assets\C_03.png" />
+    <None Remove="Assets\DT_01.png" />
+    <None Remove="Assets\D_01.png" />
+    <None Remove="Assets\D_02.png" />
+    <None Remove="Assets\D_03.png" />
+    <None Remove="Assets\H.png" />
+    <None Remove="Assets\IND_1.png" />
+    <None Remove="Assets\I_01.png" />
+    <None Remove="Assets\I_02.png" />
+    <None Remove="Assets\I_03.png" />
+    <None Remove="Assets\Logo.png" />
+    <None Remove="Assets\L_01.png" />
+    <None Remove="Assets\MN_01.png" />
+    <None Remove="Assets\MT_02.png" />
+    <None Remove="Assets\MX_01.png" />
+    <None Remove="Assets\M_01.png" />
+    <None Remove="Assets\M_02.png" />
+    <None Remove="Assets\M_03.png" />
+    <None Remove="Assets\NOT_01.png" />
+    <None Remove="Assets\PWD_01.png" />
+    <None Remove="Assets\P_01.png" />
+    <None Remove="Assets\P_02.png" />
+    <None Remove="Assets\P_03.png" />
+    <None Remove="Assets\RS_01.png" />
+    <None Remove="Assets\R_01.png" />
+    <None Remove="Assets\SL_01.png" />
+    <None Remove="Assets\SL_02.png" />
+    <None Remove="Assets\SL_03.png" />
+    <None Remove="Assets\SMO_1.png" />
+    <None Remove="Assets\SMO_2.png" />
+    <None Remove="Assets\SMT_1.png" />
+    <None Remove="Assets\SMT_2.png" />
+    <None Remove="Assets\ST_01.png" />
+    <None Remove="Assets\ST_02.png" />
+    <None Remove="Assets\ST_03.png" />
+    <None Remove="Assets\ST_05.png" />
+    <None Remove="Assets\S_01.png" />
+    <None Remove="Assets\S_02.png" />
+    <None Remove="Assets\S_03.png" />
+    <None Remove="Assets\up22.png" />
+    <None Remove="Assets\U_01.png" />
+    <None Remove="Fonts\Amiri.ttf" />
+    <None Remove="Fonts\Font Awesome 5 Free-Solid-900.otf" />
+    <None Remove="Fonts\fontawesome-webfont.ttf" />
+    <None Remove="Images\Navigation\1.png" />
+    <None Remove="Images\Navigation\AddressBook.png" />
+    <None Remove="Images\Navigation\InsideClinic.png" />
+    <None Remove="Images\Navigation\Markiting.png" />
+    <None Remove="Images\Navigation\Operation.png" />
+    <None Remove="Images\Navigation\Operations.png" />
+    <None Remove="Images\Navigation\Payments.png" />
+    <None Remove="Images\Navigation\Reports.png" />
+    <None Remove="Images\Navigation\WaitingRoom.png" />
+    <None Remove="Log4Net.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <COMReference Include="WIA">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>94a0e92d-43c0-494e-ac29-fd45948a5221</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AcroPDFLib">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>05bfd3f1-6319-4f30-b752-c7a22889bcc4</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxAcroPDFLib">
+      <WrapperTool>aximp</WrapperTool>
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>05bfd3f1-6319-4f30-b752-c7a22889bcc4</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+    </COMReference>
+    <COMReference Include="SHDocVw">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>1</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>eab22ac0-30c1-11cf-a7eb-0000c05bae0b</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxSHDocVw">
+      <WrapperTool>aximp</WrapperTool>
+      <VersionMinor>1</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>eab22ac0-30c1-11cf-a7eb-0000c05bae0b</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.OutlookViewCtl">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>2</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>0006f062-0000-0000-c000-000000000046</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Outlook">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>6</VersionMinor>
+      <VersionMajor>9</VersionMajor>
+      <Guid>00062fff-0000-0000-c000-000000000046</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Log4Net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="DNTScanner.Core" Version="1.1.2" />
+    <PackageReference Include="Fody" Version="6.5.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="FontAwesome5" Version="2.1.4" />
+    <PackageReference Include="GemBox.Pdf" Version="17.0.1528" />
+    <PackageReference Include="log4net" Version="2.0.12" />
+    <PackageReference Include="MaterialDesignColors" Version="2.1.4" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="5.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="NETCore.MailKit" Version="2.1.0" />
+    <PackageReference Include="Notifications2.Wpf.Core" Version="1.3.4" />
+    <PackageReference Include="pdfExpoterCorresponding" Version="1.0.0" />
+    <PackageReference Include="PdfSharpCore" Version="1.3.63" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" PrivateAssets="All">
+      <ExcludeAssets>runtime</ExcludeAssets>
+      <IncludeAssets>All</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Pdf.Net.Core" Version="25.1.40" />
+    <PackageReference Include="Syncfusion.PdfToImageConverter.Net" Version="25.1.35" />
+    <PackageReference Include="Unity.Container" Version="5.11.11" />
+    <PackageReference Include="WPFLocalizeExtension" Version="3.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EyeClinic.Core\EyeClinic.Core.csproj" />
+    <ProjectReference Include="..\EyeClinic.DataAccess\EyeClinic.DataAccess.csproj" />
+    <ProjectReference Include="..\EyeClinic.Model\EyeClinic.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Syncfusion.Compression.Base">
+      <HintPath>..\Libraries\Syncfusion.Compression.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Data.WPF">
+      <HintPath>..\Libraries\Syncfusion.Data.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBusyIndicator.WPF">
+      <HintPath>..\Libraries\Syncfusion.SfBusyIndicator.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfGrid.WPF">
+      <HintPath>..\Libraries\Syncfusion.SfGrid.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfGridConverter.WPF">
+      <HintPath>..\Libraries\Syncfusion.SfGridConverter.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfInput.Wpf">
+      <HintPath>..\Libraries\Syncfusion.SfInput.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfScheduler.WPF">
+      <HintPath>..\Libraries\Syncfusion.SfScheduler.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfShared.Wpf">
+      <HintPath>..\Libraries\Syncfusion.SfShared.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfSkinManager.WPF">
+      <HintPath>..\Libraries\Syncfusion.SfSkinManager.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Wpf">
+      <HintPath>..\Libraries\Syncfusion.Shared.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.Base">
+      <HintPath>..\Libraries\Syncfusion.XlsIO.Base.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\AC_01.png" />
+    <Resource Include="Assets\AC_02.png" />
+    <Resource Include="Assets\AC_03.png" />
+    <Resource Include="Assets\AT_04.png" />
+    <Resource Include="Assets\A_01.png" />
+    <Resource Include="Assets\A_02.png" />
+    <Resource Include="Assets\A_03.png" />
+    <Resource Include="Assets\CL_01.png" />
+    <Resource Include="Assets\CT_03.png" />
+    <Resource Include="Assets\C_01.png" />
+    <Resource Include="Assets\C_02.png" />
+    <Resource Include="Assets\C_03.png" />
+    <Resource Include="Assets\DT_01.png" />
+    <Resource Include="Assets\D_01.png" />
+    <Resource Include="Assets\D_02.png" />
+    <Resource Include="Assets\D_03.png" />
+    <Resource Include="Assets\H.png" />
+    <Resource Include="Assets\IND_1.png" />
+    <Resource Include="Assets\I_01.png" />
+    <Resource Include="Assets\I_02.png" />
+    <Resource Include="Assets\I_03.png" />
+    <Resource Include="Assets\Logo.png" />
+    <Resource Include="Assets\L_01.png" />
+    <Resource Include="Assets\MN_01.png" />
+    <Resource Include="Assets\MT_02.png" />
+    <Resource Include="Assets\MX_01.png" />
+    <Resource Include="Assets\M_01.png" />
+    <Resource Include="Assets\M_02.png" />
+    <Resource Include="Assets\M_03.png" />
+    <Resource Include="Assets\NOT_01.png" />
+    <Resource Include="Assets\PWD_01.png" />
+    <Resource Include="Assets\P_01.png" />
+    <Resource Include="Assets\P_02.png" />
+    <Resource Include="Assets\P_03.png" />
+    <Resource Include="Assets\RS_01.png" />
+    <Resource Include="Assets\R_01.png" />
+    <Resource Include="Assets\SL_01.png" />
+    <Resource Include="Assets\SL_02.png" />
+    <Resource Include="Assets\SL_03.png" />
+    <Resource Include="Assets\SMO_1.png" />
+    <Resource Include="Assets\SMO_2.png" />
+    <Resource Include="Assets\SMT_1.png" />
+    <Resource Include="Assets\SMT_2.png" />
+    <Resource Include="Assets\ST_01.png" />
+    <Resource Include="Assets\ST_02.png" />
+    <Resource Include="Assets\ST_03.png" />
+    <Resource Include="Assets\ST_05.png" />
+    <Resource Include="Assets\S_01.png" />
+    <Resource Include="Assets\S_02.png" />
+    <Resource Include="Assets\S_03.png" />
+    <Resource Include="Assets\up22.png" />
+    <Resource Include="Assets\U_01.png" />
+    <Resource Include="Fonts\Amiri.ttf" />
+    <Resource Include="Fonts\Font Awesome 5 Free-Solid-900.otf" />
+    <Resource Include="Fonts\fontawesome-webfont.ttf" />
+    <Resource Include="Images\Navigation\Operation.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Navigation\Markiting.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Navigation\AddressBook.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Navigation\InsideClinic.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Navigation\Operations.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Navigation\1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Navigation\Payments.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Navigation\Reports.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Navigation\WaitingRoom.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\Strings.english.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Strings.english.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Strings.english.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.english.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="conn.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="device_name.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="OperationSessions.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Components\Home\Reports\TotalPatientByGlass\" />
+    <Folder Include="Components\Home\Setting\DataBaseControl\" />
+  </ItemGroup>
+
+</Project>

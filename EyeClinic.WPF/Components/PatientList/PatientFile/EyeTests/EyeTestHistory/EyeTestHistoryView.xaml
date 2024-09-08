@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="EyeClinic.WPF.Components.PatientList.PatientFile.EyeTests.EyeTestHistory.EyeTestHistoryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EyeClinic.WPF.Components.PatientList.PatientFile.EyeTests.EyeTestHistory"
+             d:DataContext="{d:DesignInstance local:EyeTestHistoryViewModel, IsDesignTimeCreatable=True}"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"    
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock 
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            FontSize="22"   
+            FontWeight="Bold"
+            Foreground="Black"
+            Text="{lex:Loc EeyTestHistory}"/>
+        <ListView
+            Grid.Row="1"
+            ItemsSource="{Binding PatientVisitEyeTests}"
+              ItemContainerStyle="{StaticResource TransparentListViewItem}"
+              MinWidth="700"
+              VirtualizingStackPanel.IsVirtualizing="True"
+              VirtualizingStackPanel.VirtualizationMode="Recycling">
+        <ListView.ItemsPanel>
+            <ItemsPanelTemplate>
+                <WrapPanel
+                    Orientation="Vertical"/>
+            </ItemsPanelTemplate>
+        </ListView.ItemsPanel>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <Border BorderBrush="Gray"
+                        Margin="1"
+                        Height="Auto"
+                        BorderThickness="1">
+                    <StackPanel>
+                        <StackPanel Width="1000"
+                                    Margin="10 0 40 0"
+                                    VerticalAlignment="Top">
+                            <TextBlock Text="{Binding VisitDate,
+                                StringFormat={}{0:dd/MM/yyyy}}"
+                                       FontWeight="Bold"
+                                       FontSize="32" />
+                            
+                        </StackPanel>
+                        <ListView ItemsSource="{Binding PatientVisitEyeTests}"
+                                  ItemContainerStyle="{StaticResource TransparentListViewItem}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <DockPanel Margin="0 8">
+                                        <TextBlock Text="{Binding EyeTest.EnName}"
+                                                   Foreground="DarkMagenta"
+                                                   FontWeight="Bold"
+                                                   FontSize="26"
+                                                   Width="80"
+                                                   TextWrapping="Wrap"
+                                                   Margin="10 0 20 0"
+                                                   VerticalAlignment="Center" />
+                                        <DockPanel>
+                                            <StackPanel>
+                                                <TextBlock Text="{lex:Loc RightEyeResult}"
+                                                           FontSize="18"
+                                                           FontWeight="Bold" />
+                                                <TextBox Text="{Binding RightEyeResult}"
+                                                         AcceptsReturn="True"
+                                                         TextWrapping="Wrap"
+                                                         BorderThickness="1"
+                                                         BorderBrush="Gray"
+                                                         Background="#c0ffbd"
+                                                         Width="400"
+                                                         Height="150"
+                                                         FontWeight="Bold"
+                                                         FontSize="{StaticResource FontSizeLarge}"
+                                                         ScrollViewer.VerticalScrollBarVisibility="Visible" />
+                                            </StackPanel>
+                                            <StackPanel Margin="12 0">
+                                                <TextBlock Text="{lex:Loc LeftEyeResult}"
+                                                           FontSize="18"
+                                                           FontWeight="Bold" />
+                                                <TextBox Text="{Binding LeftEyeResult}"
+                                                         AcceptsReturn="True"
+                                                         TextWrapping="Wrap"
+                                                         Width="400"
+                                                         Height="150"
+                                                         BorderThickness="1"
+                                                         BorderBrush="Gray"
+                                                         FontWeight="Bold"
+                                                         Background="#c0ffbd"
+                                                         HorizontalAlignment="Left"
+                                                         FontSize="{StaticResource FontSizeLarge}"
+                                                         ScrollViewer.VerticalScrollBarVisibility="Visible" />
+                                            </StackPanel>
+                                        </DockPanel>
+                                    </DockPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </Border>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+    </Grid>
+</UserControl>

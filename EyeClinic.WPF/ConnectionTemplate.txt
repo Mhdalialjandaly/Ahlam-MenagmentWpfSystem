@@ -1,0 +1,7 @@
+﻿1 - Server=EYECLINIC-PC;Database=EyeClinic;User Id=sa;Password=123456;
+2 - Server=MAJD-PC\SQLEXPRESS;Database=EyeClinic;Integrated Security=true;
+3 - Data Source=DESKTOP-TGO0V2H;Initial Catalog=EyeClinic;Integrated Security=True
+4 - Data Source=DESKTOP-61IDRMK;Initial Catalog=EyeClinic;Integrated Security=True
+5 - Data Source=MAJ;Initial Catalog=EyeClinic;Integrated Security=True
+6 - Server=RECEPTION-PC;Database=EyeClinic;User Id=sa;Password=asd1234;
+7 - Server=DESKTOP-G9UUM7K\MSSQLSERVER19;Database=EyeClinic;User Id=sa;Password=5738;

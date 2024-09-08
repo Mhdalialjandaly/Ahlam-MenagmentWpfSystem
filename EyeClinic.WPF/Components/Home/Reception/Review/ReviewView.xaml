@@ -1,0 +1,127 @@
+﻿<UserControl x:Class="EyeClinic.WPF.Components.Home.Reception.Review.ReviewView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             Style="{StaticResource LocalizationStyle}"
+             xmlns:local="clr-namespace:EyeClinic.WPF.Components.Home.Reception.Review"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             xmlns:Syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:core="clr-namespace:EyeClinic.Core;assembly=EyeClinic.Core"
+             d:DataContext="{d:DesignInstance local:ReviewViewModel, IsDesignTimeCreatable=True}"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <DockPanel>
+        <DockPanel Dock="Top">
+           
+            <StackPanel HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                <StackPanel>
+                
+                <StackPanel >
+                    <TextBlock                        
+                        Text="{lex:Loc OrderName}"
+                               FontWeight="Bold"/>
+                    </StackPanel>
+                    <TextBox                      
+                        Text="{Binding PatientNameReview,UpdateSourceTrigger=PropertyChanged}"
+                            />
+                </StackPanel>
+              
+                <DatePicker SelectedDate="{Binding TargetDate}"
+                            VerticalAlignment="Center"
+                            Style="{StaticResource BaseStyle}"
+                            Margin="16 0"
+                            Width="160">
+                    <DatePicker.Resources>
+                        <Style TargetType="{x:Type DatePickerTextBox}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <TextBox x:Name="PART_TextBox"
+                                                 Text="{Binding Path=SelectedDate, 
+                                                        RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}, 
+                                                        StringFormat={x:Static core:Global.DateFormat}}" />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DatePicker.Resources>
+                </DatePicker>
+                <Border CornerRadius="10"
+                        MinWidth="75"
+                        Background="#333333"
+                        Margin="8 0">
+
+                    <Button
+                        Command="{Binding RemoveCommand}"
+                        Content="{lex:Loc Remove}"
+                        Style="{StaticResource SmallDeleteButton}" 
+                        Background="Transparent"/>
+                </Border>
+                <Border CornerRadius="10"
+                        Background="#333333"
+                        Margin="8 0">
+
+                    <Button
+                        Command="{Binding FilterCommand}"
+                        Content="{lex:Loc Search}"
+                        Style="{StaticResource ButtonBase}" 
+                        Background="Transparent"/>
+                </Border>
+                <Border CornerRadius="10" Background="#333333">
+                <Button Command="{Binding ReserveCommand}"
+                        Content="{lex:Loc Reserve}"
+                        Style="{StaticResource ButtonBase}"
+                        Background="Transparent"/>
+                </Border>
+            </StackPanel>
+        </DockPanel>
+        <Syncfusion:SfDataGrid ItemsSource="{Binding Reviews}"
+                               SelectedItem="{Binding SelectedReview}"
+                               ColumnSizer="AutoWithLastColumnFill"
+                               AutoGenerateColumns="False"
+                               HeaderRowHeight="50"
+                               RowHeight="60"                               
+                               FontWeight="Bold"
+                               AllowEditing="False"
+                               FontSize="40"
+                               AllowResizingColumns="True"
+                               x:Name="TodayVisitsGrid"
+                               DockPanel.Dock="Top">
+            <Syncfusion:SfDataGrid.Columns >
+                <Syncfusion:GridTextColumn HeaderText="{lex:Loc Date}"
+                                           Width="140"
+                                           ValueBinding="{Binding DateTime, StringFormat={}{0:dd/MM/yyyy}}" />
+                <Syncfusion:GridTextColumn HeaderText="{lex:Loc CustomerName}"
+                                           ValueBinding="{Binding PatientName}" 
+                                           Width="300"/>
+                <Syncfusion:GridTextColumn
+                    HeaderText="{lex:Loc Times}"
+                    AllowSorting="True"
+                    SortMode="Value"
+                    ValueBinding="{Binding Time}"
+                    Width="100"/>
+                <Syncfusion:GridTextColumn HeaderText="{lex:Loc phoneNumber}"
+                                           Width="150"
+                                           ValueBinding="{Binding PhoneNumber}" />
+                <Syncfusion:GridTextColumn HeaderText="{lex:Loc OrderType}"
+                                           Width="150"
+                                           ValueBinding="{Binding OrderType}" />
+                
+                <Syncfusion:GridTextColumn HeaderText="{lex:Loc Option}"
+                                           Width="175">
+                    <Syncfusion:GridTextColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Type}"
+                                       Foreground="{Binding Type, Converter={StaticResource ReviewTypeColorConverter}}"
+                                        Width="150"/>
+                        </DataTemplate>
+                    </Syncfusion:GridTextColumn.CellTemplate>
+                </Syncfusion:GridTextColumn>
+            </Syncfusion:SfDataGrid.Columns>
+        </Syncfusion:SfDataGrid>
+      
+    </DockPanel>
+</UserControl>

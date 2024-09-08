@@ -1,0 +1,362 @@
+﻿<UserControl x:Class="EyeClinic.WPF.Components.Home.Markets.MarketsExtry.MarketsExtryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EyeClinic.WPF.Components.Home.Markets.MarketsExtry"
+             Style="{StaticResource LocalizationStyle}"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             xmlns:patientEditor="clr-namespace:EyeClinic.WPF.Components.PatientList.PatientEditor" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             d:DataContext="{d:DesignInstance local:MarketsExtryViewModel, IsDesignTimeCreatable=True}"             
+             mc:Ignorable="d" 
+             d:DesignHeight="450" 
+             d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock" >
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Margin" Value="0 0 0 0"/>
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="10 10 50 0"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        <Style TargetType="StackPanel" x:Key="ListStyle">
+            <Setter Property="Margin" Value="50 0 0 0"/>
+        </Style>
+        <Style TargetType="ListView">
+            <Setter Property="Margin" Value="20 0 0 0"/>
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+    </UserControl.Resources>
+    <DockPanel Background="White" >        
+        <Border Background="Transparent"
+             CornerRadius="8"
+                DockPanel.Dock="Top"
+             Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"
+             Width="75"
+             Height="50">
+            <syncfusion:SfBusyIndicator DataContext="{Binding}"
+             IsBusy="{Binding IsBusy}"
+             AnimationType="DotCircle"
+             HorizontalAlignment="Center"
+             HorizontalContentAlignment="Center"
+             VerticalAlignment="Center"
+             VerticalContentAlignment="Center"
+             Foreground="Black"
+             Width="75"
+             Height="50" />
+        </Border>
+        <StackPanel DockPanel.Dock="Top">
+            <TextBlock Text="{lex:Loc MarketsExtryList}"         
+        FontWeight="Black"
+                   Foreground="Blue"
+                   HorizontalAlignment="Center"
+        FontSize="24"/>
+            <TextBlock 
+                HorizontalAlignment="Center"
+                Text="-----------------------------"/>
+        </StackPanel>
+        <StackPanel
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            DockPanel.Dock="Top">
+
+            <StackPanel HorizontalAlignment="Center" >
+                <TextBlock Text="{lex:Loc MarketsProductName}" />
+                <TextBlock Text="{Binding SelectedMarketProduct.MarketsProductName}" 
+                           HorizontalAlignment="Center" Width="250"/>
+                <!--<TextBlock Text="{Binding SelectedCartoonItem.CreatedValueUnit}" 
+                           HorizontalAlignment="Center"
+                            Width="52"/>-->
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" >
+                <TextBlock Text="{lex:Loc FirstTermValue}" />
+                <TextBlock Text="{Binding SelectedMarketProduct.FirstTermValue,StringFormat={}{0:N}}"                 
+                           HorizontalAlignment="Center" 
+                           Width="250"/>
+                <!--<TextBlock Text="{Binding SelectedCartoonItem.CreatedValueUnit}" 
+                           HorizontalAlignment="Center"
+                           Width="52"/>-->
+            </StackPanel>            
+            <StackPanel HorizontalAlignment="Center" >
+                <TextBlock Text="{lex:Loc Extry}" />
+                <TextBlock Text="{Binding SelectedMarketProduct.Extry,StringFormat={}{0:N}}" 
+                           Foreground="Blue"
+                            HorizontalAlignment="Center" Width="250"/>
+                <!--<TextBlock Text="{Binding SelectedCartoonItem.CreatedValueUnit}" 
+                    HorizontalAlignment="Center"
+                 Width="52"/>-->
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" >
+                <TextBlock Text="{lex:Loc RealValue}" />
+                <TextBlock Text="{Binding SelectedMarketProduct.RealValue,StringFormat={}{0:N}}" 
+                        HorizontalAlignment="Center"
+                           Foreground="DarkOrange"
+                           Width="250"/>
+                <!--<TextBlock Text="{Binding SelectedCartoonItem.CreatedValueUnit}" 
+                           HorizontalAlignment="Center"
+                           Width="250"
+                        />-->
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" >
+                <TextBlock Text="{lex:Loc MarketType}" />
+                <TextBlock Text="{Binding SelectedMarketProduct.Note}" 
+                           HorizontalAlignment="Center" Width="250"/>
+                <!--<TextBlock Text="{Binding SelectedCartoonItem.CreatedValueUnit}" 
+                HorizontalAlignment="Center"
+                Width="250"
+             />-->
+            </StackPanel>
+        </StackPanel>
+        <DockPanel Dock="Top"
+            Margin="4">
+            <TextBlock Text="{lex:Loc Search}"
+                Margin="5 0"
+                VerticalAlignment="Center" />
+            <DockPanel>
+                <Border Background="Black"
+                 Margin="4 0"
+                 DockPanel.Dock="Right"
+                 CornerRadius="10">
+                    <Button Content="{lex:Loc Search}"
+                 Style="{StaticResource ButtonBase}"
+                 Margin="4 0"
+                 DockPanel.Dock="Right"
+                 Command="{Binding SearchCommand}" />
+                </Border>
+                <TextBox Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}"
+                  Width="Auto"
+                  Height="30"
+                         TextChanged="search"
+                  VerticalContentAlignment="Center">
+                    <TextBox.InputBindings>
+                        <KeyBinding Key="Return"
+                             Command="{Binding SearchCommand}" />
+                    </TextBox.InputBindings>
+                </TextBox>
+
+            </DockPanel>
+        </DockPanel>
+        <Border BorderBrush="Black"
+         DockPanel.Dock="Top"
+         Margin="20 2"
+         BorderThickness="2"
+         Height="2" />
+        <StackPanel DockPanel.Dock="Top">
+            <DockPanel DockPanel.Dock="Top"
+            Background="WhiteSmoke">
+                <TextBlock Text="{lex:Loc ItemsList}"
+                Margin="5"
+                FontFamily="{StaticResource Arabic}"
+                VerticalAlignment="Center" />
+                <StackPanel Orientation="Horizontal"
+                 HorizontalAlignment="Right"
+                 VerticalAlignment="Center"
+                 Margin="5 0">
+                    <Button Style="{StaticResource MaterialDesignOutlinedButton}"
+                     Content="{lex:Loc Extry}"                     
+                     Command="{Binding AddMarketExtryCommand}"
+                     Margin="5 0" />
+                    <!--<TextBlock Text="{lex:Loc InsufficientFunds}"
+                   Foreground="Red"
+                   FontWeight="Bold"
+                   FontFamily="italic"
+                   Visibility="{Binding IsQuintity,Converter={StaticResource BooleanToVisibilityReverseConverter}}"/>-->
+                    <!--<Button Style="{StaticResource SmallEditButton}"
+     Command="{Binding EditCartoonItemCommand}" />-->
+                </StackPanel>
+              
+                <!--<TextBlock Text="{lex:Loc InsufficientFunds}"
+                               Foreground="Red"
+                               FontWeight="Bold"
+                               FontFamily="italic"
+                               Visibility="{Binding IsQuintity,Converter={StaticResource BooleanToVisibilityReverseConverter}}"/>-->
+                
+                <DockPanel HorizontalAlignment="Right">
+                    <Button 
+            Margin="5"
+               HorizontalAlignment="Right"
+             Style="{StaticResource MaterialDesignFlatSecondaryDarkBgButton}"
+             Command="{Binding GoBackCommand}"        
+             Content="{lex:BLoc Back}">
+                    </Button>
+                    <Button 
+                Margin="5"
+                HorizontalAlignment="Right"
+                Style="{StaticResource MaterialDesignFlatSecondaryDarkBgButton}"
+                Command="{Binding BackHomeCommand}"        
+                Content="{lex:BLoc GoBackHome}">
+                    </Button>
+                </DockPanel>
+            </DockPanel>
+            <DockPanel >
+                <DockPanel Dock="Top">
+                    <StackPanel Style="{StaticResource ListStyle}">
+                        <TextBlock Text="{lex:Loc CreatedDate}" />
+                    </StackPanel>
+
+                    <StackPanel Style="{StaticResource ListStyle}">
+                        <TextBlock Text="{lex:Loc Code}" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource ListStyle}">
+                        <TextBlock Text="{lex:Loc Quintity}" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource ListStyle}">
+                        <TextBlock Text="{lex:Loc UniteName}" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource ListStyle}">
+                        <TextBlock Text="{lex:Loc Recipter}" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource ListStyle}">
+                        <TextBlock Text="{lex:Loc Descreption}" />
+                    </StackPanel>
+
+
+                    <!--<StackPanel Style="{StaticResource ListStyle}">
+                        <TextBlock Text="{lex:Loc Note}" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource ListStyle}">
+                        <TextBlock Text="{lex:Loc TotalWight}" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource ListStyle}">
+                        <TextBlock Text="{lex:Loc TimedDifference}" />
+                    </StackPanel>-->
+                </DockPanel>
+            </DockPanel>
+        </StackPanel>
+        <ListView ItemsSource="{Binding MarketItemDataList}"
+           SelectedItem="{Binding SelectedMarketItem}"
+           VirtualizingStackPanel.IsVirtualizing="True"
+           VirtualizingStackPanel.VirtualizationMode="Recycling"
+           HorizontalContentAlignment="Stretch"
+           DockPanel.Dock="Top"
+           x:Name="MarketItemList">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Vertical" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel >
+                        <Border Background="{Binding IsIncreaseDogma,Converter={StaticResource BackGroundRemaining}}"
+                                CornerRadius="5"
+                                BorderBrush="Black"
+                                BorderThickness="2">
+                            <DockPanel Dock="Top">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding CreatedDate.Date,StringFormat={}{0:dd-MM-yyyy}}" 
+                                           HorizontalAlignment="Center"
+                                           Width="150" />
+                                </StackPanel>
+
+                                <StackPanel 
+                                 Width="100"
+                                Margin="30 0 0 0">
+                                    <TextBlock Text="{Binding CodeNumber}" 
+                                               FontSize="20"
+                                               FontWeight="Bold"
+                                           HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding CreatedValueUnit}" 
+                                           HorizontalAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel
+                                     Visibility="{Binding IsIncreaseDogma ,Converter= {StaticResource BooleanToVisibilityReverseConverter}}"
+                                          Width="75"
+                                          Margin="50 0 0 0">
+
+                                    <TextBlock Text="{Binding Quinttity,StringFormat={}{0:N0}}" 
+                                           HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding UnitName}" 
+                                          HorizontalAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel
+                             Visibility="{Binding IsIncreaseDogma ,Converter= {StaticResource BooleanToVisibilityReverseConverter}}"
+                                  Width="75"
+                                  Margin="50 0 0 0">
+
+                                    <TextBlock Text="{Binding Quinttity,StringFormat={}{0:N0}}" 
+                                   HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding UnitName}" 
+                               HorizontalAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel 
+                                     Visibility="{Binding IsIncreaseDogma ,Converter= {StaticResource BooleanToVisibilityReverseConverter}}"
+                                          Width="150"
+                                          Margin="70 0 0 0">
+
+                                    <TextBlock Text="{Binding Recipter}"
+                                           HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding CreatedValueUnit}" 
+                                           HorizontalAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel
+                                     Visibility="{Binding IsIncreaseDogma ,Converter= {StaticResource BooleanToVisibilityReverseConverter}}"
+                                     Width="100"
+                                     Margin="50 0 0 0">
+
+                                    <TextBlock Text="{Binding Description}" 
+                                           HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding WasteValueUnit}" 
+                                               HorizontalAlignment="Center"/>
+                                </StackPanel>
+
+
+                               
+
+                                <StackPanel 
+                                     Visibility="{Binding IsIncreaseDogma ,Converter= {StaticResource BooleanToVisibilityReverseConverter}}"
+                                            Width="100"
+                                            Margin="70 0 0 0">
+
+                                    <TextBlock Text="{Binding TotalWight,StringFormat={}{0:N0}}" 
+                                               Foreground="Red"
+                                             HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding CreatedValueUnit}" 
+                                              HorizontalAlignment="Center"/>
+                                </StackPanel>
+
+                                <StackPanel 
+                                     Visibility="{Binding IsIncreaseDogma ,Converter= {StaticResource BooleanToVisibilityReverseConverter}}"
+                                      Width="200"
+                                      Margin="50 0 0 0">
+                                    <TextBlock Text="{Binding TotalResult,StringFormat={}{0:N}}" 
+                                      HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding CreatedValueUnit}" 
+                                      HorizontalAlignment="Center"/>
+                                </StackPanel>
+
+                                <DockPanel HorizontalAlignment="Right" 
+                                           Visibility="{Binding IsLastValue,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    <Button Command="{Binding ElementName=MarketItemList, Path=DataContext.DeleteMarketExtryCommand}"
+                                      CommandParameter="{Binding}"                                      
+                                      Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                                      Content="{lex:BLoc Delete}"
+                                            Background="Red"
+                                      Foreground="Wheat"
+                                      HorizontalAlignment="Right" Margin="5"/>
+                                    <Button Command="{Binding ElementName=MarketItemList, Path=DataContext.EditeMarketExtryCommand}"
+                                             Visibility="{Binding IsIncreaseDogma ,Converter= {StaticResource BooleanToVisibilityReverseConverter}}"
+                                            Background="Gray"
+                                            Foreground="Wheat"
+                                      CommandParameter="{Binding}"
+                                      Style="{StaticResource MaterialDesignFloatingActionSecondaryLightButton}"
+                                      Content="{lex:BLoc Edite}"
+                                      />
+                                </DockPanel>
+
+                            </DockPanel>
+                        </Border>
+                    </DockPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </DockPanel>
+</UserControl>

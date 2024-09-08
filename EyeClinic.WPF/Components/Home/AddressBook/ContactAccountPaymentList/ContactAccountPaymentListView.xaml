@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="EyeClinic.WPF.Components.Home.AddressBook.ContactAccountPaymentList.ContactAccountPaymentListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EyeClinic.WPF.Components.Home.AddressBook.ContactAccountPaymentList"
+             d:DataContext="{d:DesignInstance local:ContactAccountPaymentListViewModel, IsDesignTimeCreatable=True}"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="103*" />
+            <RowDefinition Height="122*" />
+        </Grid.RowDefinitions>
+        <DockPanel Background="White"
+                   Grid.RowSpan="2">
+            <StackPanel Orientation="Horizontal"
+                        DockPanel.Dock="Bottom">
+                <StackPanel Orientation="Horizontal"
+                            Margin="12 0">
+                    <!--<TextBlock Text="{lex:Loc TotalIncome}" />
+                    <TextBlock Text="{Binding TotalIncome}" />-->
+                </StackPanel>
+            </StackPanel>
+            <DockPanel DockPanel.Dock="Top"
+                       Background="LightGray">
+                <DockPanel Margin="4">
+                    <TextBlock Text="{lex:Loc People}"
+                               FontSize="{StaticResource FontSizeXLarge}"
+                               Margin="8 0"
+                               FontWeight="Bold" />
+                    <TextBlock Text="{Binding ContactName}"
+                               FontSize="{StaticResource FontSizeXLarge}"
+                               Margin="12 0"
+                               FontWeight="Bold" />
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Margin="5 0">
+                        <Border Background="Black"
+                                Margin="10 "
+                                CornerRadius="10">
+                            <Button Style="{StaticResource SmallAddButton}"
+                                    Background="Transparent"
+                                Command="{Binding AddContactCommand}"
+                                Margin="5 0" />
+                        </Border>
+                        <Border Background="Black"
+                                Margin="10 "
+                                CornerRadius="10">
+                            <Button Style="{StaticResource SmallEditButton}"
+                                Background="Transparent"
+                                Command="{Binding EditContactCommand}" />
+                        </Border>
+                        <Border Background="Black"
+                                Margin="10 "
+                                CornerRadius="10">
+                            <Button Command="{Binding ManageContactAccountCommand}"
+                                Style="{StaticResource ButtonBase}"
+                                Content="Manage Accounts"
+                                Margin="4 0" />
+                            </Border>
+                    </StackPanel>
+                </DockPanel>
+            </DockPanel>
+            <StackPanel Orientation="Horizontal"
+                        DockPanel.Dock="Top"
+                        Margin="4">
+                <TextBlock Text="Account"
+                           FontWeight="Bold"
+                           Margin="12 0" />
+                <ComboBox ItemsSource="{Binding Accounts}"
+                          SelectedItem="{Binding SelectedAccount}"
+                          Width="400" />
+            </StackPanel>
+            <syncfusion:SfDataGrid ItemsSource="{Binding ContactPayments}"
+                                   SelectedItem="{Binding SelectedContactPayment,UpdateSourceTrigger=PropertyChanged}"
+                                   RowHeight="50"
+                                   HeaderRowHeight="50"
+                                   x:Name="AccountPayments"
+                                   ColumnSizer="AutoWithLastColumnFill"
+                                   AutoGenerateColumns="False"
+                                   AllowEditing="False"
+                                   AllowResizingColumns="True"
+                                   DockPanel.Dock="Top">
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:GridTextColumn HeaderText="{lex:Loc Date}"
+                                               Width="100"
+                                               ValueBinding="{Binding PaymentDate, StringFormat={}{0:dd/MM/yyyy}}" />
+                    <syncfusion:GridTextColumn HeaderText="{lex:Loc Payment}"
+                                               Width="100"
+                                               ValueBinding="{Binding PaymentValue,StringFormat={}{0:N0}}" />
+                    <syncfusion:GridTextColumn HeaderText="{lex:Loc Type}"
+                                               Width="200"
+                                               ValueBinding="{Binding PayType}" />
+                    <syncfusion:GridTextColumn ValueBinding="{Binding Notes}"
+                                               HeaderText="{lex:Loc Notes}" />
+                    <syncfusion:GridTemplateColumn Width="50">
+                        <syncfusion:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Command="{Binding ElementName=AccountPayments, Path=DataContext.DeleteContactCommand}"
+                                        CommandParameter="{Binding}"
+                                        Style="{StaticResource SmallDeleteButton}"
+                                        HorizontalAlignment="Center" />
+                            </DataTemplate>
+                        </syncfusion:GridTemplateColumn.CellTemplate>
+                    </syncfusion:GridTemplateColumn>
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+        </DockPanel>
+        <syncfusion:BusyIndicator DataContext="{Binding}"
+                                  Grid.RowSpan="2" />
+    </Grid>
+</UserControl>

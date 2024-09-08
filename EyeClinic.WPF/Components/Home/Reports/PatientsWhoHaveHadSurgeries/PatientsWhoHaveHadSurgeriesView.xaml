@@ -1,0 +1,75 @@
+﻿<Window x:Class="EyeClinic.WPF.Components.Home.Reports.PatientsWhoHaveHadSurgeries.PatientsWhoHaveHadSurgeriesView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EyeClinic.WPF.Components.Home.Reports.PatientsWhoHaveHadSurgeries"
+        d:DataContext="{d:DesignInstance local:PatientsWhoHaveHadSurgeriesViewModel,IsDesignTimeCreatable=True}"
+        xmlns:controls="clr-namespace:EyeClinic.WPF.Components.Controls"
+        mc:Ignorable="d"
+        Title="PatientsWhoHaveHadSurgeriesView"
+        Height="750"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        Width="800"
+        Background="#2C5364">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center">
+            <TextBlock Height="50"
+                       FontSize="28"
+                       FontFamily="Amiri"
+                       x:Name="textBlock"
+                       HorizontalAlignment="Center"
+                       Margin="5"                    
+                       TextWrapping="Wrap"
+                       Foreground="Black"
+                       FontWeight="Bold"
+                       VerticalAlignment="Center"
+                          Text="اسماء المرضى الذين قامو بعمليات  جراحية"/>
+            <DockPanel HorizontalAlignment="Center">               
+                <ComboBox ItemsSource="{Binding Operations}"
+                      SelectedItem="{Binding SelectedOperation}" />
+                <TextBlock Text="الرجاء اختيار  نوع العلملية"
+                           FontWeight="Bold"
+                           Margin="3"
+                           Foreground="Wheat"/>
+                <StackPanel HorizontalAlignment="Left"
+                        Orientation="Horizontal">
+                    <DatePicker SelectedDate="{Binding FromDate}"
+                            Margin="3" />
+                    <TextBlock Foreground="Wheat"
+                           Margin="3"
+                           HorizontalAlignment="Center"
+                           Text=":من تاريخ " />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left"
+                        Orientation="Horizontal">
+                    <DatePicker SelectedDate="{Binding ToDate}"
+                            Margin="3" />
+                    <TextBlock Foreground="Wheat"
+                           Margin="3"
+                           HorizontalAlignment="Center"
+                           Text=":الى تاريخ" />
+                </StackPanel>
+            </DockPanel>
+            
+            <TextBlock Text="number"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center" />
+            <TextBlock Text="{Binding TotalPatients}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center" 
+                       Foreground="Wheat"/>
+           
+            <DataGrid ItemsSource="{Binding Patients}"
+                      Height="400"
+                      FontSize="28"
+                      Width="900"></DataGrid>
+            <Button Content="GetReport"
+                    Background="Green"
+                    Command="{Binding GetReportCommand}" />
+        </StackPanel>
+        <controls:BusyIndicator DataContext="{Binding}" />
+    </Grid>
+</Window>

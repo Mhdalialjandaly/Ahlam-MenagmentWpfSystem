@@ -1,0 +1,239 @@
+﻿<UserControl x:Class="EyeClinic.WPF.Components.PatientList.PatientVisitList.PatientVisitListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             Style="{StaticResource LocalizationStyle}"
+             xmlns:local="clr-namespace:EyeClinic.WPF.Components.PatientList.PatientVisitList"
+             d:DataContext="{d:DesignInstance local:PatientVisitListViewModel}"
+             xmlns:visualBasic="clr-namespace:Microsoft.VisualBasic;assembly=Microsoft.VisualBasic.Core"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <DockPanel>
+        <DockPanel Dock="Bottom"
+                   Background="White">
+            <Grid  
+                     Background="Blue"
+                     DockPanel.Dock="Top"
+                     Margin="4 2">
+                <Border CornerRadius="10">
+                <Button Style="{StaticResource ButtonBase}"
+                        Command="{Binding ShowSummaryOfVisitsCommand}"
+                        Content="{lex:Loc SO}" />                
+            </Border>
+                <materialDesign:PackIcon 
+              
+                    Opacity="0.4"
+             
+                    Grid.Column="0" 
+                    Kind="DatabaseSyncOutline" 
+              
+                    Foreground="White" 
+                    Width="50" 
+              
+                    Height="50" />      
+            </Grid>
+            <Grid DockPanel.Dock="Top"
+                  Margin="4 0"
+                  Background="White">
+                <!--<Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>-->
+
+                <!--<Border Grid.Column="0"
+                        Margin="0 0 2 0"
+                        Background="#333"                        
+                        CornerRadius="10">
+                    <Button Command="{Binding ShowVisitNotesCommand}"
+                            Style="{StaticResource ButtonBase}"
+                            Background="Transparent"
+                            Content="{lex:Loc VisitNote}" />
+                </Border>-->
+                <!--<Border Grid.Column="1"
+                        Margin="2 0 0 0"
+                        Background="#333"
+                        CornerRadius="10">
+                    <Button Command="{Binding ViewAllVisitNotesCommand}"
+                            Style="{StaticResource ButtonBase}"
+                            Background="Transparent"
+                            Content="{lex:Loc ViewAll}" />
+                </Border>-->
+            </Grid>
+        </DockPanel>
+        <DockPanel Background="LightGray"
+                   DockPanel.Dock="Top">
+            <TextBlock Text="{lex:Loc Date}"
+                       Margin="5 0"
+                       FontFamily="{StaticResource Arabic}"
+                       VerticalAlignment="Center" />
+            <StackPanel Orientation="Horizontal"
+                       
+                        HorizontalAlignment="Right">
+
+                <Grid>
+                    <Button Content="{Binding SortContent}"
+                        Margin="20 0 10 0"
+                            Width="110"
+                        Style="{StaticResource ButtonBase}"
+                        Foreground="Black"
+                        FontSize="12"
+                        FontWeight="Bold"
+                        Command="{Binding SortCommand}" />
+                    <materialDesign:PackIcon 
+   
+                        Grid.Column="0" 
+  
+                        Kind="Sort" 
+  
+                        HorizontalAlignment="Left"
+   
+                        VerticalAlignment="Center"
+   
+                        Foreground="Black" Width="50" 
+  
+                        Height="40" />
+                </Grid>
+                <Button Style="{StaticResource SmallAddButton}"
+                        Command="{Binding AddVisitCommand}" />
+                <Button Style="{StaticResource SmallEditButton}"
+                        Margin="2 0"
+                        Command="{Binding EditVisitCommand}" />
+                <Button Style="{StaticResource SmallDeleteButton}"
+                        Command="{Binding DeleteVisitCommand}" />
+            </StackPanel>
+        </DockPanel>
+        <ListView SelectedItem="{Binding SelectedPatientVisit}"
+                  ItemsSource="{Binding PatientVisitList}"                 
+                  HorizontalContentAlignment="Stretch"
+                  Width="330"
+                  ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                  ItemContainerStyle="{StaticResource TransparentListViewItem}"
+                  x:Name="VisitList"
+                  DockPanel.Dock="Top">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <VirtualizingStackPanel>
+                        <DockPanel>
+                            <DockPanel.Resources>
+                                <Style TargetType="RadioButton">
+                                    <Setter Property="Focusable"
+                                            Value="False" />
+                                    <Setter Property="IsTabStop"
+                                            Value="False" />
+                                    <Setter Property="Width"
+                                            Value="Auto" />
+                                    <Setter Property="Height"
+                                            Value="Auto" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="RadioButton">
+                                                <Border Background="{TemplateBinding Background}"
+                                                        x:Name="RadioButtonBorder"
+                                                        CornerRadius="8"
+                                                        BorderThickness="2">
+                                                    <ContentControl Margin="{TemplateBinding Padding}"
+                                                                    IsTabStop="False"
+                                                                    HorizontalAlignment="Stretch"
+                                                                    VerticalAlignment="Center"
+                                                                    Content="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" />
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsChecked"
+                                                             Value="True">
+                                                        <Setter TargetName="RadioButtonBorder"
+                                                                Property="BorderBrush"
+                                                                Value="Blue" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsChecked"
+                                                             Value="False">
+                                                        <Setter TargetName="RadioButtonBorder"
+                                                                Property="BorderBrush"
+                                                                Value="Transparent" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </DockPanel.Resources>
+                            <RadioButton GroupName="PatientVisits"                                         
+                                         IsChecked="{Binding IsChecked}"
+                                         Command="{Binding ElementName=VisitList,Path=DataContext.ChangeSelectedVisitCommand}"
+                                         CommandParameter="{Binding}"   
+                                         Width="300"
+                                         HorizontalAlignment="Left"
+                                         Background="Silver">
+                                <RadioButton.Content>
+                                    <DockPanel Margin="8 2">
+                                        <Grid>
+                                            <TextBlock Text="{Binding VisitDate, StringFormat='{}{0:dd-MM-yyyy}'}"
+                                                   FontWeight="Bold"
+                                                   FontSize="22"
+                                                   Foreground="{Binding Notes, Converter={StaticResource NotesToForegroundColorConverter}}" />
+                                            <!--<materialDesign:PackIcon 
+       
+Kind="DateRange"
+        Width="30"
+                    Margin="10 0 0 0"
+HorizontalAlignment="Left"
+VerticalAlignment="Center"
+Foreground="blue" 
+Height="40" />-->
+
+                                            <Border 
+                                           Width="150"
+                                           Margin="110 0 0 0"
+                                           CornerRadius="10"
+                                           Height="45"
+                                           Background="{Binding ImageUploaded ,Converter={StaticResource NotesToForegroundColorConverter}}"
+                                           HorizontalAlignment="Left">
+                                                <Button 
+                                         FontWeight="Bold"
+                                         Style="{StaticResource BaseStyle}"
+                                         BorderThickness="0" 
+                                         Width="120"
+                                         Content="{lex:Loc SO}"                                
+                                         Foreground="White"
+                                         Background="Transparent"
+                                         HorizontalAlignment="Center"
+                                         CommandParameter="{Binding Id }"
+                                         Command="{Binding  ElementName=VisitList, Path=DataContext.SummeryOfVisitCommand}">
+                                                    <!--<materialDesign:PackIcon 
+       
+Kind="Svg"
+        Width="30"
+                      
+HorizontalAlignment="Left"
+VerticalAlignment="Center"
+Foreground="White" 
+Height="30" />-->
+                                                </Button>
+                                            </Border>
+                                        </Grid>
+                                        
+                                        <StackPanel DockPanel.Dock="Right"
+                                                    VerticalAlignment="Center">
+                                            <!--<TextBlock Text="{Binding Payment,StringFormat={}{0:N0}}"
+                                                      HorizontalAlignment="Right"
+                                                      FontWeight="Bold"
+                                                      FontSize="22" />-->
+                                            <TextBlock Text="{Binding Remaining,StringFormat={}{0:N0}}"
+                                                      HorizontalAlignment="Right"
+                                                      Visibility="{Binding Remaining, Converter={StaticResource ZeroToVisibilityConverter}}"
+                                                      FontWeight="Bold"
+                                                      FontSize="22" />
+                                        </StackPanel>                                       
+                                    </DockPanel>
+                                </RadioButton.Content>
+                            </RadioButton>
+                          
+                        </DockPanel>
+                    </VirtualizingStackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="EyeClinic.WPF.Components.PatientList.PatientFile.Prescriptions.ReadyPrescription.ReadyPrescriptionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             d:DataContext="{d:DesignInstance local:ReadyPrescriptionViewModel,IsDesignTimeCreatable=True}"
+             xmlns:local="clr-namespace:EyeClinic.WPF.Components.PatientList.PatientFile.Prescriptions.ReadyPrescription"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <DockPanel>
+        <StackPanel Orientation="Horizontal"
+                    DockPanel.Dock="Top"
+                    HorizontalAlignment="Right"
+                    Margin="5 0">
+            <Button Style="{StaticResource SmallAddButton}"
+                    Command="{Binding AddReadyPrescriptionCommand}" />
+            <Button Style="{StaticResource SmallEditButton}"
+                    Command="{Binding EditReadyPrescriptionCommand}"
+                    Margin="5 0" />
+            <Button Style="{StaticResource SmallDeleteButton}"
+                    Command="{Binding DeleteReadyPrescriptionCommand}" />
+        </StackPanel>
+        <ListView ItemsSource="{Binding ReadyPrescriptions}"
+                  SelectedItem="{Binding SelectedPrescription}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding }" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,299 @@
+﻿<UserControl x:Class="EyeClinic.WPF.Components.Home.ReadyItems.ReadyItemsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EyeClinic.WPF.Components.Home.ReadyItems"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DataContext="{d:DesignInstance local:ReadyItemsViewModel, IsDesignTimeCreatable=True}"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <Grid>       
+        <DockPanel Background="White">
+            <DockPanel Dock="Top"
+                   Margin="4">
+                <Border Background="Transparent"                       
+                       CornerRadius="8"
+                        DockPanel.Dock="Top"
+                       Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"
+                       Width="35"
+                       Height="35">
+                    <syncfusion:SfBusyIndicator DataContext="{Binding}"
+                       IsBusy="{Binding IsBusy}"
+                       AnimationType="DotCircle"
+                       HorizontalAlignment="Center"
+                       HorizontalContentAlignment="Center"
+                       VerticalAlignment="Center"
+                       VerticalContentAlignment="Center"
+                       Foreground="Black"
+                       Width="45"
+                       Height="40" />
+                </Border>
+                <TextBlock Text="{lex:Loc Producting}"
+                       Margin="5"
+                       DockPanel.Dock="Top"
+                       FontFamily="{StaticResource Arabic}"
+                       HorizontalAlignment="Center"
+                       FontWeight="Bold"
+                       FontSize="{StaticResource FontSizeXXLarge}"/>
+                <TextBlock Text="{lex:Loc Search}"
+                       Margin="5 0"
+                       VerticalAlignment="Center" />
+                <DockPanel>
+
+                    <Border Margin="4 0"
+                        DockPanel.Dock="Right" 
+                        Background="Black"
+                        BorderThickness="2"
+                        CornerRadius="10">
+                        <Button Content="{lex:Loc Search}"
+                        Style="{StaticResource ButtonBase}"
+                        Command="{Binding SearchCommand}" />
+                    </Border>
+                    <TextBox Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}"
+                         Width="Auto"
+                         Height="30"
+                         TextChanged="TextBox_TextChanged"
+                         VerticalContentAlignment="Center">
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Return"
+                                    Command="{Binding SearchCommand}" />
+                        </TextBox.InputBindings>
+                    </TextBox>
+                </DockPanel>
+            </DockPanel>
+            <Border BorderBrush="Black"
+                DockPanel.Dock="Top"
+                Margin="20 2"
+                BorderThickness="2"
+                Height="2" />
+            <StackPanel DockPanel.Dock="Top">
+                <DockPanel DockPanel.Dock="Top"
+                   Background="WhiteSmoke">
+                    <TextBlock Text="{lex:Loc Products}"
+                       Margin="5"
+                       FontFamily="{StaticResource Arabic}"
+                       VerticalAlignment="Center" />
+                    <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Margin="5 0">
+                        
+                        <Button
+                            Content="{lex:BLoc Readymaterialswarehouse}"
+                            Style="{StaticResource MaterialDesignFlatAccentBgButton}"                            
+                            Command="{Binding WoreHouseViewCommand}"   
+                            Foreground="White"
+                            Margin="5 0" />
+                       
+                        <Button Style="{StaticResource SmallAddButton}"
+                        Command="{Binding AddDiseaseCommand}"                                
+                        Margin="5 0" />
+
+                        <!--<Button Style="{StaticResource SmallEditButton}"
+                        Command="{Binding EditDiseaseCommand}" />-->
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                        Content="{lex:BLoc EditeItem}"
+                        Command="{Binding EditDiseaseCommand}" />
+
+                        <!--<Button 
+                  Margin="5"
+                  HorizontalAlignment="Right"
+                  Style="{StaticResource MaterialDesignFlatSecondaryDarkBgButton}"
+                  Command="{Binding ShowCustomerViewCommand}"        
+                  Content="{lex:Loc CustomerList}"
+                    />-->
+                        <Button 
+                 Margin="5"
+                            FontWeight="Bold"
+                            Width="auto"
+                 HorizontalAlignment="Right"
+                 Style="{StaticResource MaterialDesignIconButton}"
+                 Command="{Binding BackHomeCommand}"        
+                 Content="{lex:Loc Back}" />
+                    </StackPanel>
+
+
+                </DockPanel>
+                <DockPanel >
+                    <StackPanel Margin="18">
+                        <TextBlock Text="{lex:Loc CreatedDate}" />
+                        <TextBlock Text="{Binding CreatedDate}" Width="65"/>
+                    </StackPanel>
+                    <StackPanel Margin="18">
+                        <TextBlock Text="{lex:Loc ArName}" />
+                        <TextBlock Text="{Binding ArName}" Width="350"/>
+                    </StackPanel>
+                    <StackPanel Margin="18">
+                        <TextBlock Text="{lex:Loc ProductDogma}" />
+                        <TextBlock Text="{Binding Quintity}" />
+                    </StackPanel>
+                    <StackPanel Margin="18">
+                        <TextBlock Text="{lex:Loc AddedValue}" Foreground="Green"/>
+                        <TextBlock Text="{Binding AddDogmaValue}" />
+                    </StackPanel>
+                    <!--<StackPanel Margin="18">
+                        <TextBlock Text="{lex:Loc Unit}" />
+                        <TextBlock Text="{Binding Unit}" Width="50"/>
+                    </StackPanel>-->
+                    <StackPanel Margin="18">
+                        <TextBlock Text="{lex:Loc FirstTermBalance}" />
+                        <TextBlock Text="{Binding FirstTermBalance}" />
+                    </StackPanel>
+                    <StackPanel Margin="18" >
+                        <TextBlock Foreground="Blue" Text="{lex:Loc CurrentValue}"/>
+                        <TextBlock Foreground="Green" Text="{Binding ReayProductsValue}"/>
+                    </StackPanel>
+                    <StackPanel Margin="18" >
+                        <TextBlock Foreground="Blue" Text="{lex:Loc TotalWaste}"/>
+                    </StackPanel>
+                    <StackPanel Margin="18" >
+                        <TextBlock Foreground="Blue"
+                                   Text="{lex:Loc TotalWight}"
+                                   Width="140"/>
+                    </StackPanel>
+                    <StackPanel Margin="18" >
+                        <TextBlock Foreground="Blue" Text="{lex:Loc Difference}"/>                       
+                    </StackPanel>
+                    <TextBlock Text="{Binding TheMaxValue}" />
+                </DockPanel>
+            </StackPanel>
+            <Grid>                
+                <ListView ItemsSource="{Binding DiseasesList}"
+                  SelectedItem="{Binding SelectedDisease}"
+                  VirtualizingStackPanel.IsVirtualizing="True"
+                  VirtualizingStackPanel.VirtualizationMode="Recycling"
+                  HorizontalContentAlignment="Stretch"
+                  SelectionChanged="GetItemId"
+                  DockPanel.Dock="Top"
+                  x:Name="PaymentTypeList">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="2"
+                                    Background="Beige"
+                                    CornerRadius="4">
+                                <Border.InputBindings>
+                                    <MouseBinding MouseAction="RightClick"
+                                   Command="{Binding ElementName=PaymentTypeList, Path=DataContext.ShowProductsCounterCommand}"
+                                   CommandParameter="{Binding}" />
+                                </Border.InputBindings>
+                                <DockPanel Dock="Top">
+                                    <DockPanel.InputBindings>
+                                        <MouseBinding MouseAction="RightClick"
+                                           Command="{Binding ElementName=PaymentTypeList, Path=DataContext.ShowProductsCounterCommand}"
+                                           CommandParameter="{Binding}" />
+                                    </DockPanel.InputBindings>
+                                    <StackPanel Width="80" Margin="0 0 75 0">
+                                        <!--<TextBlock Text="{lex:Loc CreatedDate}" />-->
+                                        <TextBlock Text="{Binding CreatedDate,StringFormat={}dd-MM-yyy}" 
+                                                   FontSize="14"
+                                                   FontWeight="Bold"/>
+                                    </StackPanel>
+                                    <StackPanel Width="400">
+                                        <!--<TextBlock Text="{lex:Loc ArName}" />-->
+                                        <TextBlock Text="{Binding ArName}" 
+                                                   FontWeight="Bold"
+                                                   FontSize="24"/>
+                                    </StackPanel>
+                                    <StackPanel Width="75" Margin="0 0 45 0">
+                                        <!--<TextBlock Text="{lex:Loc ProductDogma}" />-->
+                                        <TextBlock Text="{Binding UnitValue,StringFormat={}{0:N0}}" 
+                                                   FontSize="24"
+                                                   FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding Unit}" />
+                                        </StackPanel>
+                                        <StackPanel >
+                                            <!--<TextBlock Text="{lex:Loc ProductDogma}" />-->
+                                            <TextBlock Text="==>" 
+                                                       FontSize="24"
+                                                       FontWeight="Bold"
+                                                       Foreground="Green"
+                                                       FlowDirection="LeftToRight"/>
+                                            <TextBlock Text="{Binding Unit}" />
+                                        </StackPanel>
+                                        <StackPanel Width="75" Margin="0 0 75 0">
+                                            <!--<TextBlock Text="{lex:Loc ProductDogma}" />-->
+                                            <TextBlock Text="{Binding AddDogmaValue,StringFormat={}{0:N0}}" 
+                                                       FontSize="20"
+                                                       Foreground="Green" />
+                                            <TextBlock Text="{Binding Unit}" />
+                                        </StackPanel>
+                                        <!--<StackPanel Margin="18">
+                                        --><!--<TextBlock Text="{lex:Loc Unit}" />--><!--
+                                        <TextBlock Text="{Binding UnitValue}" Width="70"/>
+                                        <TextBlock Text="{Binding Unit}" Width="70"/>                                        
+                                    </StackPanel>-->
+                                    <StackPanel Width="75" Margin="0 0 75 0">
+                                        <!--<TextBlock Text="{lex:Loc FirstTermBalance}" />-->
+                                        <TextBlock Text="{Binding FirstTermBalance,StringFormat={}{0:N0}}" />
+                                    </StackPanel>
+                                    <StackPanel
+                                        Width="75" 
+                                        Margin="0 0 75 0"
+                                        >
+                                        <!--<TextBlock Foreground="Blue" Text="{lex:Loc CurrentValue}"/>-->
+                                        <TextBlock Foreground="Green" Text="{Binding ReayProductsValue}" />
+                                    </StackPanel>
+                                    <StackPanel Width="75"
+                                                Margin="0 0 75 0"
+                                                >
+                                        <!--<TextBlock Foreground="Blue" Text="{lex:Loc WasteValue}"/>-->
+                                        <TextBlock Foreground="Red" Text="{Binding TotalWaste,StringFormat={}{0:N0}}"/>
+                                    </StackPanel>
+                                    <StackPanel 
+                                        Width="75" 
+                                        Margin="0 0 75 0"
+                                        >
+                                        <!--<TextBlock Foreground="Blue" Text="{lex:Loc WasteValue}"/>-->
+                                        <TextBlock Foreground="Red" Text="{Binding TotalWight,StringFormat={}{0:N0}}"                                                   
+                                                   FontSize="24"
+                                                   FontWeight="Bold"/>
+                                    </StackPanel>
+                                    <StackPanel  Width="250" 
+                                                 Margin="0 0 0 0"
+                                                 >
+                                        <!--<TextBlock Foreground="Blue" Text="{lex:Loc WasteValue}"/>-->
+                                        <TextBlock Foreground="Red" Text="{Binding TotalValue,StringFormat={}{0:N}}"                                                   
+                                                   FontSize="24"
+                                                   FontWeight="Bold"/>
+                                    </StackPanel>
+                                    <TextBlock Text="{Binding TheMaxValue}" Width="75" Margin="0 0 75 0"/>
+                                    <!--<StackPanel Visibility="{Binding IsDecreaseOfMinimumValue ,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <StackPanel Margin="18">
+                                    <TextBlock Text="{lex:Loc Status}" Foreground="Blue"/>
+                                    <TextBlock Text="{lex:Loc MinimumValueFalse}" Foreground="Red"/>
+                                </StackPanel>
+                            </StackPanel>-->
+                                    <!--<StackPanel Margin="18" Visibility="{Binding Note,Converter={StaticResource NullOrEmptyToVisibilityConverter}}">
+                                <TextBlock Foreground="Blue" Text="{lex:Loc Note}" />
+                                <TextBlock Text="{Binding Note}" />
+                            </StackPanel>-->
+                                    <DockPanel HorizontalAlignment="Right">
+                                        <Button Command="{Binding ElementName=PaymentTypeList, Path=DataContext.DeleteDiseaseCommand}"
+                                   CommandParameter="{Binding}"
+                                   Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                                   Content="{lex:BLoc Delete}"
+                                   Foreground="Red"
+                                   HorizontalAlignment="Right"
+                                                Margin="5"/>                                      
+                                    </DockPanel>
+                                </DockPanel>                                
+                            </Border>
+                        </DockPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</UserControl>

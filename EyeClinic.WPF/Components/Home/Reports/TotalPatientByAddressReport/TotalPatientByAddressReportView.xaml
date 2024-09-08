@@ -1,0 +1,48 @@
+﻿<Window x:Class="EyeClinic.WPF.Components.Home.Reports.TotalPatientByAddressReport.TotalPatientByAddressReportView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EyeClinic.WPF.Components.Home.Reports.TotalPatientByAddressReport"
+        xmlns:controls="clr-namespace:EyeClinic.WPF.Components.Controls"
+        d:DataContext="{d:DesignInstance local:TotalPatientByAddressReportViewModel,IsDesignTimeCreatable=True}"
+        mc:Ignorable="d"
+        Title="TotalPatientByAddressReportView" Height="450" Width="800">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center">
+            <TextBlock Text="عدد الصور ونوع الصور للمرضى"
+                       FontSize="28"
+                       Foreground="Black"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"></TextBlock>
+            <StackPanel HorizontalAlignment="Left"
+                        Orientation="Horizontal">
+                <ComboBox ItemsSource="{Binding Locations}"
+                          SelectedItem="{Binding SelectedLocation}"
+                          DisplayMemberPath="EnName"/>
+                <TextBlock Foreground="Wheat"
+                           Margin="3"
+                           HorizontalAlignment="Center"
+                           Text=":العنوان " />
+            </StackPanel>
+            <DockPanel>
+                <StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Total Patients"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding TotalPatients}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="Wheat" />
+                    </StackPanel>
+                </StackPanel>
+            </DockPanel>
+            <Button Command="{Binding GetReportCommand}"
+                    Content="Get Report"
+                    Background="Green" />
+        </StackPanel>
+        <controls:BusyIndicator DataContext="{Binding}" />
+    </Grid>
+</Window>

@@ -1,0 +1,1 @@
+﻿Scaffold-DbContext "Server=EYECLINIC-PC;Database=EyeClinic;User Id=sa;Password=123456;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities -context EyeClinicContext -f

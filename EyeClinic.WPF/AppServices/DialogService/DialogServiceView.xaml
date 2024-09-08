@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="EyeClinic.WPF.AppServices.DialogService.DialogServiceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EyeClinic.WPF.AppServices.DialogService"
+             mc:Ignorable="d"
+             FlowDirection="{Binding Direction}"
+             d:DesignHeight="450"
+             d:DesignWidth="900">
+    <UserControl.Resources>
+        <ItemsPanelTemplate x:Key="GridItemsPanel">
+            <Grid IsItemsHost="True" />
+        </ItemsPanelTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <ItemsControl ItemsSource="{Binding Dialogs,UpdateSourceTrigger=PropertyChanged}"
+                      ItemsPanel="{DynamicResource GridItemsPanel}" />
+    </Grid>
+</UserControl>

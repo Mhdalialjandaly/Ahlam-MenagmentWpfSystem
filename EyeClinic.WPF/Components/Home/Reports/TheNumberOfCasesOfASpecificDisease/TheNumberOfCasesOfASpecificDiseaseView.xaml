@@ -1,0 +1,15 @@
+﻿<Window x:Class="EyeClinic.WPF.Components.Reports.TheNumberOfCasesOfASpecificDisease.TheNumberOfCasesOfASpecificDisease"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EyeClinic.WPF.Components.Reports.TheNumberOfCasesOfASpecificDisease"
+        mc:Ignorable="d"
+        Title="TheNumberOfCasesOfASpecificDisease" Height="450" Width="800">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Height="50" x:Name="textBlock" HorizontalAlignment="Center" Margin="5" Text="عدد الاصابات بحالة مرضية معينة" TextWrapping="Wrap" VerticalAlignment="Center"/>
+        <TextBlock Text="number" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        </StackPanel>
+    </Grid>
+</Window>

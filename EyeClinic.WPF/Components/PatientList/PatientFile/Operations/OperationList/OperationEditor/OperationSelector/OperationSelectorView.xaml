@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="EyeClinic.WPF.Components.PatientList.PatientFile.Operations.OperationList.OperationEditor.OperationSelector.OperationSelectorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EyeClinic.WPF.Components.PatientList.PatientFile.Operations.OperationList.OperationEditor.OperationSelector"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <DockPanel Grid.Column="0"
+                       Grid.Row="1"
+                       Margin="10,10,10,10">
+        <DockPanel Dock="Top">
+            <Button Command="{Binding AddOperationCommand}"
+                            Style="{StaticResource SmallAddButton}"
+                            HorizontalAlignment="Left" />
+            <TextBlock Text="{lex:Loc AddnewOperation}"
+                               Background="Thistle" />
+        </DockPanel>
+        <DockPanel Dock="Top">
+            <Border BorderBrush="Black"
+                            CornerRadius="10"
+                            Margin="2"
+                            BorderThickness="3">
+                <StackPanel Orientation="Vertical"
+                                    Margin="3"
+                                DockPanel.Dock="Top">
+                    <TextBlock Text="{lex:Loc RightEyeOperation}"
+                                   Foreground="DarkMagenta"
+                                   Width="200"
+                                   VerticalAlignment="Center" />
+                    <ComboBox ItemsSource="{Binding Operations}"
+                                  SelectedItem="{Binding RightEyeOperation}"
+                                  DisplayMemberPath="EnName"
+                                  Width="300"
+                                  Height="40"
+                                  FontSize="20"
+                                  IsEditable="True"
+                                  Background="Transparent"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center" />
+                </StackPanel>
+            </Border>
+            <StackPanel Orientation="Vertical"
+                                Visibility="{Binding RightEyeOperation,Converter={StaticResource NullToVisibilityConverter} }"
+                                DockPanel.Dock="Top">
+                <TextBlock Text="{lex:Loc RightEyeLensType}"
+                                   Width="200"                                
+                                   FontSize="20"
+                                   FontWeight="Light"
+                                   VerticalAlignment="Center" />
+                <TextBox Text="{Binding RightEyeLensType}"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 Width="150"                                 
+                                 AcceptsReturn="True"
+                                 TextWrapping="Wrap" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical"  
+                                 Visibility="{Binding LeftEyeOperation,Converter={StaticResource NullToVisibilityConverter} }"
+                                DockPanel.Dock="Top">
+                <TextBlock Text="{lex:Loc LeftEyeLensSize}"
+                                   Width="200"
+                                    FontSize="20"
+                                   FontWeight="Light"
+                                   VerticalAlignment="Center" />
+                <TextBox Text="{Binding LeftEyeLens}"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 Width="150"
+                                 AcceptsReturn="True"
+                                 TextWrapping="Wrap" />
+            </StackPanel>
+        </DockPanel>
+        <StackPanel Orientation="Vertical"                        
+                           Margin="0 8" >
+            <TextBlock Text="{lex:Loc LeftEyeNote}"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"/>
+            <TextBox Text="{Binding LeftEyeNote}"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             Height="90"
+                             ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                             Width="220"
+                             AcceptsReturn="True"
+                             TextWrapping="Wrap" />
+        </StackPanel>
+    </DockPanel>
+</UserControl>

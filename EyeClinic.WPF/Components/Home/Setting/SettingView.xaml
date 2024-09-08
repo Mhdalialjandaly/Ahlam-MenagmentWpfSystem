@@ -1,0 +1,222 @@
+﻿<UserControl x:Class="EyeClinic.WPF.Components.Home.Setting.SettingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             Style="{StaticResource LocalizationStyle}"
+             xmlns:local="clr-namespace:EyeClinic.WPF.Components.Home.Setting"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             d:DataContext="{d:DesignInstance local:SettingViewModel, IsDesignTimeCreatable=True}"
+             mc:Ignorable="d"
+             d:DesignHeight="650"
+             d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".3*" />
+            <ColumnDefinition Width=".7*" />
+        </Grid.ColumnDefinitions>
+        <ScrollViewer  Grid.Column="0">
+            <DockPanel>
+                <Border Background="Red"
+                        CornerRadius="10"
+                        DockPanel.Dock="Top"
+                        Margin="0 8">
+                    <Button Style="{StaticResource ButtonBase}" 
+                            Background="Transparent"
+                        Content="{lex:Loc Back}"                        
+                        Command="{Binding BackHomeCommand}" />
+                </Border>
+                <Border Background="#005897"
+                        CornerRadius="10"
+                        DockPanel.Dock="Top"
+                        Margin="0 8">
+                    <Button Content="{lex:Loc AppSetting}"
+                        Command="{Binding NavigateCommand}"
+                            Background="Transparent"
+                        CommandParameter="AppSetting"
+                        DockPanel.Dock="Top"
+                        VerticalAlignment="Top"
+                        
+                        Style="{StaticResource ButtonBase}" />
+                </Border>
+                <Border Background="#005897"
+                        CornerRadius="10"
+                        DockPanel.Dock="Top"
+                        Margin="0 8">
+                <Button Content="{lex:Loc Products}"
+                            Command="{Binding NavigateCommand}"
+                            Background="Transparent"
+                            CommandParameter="Medicines"
+                        DockPanel.Dock="Top"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource ButtonBase}" />
+                </Border>
+                <Border Background="#005897"
+                        CornerRadius="10"
+                        DockPanel.Dock="Top"
+                        Margin="0 8">
+                    <Button Content="{lex:Loc ProductUnit}"
+                            Background="Transparent"
+                            Command="{Binding NavigateCommand}"
+                        CommandParameter="MedicineUsage"                        
+                        DockPanel.Dock="Top"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource ButtonBase}" />
+                </Border>
+                <!--<Border Background="#005897"
+                        CornerRadius="10"
+                        DockPanel.Dock="Top"
+                        Margin="0 8">
+                    <Button Content="{lex:Loc Diagnosis}"
+                            Background="Transparent"
+                            Command="{Binding NavigateCommand}"
+                        CommandParameter="Diagnosis"
+                        DockPanel.Dock="Top"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource ButtonBase}" />
+                </Border>-->
+                <!--<Border Background="#005897"
+                        CornerRadius="10"
+                        DockPanel.Dock="Top"
+                        Margin="0 8">
+                    <Button Content="{lex:Loc LabTests}"
+                            Background="Transparent"
+                            Command="{Binding NavigateCommand}"
+                        CommandParameter="LabTests"
+                        
+                        DockPanel.Dock="Top"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource ButtonBase}" />
+                </Border>-->
+                <!--<Border Background="#005897"
+                        CornerRadius="10"
+                        DockPanel.Dock="Top"
+                        Margin="0 8">
+                    <Button Content="{lex:Loc EyeTests}"
+                            Background="Transparent"
+                            Command="{Binding NavigateCommand}"
+                        CommandParameter="EyeTests"
+                        DockPanel.Dock="Top"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource ButtonBase}" />
+                </Border>-->
+                <Border Background="#005897"
+                        CornerRadius="10"
+                        DockPanel.Dock="Top"
+                        Margin="0 8">
+                    <Button Content="{lex:Loc SidProducts}"
+                            Background="Transparent"
+                            Command="{Binding NavigateCommand}"
+                        CommandParameter="Tests"
+                       
+                        DockPanel.Dock="Top"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource ButtonBase}" />
+                </Border>
+                <!--<Border Background="#005897"
+                        CornerRadius="10"
+                        DockPanel.Dock="Top"
+                        Margin="0 8">
+                    <Button Content="{lex:Loc Diseases}"
+                            Background="Transparent"
+                            Command="{Binding NavigateCommand}"
+                        CommandParameter="Diseases"
+                        DockPanel.Dock="Top"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource ButtonBase}" />
+                </Border>-->
+                <Border Background="#005897"
+                        CornerRadius="10"
+                        DockPanel.Dock="Top"
+                        Margin="0 8">
+                    <Button Content="{lex:Loc Locations}"
+                            Background="Transparent"
+                            Command="{Binding NavigateCommand}"
+                        CommandParameter="Locations"
+                        
+                        DockPanel.Dock="Top"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource ButtonBase}" />
+                </Border>
+                <Border Background="#005897"
+                        CornerRadius="10"
+                        DockPanel.Dock="Top"
+                        Margin="0 8">
+                    <Button Content="{lex:Loc ProductsType}"
+                            Background="Transparent"
+                            Command="{Binding NavigateCommand}"
+                        CommandParameter="MedicalCenters"
+                        DockPanel.Dock="Top"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource ButtonBase}" />
+                </Border>
+                <!--<Border Background="#005897"
+                        CornerRadius="10"
+                        DockPanel.Dock="Top"
+                        Margin="0 8">
+                    <Button Content="{lex:Loc Operations}"
+                            Background="Transparent"
+                            Command="{Binding NavigateCommand}"
+                        CommandParameter="Operations"
+                        
+                        DockPanel.Dock="Top"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource ButtonBase}" />
+                </Border>-->
+                <Border Background="#005897"
+                        CornerRadius="10"
+                        DockPanel.Dock="Top"
+                        Margin="0 8">
+                    <Button Content="{lex:Loc Note}"
+                            Background="Transparent"
+                            Command="{Binding NavigateCommand}"
+                        CommandParameter="NotPayReasons"
+                        DockPanel.Dock="Top"
+                        
+                        VerticalAlignment="Top"
+                        Style="{StaticResource ButtonBase}" />
+                </Border>
+                <Border Background="#005897"
+                        CornerRadius="10"
+                        DockPanel.Dock="Top"
+                        Margin="0 8">
+                    <Button Content="{lex:Loc OrderType}"
+                            Background="Transparent"
+                            Command="{Binding NavigateCommand}"
+                            CommandParameter="VisitCost"
+                            DockPanel.Dock="Top"
+                            VerticalAlignment="Top"
+                            Style="{StaticResource ButtonBase}" />
+                </Border>
+                <Border Background="#005897"
+                        CornerRadius="10"
+                        DockPanel.Dock="Top"
+                        VerticalAlignment="Top"
+                        Margin="0 8" >
+                    <Button Content="{lex:Loc Users}"
+                            Background="Transparent"
+                            Command="{Binding NavigateCommand}"
+                        CommandParameter="Users"
+                        DockPanel.Dock="Top"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource ButtonBase}" />
+                </Border>
+                <!--<Border Background="#005897"
+                        CornerRadius="10"
+                        DockPanel.Dock="Top"
+                        VerticalAlignment="Top"
+                        Margin="0 8" >
+                    <Button Content="{lex:Loc DeniedUsers}"
+                            Background="Transparent"
+                            Command="{Binding NavigateCommand}"
+                        CommandParameter="DeniedUsers"
+                        DockPanel.Dock="Top"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource ButtonBase}" />
+                </Border>-->
+            </DockPanel>
+        </ScrollViewer>
+            <ContentControl Content="{Binding Content}"
+                            Grid.Column="1"/>
+    </Grid>
+</UserControl>

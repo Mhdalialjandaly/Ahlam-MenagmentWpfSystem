@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="EyeClinic.WPF.Components.PatientList.PatientVisitList.VisitNote.VisitNoteList.VisitNoteListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             Style="{StaticResource LocalizationStyle}"
+             xmlns:local="clr-namespace:EyeClinic.WPF.Components.PatientList.PatientVisitList.VisitNote.VisitNoteList"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             d:DataContext="{d:DesignInstance local:VisitNoteListViewModel, IsDesignTimeCreatable=True}"
+             Background="LightBlue"
+             mc:Ignorable="d" >
+    <DockPanel         
+        Background="AliceBlue" 
+               HorizontalAlignment="Center">
+        <Border Background="black"
+                        Margin="5" 
+                        DockPanel.Dock="Bottom"
+                        HorizontalAlignment="Left"
+                        CornerRadius="10">
+            <Button 
+                            Foreground="LightYellow"                     
+                            Style="{StaticResource ButtonBase}"
+                            Background="Transparent"
+                            Command="{Binding CancelCommand}" 
+                            Content="{lex:Loc Back}"/>
+        </Border>
+       
+        <TextBlock 
+                        DockPanel.Dock="Top"
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"
+                            FontSize="{StaticResource FontSizeXXLarge}"
+                            Text="{lex:Loc VisitNotes}"/>
+        <ListView ItemsSource="{Binding PatientVisits}"
+                  DockPanel.Dock="Top"
+                  ItemContainerStyle="{StaticResource TransparentListViewItem}"
+                  Background="Transparent"
+                  BorderBrush="Transparent"
+                  MinWidth="800"
+                  BorderThickness="0"
+                  HorizontalContentAlignment="Stretch"
+                  Margin="12">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Vertical" ScrollViewer.CanContentScroll="True"
+                                   />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border CornerRadius="26"
+                            BorderBrush="Gray"
+                            Height="500"
+                            Width="700"
+                            Background="SkyBlue"
+                            BorderThickness="2"
+                            Margin="0 4">
+                        <StackPanel Margin="16">
+                            <TextBlock Text="{Binding VisitDate, StringFormat={}{0:dd/MM/yyyy}}"
+                                       Margin="0 4"
+                                       FontWeight="Bold"
+                                       FontSize="{StaticResource FontSizeXLarge}" />
+                            <ScrollViewer Height="320">
+                                <TextBlock Text="{Binding Notes}"
+                                           Margin="12 4"
+                                           FontSize="26"
+                                           FontFamily="Times New Roman"
+                                           FlowDirection="RightToLeft"
+                                           ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                           FontWeight="Bold"
+                                           Background="Transparent"
+                                           Padding="12"
+                                           TextWrapping="Wrap" />
+                            </ScrollViewer>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </DockPanel>
+</UserControl>

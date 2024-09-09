@@ -1,22 +1,17 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Forms;
 using EyeClinic.Core;
 using EyeClinic.DataAccess.Entities;
 using EyeClinic.DataAccess.IRepositories;
 using EyeClinic.Model.Custom;
-using EyeClinic.WPF.AppServices.NotificationService;
 using EyeClinic.WPF.Base.Extends;
 using EyeClinic.WPF.Components.Shell;
 using EyeClinic.WPF.Components.Shell.QueueWindow;
 using EyeClinic.WPF.Setup;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
-using Syncfusion.Data.Extensions;
 using Unity;
 using WPFLocalizeExtension.Engine;
 

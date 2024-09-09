@@ -79,11 +79,11 @@ namespace EyeClinic.WPF.Components.Home.ReadyItems
             foreach (var item in DiseasesList)
             {
                 item.TotalWight = ReadyProducts.Where(x => x.ProductId == item.Id && x.DeletedDate == null).Sum(x => x.TotalValue);
-                item.TotalWaste = ReadyProducts.Where(x => x.ProductId == item.Id && x.DeletedDate == null).Sum(x => x.WasteValue);                 
+                item.TotalWaste = ReadyProducts.Where(x => x.ProductId == item.Id && x.DeletedDate == null).Sum(x => x.WasteValue);
                 item.AddDogmaValue = ReadyProducts.Where(x => x.ProductId == item.Id && x.DeletedDate == null).Sum(x => x.IsIncreaseDogmaValue);
                 double totalExportedValue = ReadyProducts.Where(x => x.ProductId == item.Id && x.DeletedDate == null).Sum(x => x.ExportedValue);
                 double totalcreatedvalue = item.UnitValue + Convert.ToDouble(item.FirstTermBalance);
-            
+
                 item.TotalValue = (totalcreatedvalue + item.AddDogmaValue) - (item.TotalWaste + item.TotalWight + totalExportedValue);
                 //BusyExecute(async () => {await _tests.Update(item); });
             }
@@ -103,13 +103,7 @@ namespace EyeClinic.WPF.Components.Home.ReadyItems
             }                  
         }
 
-        public void GetMaterialValue()
-        {
-           BusyExecute(async () => { 
-                SelectedMaterial = await _wareHouseReadyMaterialRepository.GetByTestId(SelectedDisease); 
-           });
-        }
-
+       
        
         public ObservableCollection<TestDto> DiseasesList { get; set; }
         public TestDto SelectedDisease { get; set; }
@@ -281,5 +275,13 @@ namespace EyeClinic.WPF.Components.Home.ReadyItems
                 _container.Navigate(cartoonItemsView.GetView() as ReadyItemsProductingView);
             });
         } 
+        
+        public void GetMaterialValue()
+        {
+            BusyExecute(async () => {
+                SelectedMaterial = await _wareHouseReadyMaterialRepository.GetByTestId(SelectedDisease);
+            });
+        }
+
     }
 }

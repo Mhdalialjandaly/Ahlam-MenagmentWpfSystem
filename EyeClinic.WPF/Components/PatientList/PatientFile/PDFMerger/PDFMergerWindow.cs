@@ -21,7 +21,7 @@ namespace EyeClinic.WPF.Components.PatientList.PatientFile.PDFMerger
         {
             InitializeComponent();
         }
-        Notifying notifying = new Notifying();
+     
         string targetPath = @"C:\Users\MajR\Desktop\", uploadedfile1name, uploadedfile2name;
         public List<string> Paths = new List<string>();
         public List<string> Paths2 = new List<string>();
@@ -102,19 +102,19 @@ namespace EyeClinic.WPF.Components.PatientList.PatientFile.PDFMerger
                     TheResult = targetPath + "\\" + "(" + uploadedfile2name + ")" + "-" + uploadedfile1name;
                     MergePDFs(TheResult, TextPathFile1.Text, TextPathFile2.Text);
 
-                    notifying.ShowNotificationPopup("نجاح العملية", "تم الدمج", true);
+                    
                 }
                 else
                 {
                     TheResult = targetPath + "\\" + "(" + uploadedfile2name + ")" + "-" + uploadedfile1name;
                     MergePDFs(TheResult, TextPathFile1.Text, TextPathFile2.Text);
-                    notifying.ShowNotificationPopup("نجاح العملية", "تم الدمج", true);
+                  
                 }
             }
             catch (Exception)
             {
 
-                notifying.ShowNotificationPopup("انتبه", "هناك حقل فارغ", true);
+                
             }
         }
 
@@ -131,19 +131,19 @@ namespace EyeClinic.WPF.Components.PatientList.PatientFile.PDFMerger
                     TheResult = targetPath + "\\" + "(" + uploadedfile2name + ")" + "-" + uploadedfile1name;
                     MergePDFs(TheResult, TextPathFile1.Text, TextPathFile2.Text);
                   
-                    notifying.ShowNotificationPopup("نجاح العملية", "تم الدمج", true);
+                    
                 }
                 else
                 {
                     TheResult = targetPath + "\\" + "(" + uploadedfile2name + ")" + "-" + uploadedfile1name;
                     MergePDFs(TheResult, TextPathFile1.Text, TextPathFile2.Text);                    
-                    notifying.ShowNotificationPopup("نجاح العملية", "تم الدمج", true);
+                  
                     this.Close();
                 }
             }
             catch (Exception)
             {
-                notifying.ShowNotificationPopup("انتبه", "هناك حقل فارغ", true);
+               
                 this.Close();
             }
         }

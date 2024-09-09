@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EyeClinic.Core;
@@ -10,16 +9,12 @@ using EyeClinic.WPF.Components.Dialogs.PasswordInput;
 using EyeClinic.WPF.Components.Home.AddressBook;
 using EyeClinic.WPF.Components.Home.CartoonForm;
 using EyeClinic.WPF.Components.Home.Clinic;
-using EyeClinic.WPF.Components.Home.EyeImages;
 using EyeClinic.WPF.Components.Home.Markets;
 using EyeClinic.WPF.Components.Home.Operation;
-using EyeClinic.WPF.Components.Home.OperationSchedule;
 using EyeClinic.WPF.Components.Home.ReadyItems;
 using EyeClinic.WPF.Components.Home.Reception;
 using EyeClinic.WPF.Components.Home.Reports;
 using EyeClinic.WPF.Components.Home.Setting;
-using EyeClinic.WPF.Components.PatientList.PatientFile.Operations;
-using EyeClinic.WPF.Components.Reports;
 using EyeClinic.WPF.DataModel;
 using EyeClinic.WPF.Setup;
 using Unity;
@@ -93,8 +88,7 @@ namespace EyeClinic.WPF.Components.Home
 
             switch (target) {
                 case nameof(Services.Reception):
-                    if (!_container.CheckUserRole(UserRoles.Seller,UserRoles.Admin))
-                        return;
+                   
                     BusyExecute(async () => {
                         var reception = _container.Resolve<ReceptionViewModel>();
                         await reception.Initialize();
@@ -102,11 +96,7 @@ namespace EyeClinic.WPF.Components.Home
                     });
                     break;
                 case nameof(Services.Clinic):
-                    if (!_container.CheckUserRole(UserRoles.Seller
-                        ,UserRoles.Admin
-                        ,UserRoles.Administrative
-                        ,UserRoles.Designer))
-                        return;
+                   
                     BusyExecute(async () => {
                         var clinic = _container.Resolve<ClinicViewModel>();
                         await clinic.Initialize();
@@ -114,8 +104,7 @@ namespace EyeClinic.WPF.Components.Home
                     });
                     break;
                 case nameof(Services.Payments):
-                    if (!_container.CheckUserRole(UserRoles.Cartoon,UserRoles.Admin,UserRoles.Administrative))
-                        return;
+                    
                     BusyExecute(async () => 
                     {
                         var cartoonView = _container.Resolve<CartoonViewModel>();
@@ -124,20 +113,15 @@ namespace EyeClinic.WPF.Components.Home
                     });
                     break;
                 case nameof(Services.Operations):
-                    if (!_container.CheckUserRole(UserRoles.Producters,UserRoles.Admin,UserRoles.Designer, UserRoles.Administrative,UserRoles.Seller))
-                        return;
-                   
+                                    
                         BusyExecute(async () =>
                         {
                             var readyItems = _container.Resolve<ReadyItemsViewModel>();
                             await readyItems.Initialize();
                             _container.Navigate(readyItems.GetView() as ReadyItemsView);
-                        });
-                    
+                        });                    
                     break;
-                case nameof(Services.PatientEyeImages):
-                    if (!_container.CheckUserRole(UserRoles.Admin,UserRoles.Marketer))
-                        return;
+                case nameof(Services.PatientEyeImages):                   
                     BusyExecute(async () => {
                         var eyeImages = _container.Resolve<MarketsViewModel>();
                         await eyeImages.Initialize();
@@ -151,8 +135,7 @@ namespace EyeClinic.WPF.Components.Home
                         _container.Navigate(report.GetView() as ReportsView);                 
                     break;
                 case nameof(Services.Settings):
-                    if (!_container.CheckUserRole(UserRoles.Admin))
-                        return;
+                    
                     BusyExecute(async () => {
                         var setting = _container.Resolve<SettingViewModel>();
                         await setting.Initialize();
@@ -160,8 +143,7 @@ namespace EyeClinic.WPF.Components.Home
                     });
                     break;
                 case nameof(Services.AddressBook):
-                    if (!_container.CheckUserRole(UserRoles.Sender, UserRoles.Admin))
-                        return;
+                   
                     BusyExecute(async () => {
                         var setting = _container.Resolve<AddressBookViewModel>();
                         await setting.Initialize();
@@ -169,8 +151,7 @@ namespace EyeClinic.WPF.Components.Home
                     });
                     break;
                 case nameof(Services.OperationView):
-                    if (!_container.CheckUserRole(UserRoles.AdministrativeAssistant, UserRoles.Admin))
-                        return;
+                    
                     BusyExecute(async () => {
                         var setting = _container.Resolve<OperationViewModel>();
                         await setting.Initialize();

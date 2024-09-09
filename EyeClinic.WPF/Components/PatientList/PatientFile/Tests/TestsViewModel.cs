@@ -299,11 +299,7 @@ namespace EyeClinic.WPF.Components.PatientList.PatientFile.Tests
         }
         public void EditeRow(PatientVisitsTestDto patientVisitsTest)
         {
-            if (patientVisitsTest.Locked && _container.CheckUserRole(UserRoles.Admin, UserRoles.Administrative, UserRoles.AdministrativeAssistant))
-            {
-                MessageBox.Show("not for Edit", "is locked");
-                return;
-            }
+           
             EditeTheTests(patientVisitsTest);
             //var password = _container.Resolve<PasswordInputViewModel>();
             //password.OnSuccessLogin += () => EditeTheTests(patientVisitsTest);

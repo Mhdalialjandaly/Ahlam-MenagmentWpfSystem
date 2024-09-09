@@ -315,8 +315,7 @@ namespace EyeClinic.WPF.Components.Home.Reception.Queue
         public void BackToQueue(QueueItem queue) {
             //if (_container.CheckUserRoleSilent(UserRoles.Reception))
             //    return;
-            if (!_container.CheckUserRole(UserRoles.Admin,UserRoles.Seller))
-                return;
+           
             if (queue.PatientVisit.VisitStatus == (int)PatientVisitStatus.Created) {
                 _container.Resolve<INotificationService>()
                     .Warning("This patient already in the Queue");

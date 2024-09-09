@@ -107,9 +107,7 @@ namespace EyeClinic.WPF.Components.Home.Markets
         }
 
         private void EditeMarketProduct()
-        {
-            if (!_container.CheckUserRole(UserRoles.Admin, UserRoles.Administrative, UserRoles.Designer,UserRoles.Marketer))
-                return;
+        {          
             if (SelectedMarketProducts == null)
             { _notificationService.Warning("Select The Product"); return; }
 

@@ -331,8 +331,7 @@ namespace EyeClinic.WPF.Components.Home.Operation.OrderQueue
             {
                 //if (_container.CheckUserRoleSilent(UserRoles.Reception))
                 //    return;
-                if (!_container.CheckUserRole(UserRoles.Admin, UserRoles.Seller))
-                    return;
+               
                 if (queue.PublicCustomerOrder.OrderStatus == (int)PublicCustomerOrderStatus.Created)
                 {
                     _container.Resolve<INotificationService>()

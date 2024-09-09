@@ -144,17 +144,19 @@ namespace EyeClinic.WPF.Components.Dialogs.PasswordInput
     public enum UserRoles
     {
         Admin = 1,
-        Seller = 9,
-        Cartoon = 7,
-        Sender = 5,
-        Designer= 6,
-        Reporter= 8,
-        Quality= 10 ,
-        Producters = 11,
-        Administrative = 4,
-        AdministrativeAssistant =3,
-        Employee = 2,
-        Marketer=55
+        Selleing = 2,
+        MakeingReady1 = 3,
+        MakeingReady2 = 4,
+        HalvaDepartment = 5,
+        Reporter= 6,
+        Quality = 7 ,
+        OilAndVingerDepartment = 8,
+        CookingDepartment = 9,
+        MilksDepartment =10,
+        JamsDepartment = 11,
+        CannedDepartment= 12,
+        GlassesWareHouse = 13,
+
 
     }
 }

@@ -251,8 +251,6 @@
                                         <TextBlock Foreground="Red" Text="{Binding TotalWaste,StringFormat={}{0:N0}}"/>
                                     </StackPanel>
                                     <StackPanel 
-                                        Width="75" 
-                                        Margin="0 0 75 0"
                                         >
                                         <!--<TextBlock Foreground="Blue" Text="{lex:Loc WasteValue}"/>-->
                                         <TextBlock Foreground="Red" Text="{Binding TotalWight,StringFormat={}{0:N0}}"                                                   

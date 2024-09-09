@@ -455,9 +455,7 @@ namespace EyeClinic.WPF.Components.PatientList.PatientFile
             }
         }
 
-        public void FinishVisit() {
-            if (!_container.CheckUserRoleSilent(UserRoles.Seller,UserRoles.Admin,UserRoles.AdministrativeAssistant))
-                return;
+        public void FinishVisit() {           
 
             if (SelectedVisit == null)
                 SelectedVisit = (PatientVisits?.DataContext as PatientVisitListViewModel)?

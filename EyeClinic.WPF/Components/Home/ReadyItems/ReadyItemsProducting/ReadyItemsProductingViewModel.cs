@@ -323,8 +323,7 @@ namespace EyeClinic.WPF.Components.Home.ReadyItems.ReadyItemsProducting
         }
         private void ShowCartoonList(ReadyProductDbo dto)
         {
-            if (!_container.CheckUserRole(UserRoles.Admin, UserRoles.Administrative))
-                return;
+           
             if (SelectedCartoonItem == null)
                 return;
 
@@ -359,7 +358,7 @@ namespace EyeClinic.WPF.Components.Home.ReadyItems.ReadyItemsProducting
             AddDogmaValue = AddValue;
             UnitValue = testDto.TotalResult + AddValue;
             SelectedItem = testDto.ArName;
-            TotalWaste = CartoonItemDataList.Sum(e => e.WasteValue);
+            TotalWaste = CartoonItemDataList.Sum(e => e.TotalWaste);
             TotalWight = CartoonItemDataList.Sum(e => e.TotalValue);
             TotalExported = CartoonItemDataList.Sum(e => e.ExportedValue);
             

@@ -82,9 +82,9 @@ namespace EyeClinic.WPF.Components.Home.ReadyItems
                 item.TotalWaste = ReadyProducts.Where(x => x.ProductId == item.Id && x.DeletedDate == null).Sum(x => x.WasteValue);
                 item.AddDogmaValue = ReadyProducts.Where(x => x.ProductId == item.Id && x.DeletedDate == null).Sum(x => x.IsIncreaseDogmaValue);
                 double totalExportedValue = ReadyProducts.Where(x => x.ProductId == item.Id && x.DeletedDate == null).Sum(x => x.ExportedValue);
-                double totalcreatedvalue = item.UnitValue + Convert.ToDouble(item.FirstTermBalance);
+                //double totalcreatedvalue = item.UnitValue + Convert.ToDouble(item.FirstTermBalance);
 
-                item.TotalValue = (totalcreatedvalue + item.AddDogmaValue) - (item.TotalWaste + item.TotalWight + totalExportedValue);
+                //item.TotalValue = (totalcreatedvalue + item.AddDogmaValue) - (item.TotalWaste + item.TotalWight + totalExportedValue);
                 //BusyExecute(async () => {await _tests.Update(item); });
             }
 
@@ -142,8 +142,7 @@ namespace EyeClinic.WPF.Components.Home.ReadyItems
 
         private void EditDisease()
         {
-            if (!_container.CheckUserRole(UserRoles.Admin,UserRoles.Administrative,UserRoles.Designer))
-                return;
+            
             if (SelectedDisease == null)
             {  _NotificationService.Warning("الرجاء اختيار المنتج"); return; }
 

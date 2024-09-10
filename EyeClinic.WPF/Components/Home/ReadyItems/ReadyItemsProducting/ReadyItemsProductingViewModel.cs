@@ -10,9 +10,7 @@ using EyeClinic.WPF.Components.Home.ReadyItems.ReadyItemsProducting.ReadyItemsPr
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Unity;
@@ -21,11 +19,7 @@ using EyeClinic.Core;
 using EyeClinic.WPF.Setup;
 using Syncfusion.Data.Extensions;
 using EyeClinic.WPF.Components.Home.ReadyItems.ReadyItemsProducting.AddDogmaEditer;
-using EyeClinic.WPF.Components.Home.ReadyItems.ReadyItemsProducting.AddItemsViewModel;
 using EyeClinic.WPF.AppServices.NotificationService;
-using EyeClinic.DataAccess.Migrations;
-using Syncfusion.Windows.Shared;
-using System.Windows;
 using EyeClinic.DataAccess.Entities;
 
 

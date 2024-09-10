@@ -255,12 +255,11 @@ Height="40" />
                                         <TextBlock 
                                                  Text="{Binding RowIndex,StringFormat={}{0}-}" 
                                                  FontSize="18"
-                                                 Margin="10 0 0 0"
                                                  Foreground="Red"
                                                  Visibility="{Binding MedicineType, Converter={StaticResource NullOrEmptyToVisibilityConverter}}"
                                                />
                                         <TextBlock Text="{Binding MedicineName}"
-                                                   Margin="10 0 0 0"
+                                                   Margin="50 0 0 0"
                                                    Foreground="{Binding MedicineType, Converter={StaticResource MedicineToColorConverter}}"
                                                    FontSize="18"
                                                    FontWeight="Bold"

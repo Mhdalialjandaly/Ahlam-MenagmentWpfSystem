@@ -10,7 +10,7 @@ namespace EyeClinic.WPF.Components.Home.Reception.Queue
 
         public static List<QueueFilterType> GetAll() {
             return new List<QueueFilterType>()
-            {
+            {   
                 new() {DisplayName = "Started", VisitStatus = PatientVisitStatus.Started},
                 new() {DisplayName = "Pending", VisitStatus = PatientVisitStatus.Created},
                 new() {DisplayName = "Done", VisitStatus = PatientVisitStatus.Finished},

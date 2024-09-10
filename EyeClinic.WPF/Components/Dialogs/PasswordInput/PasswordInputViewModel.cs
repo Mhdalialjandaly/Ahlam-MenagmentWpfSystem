@@ -54,8 +54,6 @@ namespace EyeClinic.WPF.Components.Dialogs.PasswordInput
                 view.PasswordBoxControl.Password += obj;
             }
         }
-
-
         public ICommand InputCommand { get; set; }
         public ICommand CancelCommand { get; set; }
         public ICommand OkCommand { get; set; }
@@ -124,8 +122,7 @@ namespace EyeClinic.WPF.Components.Dialogs.PasswordInput
 
                 }
             }
-        }
-     
+        }     
 
         private void RemoveLastCharacter()
         {
@@ -155,8 +152,13 @@ namespace EyeClinic.WPF.Components.Dialogs.PasswordInput
         MilksDepartment =10,
         JamsDepartment = 11,
         CannedDepartment= 12,
-        GlassesWareHouse = 13,
-
-
+        GlassesWarHouse = 13,
+        PlasticWarHouse = 14, 
+        BoxesWarHouse = 15, 
+        WarHouse1 = 16, 
+        WarHouse2 = 17,        
+        PackingWarHouse = 18, 
+        HelpMaterialsWarHouse = 19,
+        ArchiveDepartment = 20
     }
 }

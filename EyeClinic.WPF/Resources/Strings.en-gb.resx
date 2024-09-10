@@ -673,7 +673,7 @@
     <value>سبب عدم الدفع  </value>
   </data>
   <data name="Referral" xml:space="preserve">
-    <value>الاحالة</value>
+    <value>زبون داخلي</value>
   </data>
   <data name="OperationsList" xml:space="preserve">
     <value>قائمة العمليات</value>

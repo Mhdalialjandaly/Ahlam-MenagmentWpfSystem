@@ -54,7 +54,26 @@ namespace EyeClinic.WPF.Components.Home.Reception
                 }
             });
         }
+        public async Task Initialize(bool isOperationDepartment)
+        {
+            var patientList = _container.Resolve<PatientListViewModel>();
+            patientList.isoperation = isOperationDepartment;
+            await patientList.Initialize();
+            patientList.OnAddPatientToQueue += PatientListOnAddToQueueAction;
+            patientList.OnSelectPatient += OnPatientSelected;
+            PatientList = patientList.GetView() as PatientListView;
 
+            PatientEditorModule = _container.Resolve<PatientEditorViewModel>();
+            PatientEditorModule.OnPatientGlassChanged += (sender, glass) => {
+                SelectedPatient.PatientGlass = glass;
+            };
+
+            QueueModule = _container.Resolve<QueueViewModel>();
+            QueueModule.IsReceptionMode = true;
+            await QueueModule.Initialize();
+
+            Navigate("Queue");
+        }
         public override async Task Initialize() {
             var patientList = _container.Resolve<PatientListViewModel>();
             await patientList.Initialize();

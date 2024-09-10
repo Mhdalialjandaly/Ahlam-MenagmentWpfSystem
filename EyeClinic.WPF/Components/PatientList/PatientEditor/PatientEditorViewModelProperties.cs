@@ -40,7 +40,7 @@ namespace EyeClinic.WPF.Components.PatientList.PatientEditor
 
         public List<GlassDto> Glasses { get; set; }
         public GlassDto SelectedGlass { get; set; }
-
+        public bool isoperationDepartment { get; set; }
         public bool IsSmoking { get; set; }
         public bool IsDrinking { get; set; }
         public bool IsDrawing { get; set; }

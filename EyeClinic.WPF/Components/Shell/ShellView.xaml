@@ -17,7 +17,7 @@
                             DockPanel.Dock="Bottom" />
             <ContentControl Content="{Binding Header,UpdateSourceTrigger=PropertyChanged}"
                             DockPanel.Dock="Top" />
-            <Grid>                
+            <Grid> 
                 <Grid.Background>
                     <!--<ImageBrush ImageSource="/Images/Backgrounds/bg1.jpg" />-->
                     <LinearGradientBrush EndPoint="0.504,1.5"
@@ -30,8 +30,10 @@
                                       Offset="0.650" />
                     </LinearGradientBrush>
                 </Grid.Background>
-                <Border Background="Transparent"
+                <Border 
+                     Background="White"
                      CornerRadius="8"
+                     Opacity="0.3"
                      Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"
                      Width="75"
                      Height="50">

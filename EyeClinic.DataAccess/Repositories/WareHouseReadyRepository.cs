@@ -2,13 +2,8 @@
 using EyeClinic.DataAccess.Base;
 using EyeClinic.DataAccess.Entities;
 using EyeClinic.DataAccess.IRepositories;
-using EyeClinic.DataAccess.Migrations;
 using EyeClinic.Model;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EyeClinic.DataAccess.Repositories

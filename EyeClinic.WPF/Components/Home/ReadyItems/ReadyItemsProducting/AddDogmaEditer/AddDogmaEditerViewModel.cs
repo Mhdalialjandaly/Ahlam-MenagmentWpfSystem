@@ -1,18 +1,10 @@
 ﻿using EyeClinic.DataAccess.IRepositories;
-using EyeClinic.DataAccess.Migrations;
 using EyeClinic.Model;
 using EyeClinic.WPF.AppServices.NotificationService;
 using EyeClinic.WPF.Base;
-using Syncfusion.Windows.Shared;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Input;
 using operation = EyeClinic.Core.Enums.Operation;
 namespace EyeClinic.WPF.Components.Home.ReadyItems.ReadyItemsProducting.AddDogmaEditer
 {

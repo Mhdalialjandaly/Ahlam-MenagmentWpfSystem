@@ -30,12 +30,7 @@ namespace EyeClinic.DataAccess
             CreateMap<Customer, Model.CustomerDto>();
             CreateMap<Disease, Model.DiseaseDto>();
             CreateMap<CartoonLabels, Model.CartoonLabelsDto>().ReverseMap();
-
-            CreateMap<Model.OrderQueueDto, OrderQueue>().PreserveReferences();
-            CreateMap<OrderQueue, Model.OrderQueueDto>();
-
-            CreateMap<Model.OrderQueueDto, Model.PublicCustomerOrderDto>().ReverseMap();
-            CreateMap<OrderQueue, Model.PublicCustomerOrderDto>().ReverseMap();
+         
 
             CreateMap<Model.QueueDto, Queue>().PreserveReferences();
             CreateMap<Queue, Model.QueueDto>();            
@@ -71,9 +66,7 @@ namespace EyeClinic.DataAccess
                 .PreserveReferences();
             CreateMap<Patient, Model.PatientDto>();
 
-            CreateMap<Model.PublicCustomerDto, PublicCustomer>()
-               .PreserveReferences();
-            CreateMap<PublicCustomer, Model.PublicCustomerDto>();
+            
 
             CreateMap<Model.PatientGlassDto, PatientGlass>().PreserveReferences();
             CreateMap<PatientGlass, Model.PatientGlassDto>();
@@ -86,8 +79,7 @@ namespace EyeClinic.DataAccess
             CreateMap<Model.PatientVisitDto, PatientVisit>().PreserveReferences();
             CreateMap<PatientVisit, Model.PatientVisitDto>();
 
-            CreateMap<Model.PublicCustomerOrderDto, PublicCustomerOrder>().PreserveReferences();
-            CreateMap<PublicCustomerOrder, Model.PublicCustomerOrderDto>();
+          
 
             CreateMap<Model.PatientVisitGlassDto, PatientVisitGlass>().PreserveReferences();
             CreateMap<PatientVisitGlass, Model.PatientVisitGlassDto>();
@@ -95,8 +87,7 @@ namespace EyeClinic.DataAccess
             CreateMap<Model.PatientSickStoryDto, PatientSickStory>().PreserveReferences();
             CreateMap<PatientSickStory, Model.PatientSickStoryDto>();
 
-            CreateMap<Model.CustomerNoteStoryDto, CustomerNoteStory>().PreserveReferences();
-            CreateMap<CustomerNoteStory, Model.CustomerNoteStoryDto>();
+      
 
             CreateMap<Model.PatientVisitsTestDto, PatientVisitsTest>()
                 .ForMember(e => e.PatientVisit, e => e.Ignore())

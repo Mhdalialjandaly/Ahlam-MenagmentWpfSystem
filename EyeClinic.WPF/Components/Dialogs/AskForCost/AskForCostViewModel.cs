@@ -37,9 +37,7 @@ namespace EyeClinic.WPF.Components.Dialogs.AskForCost
             _notificationService = notificationService;
         }
 
-        public override Task Initialize() {
-            throw new Exception("use override with param");
-        }
+        
 
         public async Task Initialize(PatientDto patient) {
             GetView();
@@ -47,6 +45,9 @@ namespace EyeClinic.WPF.Components.Dialogs.AskForCost
             VisitDate = DateTime.Now.Date;
             NotPayReasons = await _notPayReasonRepository.GetAll();
             VisitTypes = await _visitTypeRepository.GetAll();
+            if (patient.Referral)
+                SelectedVisitType = VisitTypes.Where(e => e.Id == 2).FirstOrDefault();
+            
         }
 
         public int Id { get; set; }

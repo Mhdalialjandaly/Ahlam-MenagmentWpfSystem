@@ -315,26 +315,28 @@ namespace EyeClinic.WPF.Components.Home.Reception.Queue
         public void BackToQueue(QueueItem queue) {
             //if (_container.CheckUserRoleSilent(UserRoles.Reception))
             //    return;
-           
-            if (queue.PatientVisit.VisitStatus == (int)PatientVisitStatus.Created) {
-                _container.Resolve<INotificationService>()
-                    .Warning("This patient already in the Queue");
-                return;
-            }
+            _dialogService.ShowConfirmationMessage("هل تريد اعادة الطلب", async () => {
+                if (queue.PatientVisit.VisitStatus == (int)PatientVisitStatus.Created)
+                {
+                    _container.Resolve<INotificationService>()
+                        .Warning("This patient already in the Queue");
+                    return false;
+                }                
+                    await _patientVisitRepository.ChangeVisitStatus(queue.PatientVisit.Id,
+                        PatientVisitStatus.Created);
+                    ForceFilter = true;
+                    await Initialize();
 
-
-            BusyExecute(async () => {
-                await _patientVisitRepository.ChangeVisitStatus(queue.PatientVisit.Id,
-                    PatientVisitStatus.Created);
-                ForceFilter = true;
-                await Initialize();
-
-                if (SelectedFilter.VisitStatus != PatientVisitStatus.Created) {
-                    QueueList.Remove(queue);
-                    BaseQueueList.Remove(queue);
-                    QueueListHasData = !QueueList.IsNullOrEmpty();
-                }
+                    if (SelectedFilter.VisitStatus != PatientVisitStatus.Created)
+                    {
+                        QueueList.Remove(queue);
+                        BaseQueueList.Remove(queue);
+                        QueueListHasData = !QueueList.IsNullOrEmpty();
+                    }
+              
+                return true;
             });
+           
         }
 
         private void BackHome() {

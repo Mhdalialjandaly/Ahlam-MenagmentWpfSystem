@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using EyeClinic.Core;
 using EyeClinic.Core.Enums;
+using EyeClinic.Model;
 using EyeClinic.WPF.AppServices.DialogService;
 using EyeClinic.WPF.Base;
 using EyeClinic.WPF.Components.Dialogs.PasswordInput;
@@ -10,8 +11,6 @@ using EyeClinic.WPF.Components.Home.AddressBook;
 using EyeClinic.WPF.Components.Home.CartoonForm;
 using EyeClinic.WPF.Components.Home.Clinic;
 using EyeClinic.WPF.Components.Home.Markets;
-using EyeClinic.WPF.Components.Home.Operation;
-using EyeClinic.WPF.Components.Home.ReadyItems;
 using EyeClinic.WPF.Components.Home.Reception;
 using EyeClinic.WPF.Components.Home.Reports;
 using EyeClinic.WPF.Components.Home.Setting;
@@ -36,7 +35,7 @@ namespace EyeClinic.WPF.Components.Home
         }
 
         public List<Navigation> NavigationList { get; set; }
-
+        public UserDto user { get; set; }
 
         public ICommand NavigateCommand { get; set; }
 
@@ -113,13 +112,62 @@ namespace EyeClinic.WPF.Components.Home
                     });
                     break;
                 case nameof(Services.Operations):
-                                    
-                        BusyExecute(async () =>
-                        {
-                            var readyItems = _container.Resolve<ReadyItemsViewModel>();
-                            await readyItems.Initialize();
-                            _container.Navigate(readyItems.GetView() as ReadyItemsView);
-                        });                    
+                    // var userod = Global.GetValue(GlobalKeys.LoggedUser);
+                    //user = (UserDto)userod ;
+                    //switch (user.RoleId)
+                    //{
+                    //    case 1:
+                    //        BusyExecute(async () =>
+                    //        {
+                    //            var readyItems = _container.Resolve<ReadyItemsViewModel>();
+                    //            await readyItems.Initialize();
+                    //            _container.Navigate(readyItems.GetView() as ReadyItemsView);
+                    //        });
+                    //        break;
+                    //    case 2:
+                    //        BusyExecute(async () =>
+                    //        {
+                    //            var readyItems = _container.Resolve<ReadyItemsViewModel>();
+                    //            await readyItems.Initialize();
+                    //            _container.Navigate(readyItems.GetView() as ReadyItemsView);
+                    //        });
+                    //        break;
+                    //    case 3:
+                    //        BusyExecute(async () =>
+                    //        {
+                    //            var readyItems = _container.Resolve<ReadyItemsViewModel>();
+                    //            await readyItems.Initialize();
+                    //            _container.Navigate(readyItems.GetView() as ReadyItemsView);
+                    //        });
+                    //        break;
+                    //    case 4:
+                    //        BusyExecute(async () =>
+                    //        {
+                    //            var readyItems = _container.Resolve<ReadyItemsViewModel>();
+                    //            await readyItems.Initialize();
+                    //            _container.Navigate(readyItems.GetView() as ReadyItemsView);
+                    //        });
+                    //        break;
+                    //    case 5:
+                    //        BusyExecute(async () =>
+                    //        {
+                    //            var readyItems = _container.Resolve<ReadyItemsViewModel>();
+                    //            await readyItems.Initialize();
+                    //            _container.Navigate(readyItems.GetView() as ReadyItemsView);
+                    //        });
+                    //        break;
+                    //    case 6:
+                    //        BusyExecute(async () =>
+                    //        {
+                    //            var readyItems = _container.Resolve<ReadyItemsViewModel>();
+                    //            await readyItems.Initialize();
+                    //            _container.Navigate(readyItems.GetView() as ReadyItemsView);
+                    //        });
+                    //        break;
+                    //}                   
+                        
+                    
+
                     break;
                 case nameof(Services.PatientEyeImages):                   
                     BusyExecute(async () => {
@@ -153,9 +201,9 @@ namespace EyeClinic.WPF.Components.Home
                 case nameof(Services.OperationView):
                     
                     BusyExecute(async () => {
-                        var setting = _container.Resolve<OperationViewModel>();
-                        await setting.Initialize();
-                        _container.Navigate(setting.GetView() as OperationView);
+                        var setting = _container.Resolve<ReceptionViewModel>();
+                        await setting.Initialize(true);
+                        _container.Navigate(setting.GetView() as ReceptionView);
                     });
                     break;
 

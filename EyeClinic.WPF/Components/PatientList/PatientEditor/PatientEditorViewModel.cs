@@ -92,11 +92,11 @@ namespace EyeClinic.WPF.Components.PatientList.PatientEditor
             });
         }
 
-        public async Task<PatientDto> SaveAsync() {
+        public async Task<PatientDto> SaveAsync(bool isoperation) {
             if (!ValidForSave())
                 return null;
 
-            var patient = BuildFromProperties();
+            var patient = BuildFromProperties(isoperation);
             patient.PatientGlass = null;
             if (Operation == Operation.Add) {
                 patient.CreatedDate = DateTime.Now;
@@ -155,7 +155,7 @@ namespace EyeClinic.WPF.Components.PatientList.PatientEditor
             return true;
         }
 
-        private PatientDto BuildFromProperties() {
+        private PatientDto BuildFromProperties(bool isoperation) {
            
                 var patient = new PatientDto
                 {
@@ -182,7 +182,8 @@ namespace EyeClinic.WPF.Components.PatientList.PatientEditor
                     PatientDiseases = PatientDiseases == null ? new List<PatientDisease>() : PatientDiseases.ToList(),
                     PatientGlass = PatientGlass,
                     Number = Number,
-                    CreatedDate = CreatedDate
+                    CreatedDate = CreatedDate,
+                    IfRemaining = isoperation
                 };
 
                 return patient;
@@ -218,6 +219,7 @@ namespace EyeClinic.WPF.Components.PatientList.PatientEditor
             PatientGlass = patient.PatientGlass;
             Number = patient.Number;
             CreatedDate = patient.CreatedDate;
+            isoperationDepartment = patient.IfRemaining;
         }
 
         private void AddDisease() {

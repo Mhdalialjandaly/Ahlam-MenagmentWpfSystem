@@ -20,7 +20,7 @@
                                 CornerRadius="10"
                                 Width="650"
                                 Background="{StaticResource ForegroundLightBrush}"
-                                Margin="4">
+                                Margin="20">
                             <Grid x:Name="container"
                                   Background="Transparent"
                                   Margin="2">
@@ -252,6 +252,18 @@
                                                                Foreground="Green"
                                                        FontSize="{StaticResource FontSizeXLarge}"
                                                        FontWeight="Bold" />
+                                                </Border>
+                                              <Border BorderThickness="3"
+                                                      BorderBrush="Blue"
+                                                      Margin="4"
+                                                      HorizontalAlignment="Center"
+                                                      Grid.Column="1"
+                                                      CornerRadius="30">
+                                                    <TextBlock Text="{Binding PatientVisit.PatientVisitType}"
+                                                      Margin="10 0 10 0"               
+                                                      Foreground="Gray"
+                                                      FontSize="{StaticResource FontSizeXLarge}"
+                                                      FontWeight="Bold" />
                                                 </Border>
                                                 <Border BorderThickness="3"
                                                        

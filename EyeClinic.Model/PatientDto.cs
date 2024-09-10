@@ -28,7 +28,6 @@ namespace EyeClinic.Model
         public bool IsDrinking { get; set; }
         public bool IsDrawing { get; set; }
         public bool Referral { get; set; }
-
         public int GlassId { get; set; }
         public string Notes { get; set; }
         public string Why { get; set; }

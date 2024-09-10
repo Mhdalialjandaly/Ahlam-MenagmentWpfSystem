@@ -339,8 +339,10 @@ Height="40" />
                        FontWeight="Bold"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Top"/>
-            <ScrollViewer>               
-                <Border CornerRadius="10" Background="{StaticResource NormalBorderBrush}">
+            <ScrollViewer 
+                Width="1500">               
+                <Border CornerRadius="10" 
+                        Background="{StaticResource NormalBorderBrush}">
                 <ItemsControl ItemsSource="{Binding QueueList}"
                               Visibility="{Binding QueueListHasData,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibilityConverter}}"
                               VirtualizingStackPanel.IsVirtualizing="true"

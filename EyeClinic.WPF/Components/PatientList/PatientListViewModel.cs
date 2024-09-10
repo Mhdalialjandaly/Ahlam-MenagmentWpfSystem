@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EyeClinic.Core;
-using EyeClinic.DataAccess.Entities;
 using EyeClinic.DataAccess.IRepositories;
 using EyeClinic.Model;
 using EyeClinic.WPF.AppServices.DialogService;
@@ -50,6 +49,9 @@ namespace EyeClinic.WPF.Components.PatientList
             ShowDeleteButton = Global.DeviceName.ToLower() == "clinic";
         }
 
+       
+
+      
 
         public ObservableCollection<PatientDto> PatientList { get; set; }
 
@@ -63,7 +65,7 @@ namespace EyeClinic.WPF.Components.PatientList
                 }
             }
         }
-
+        public bool isoperation { get; set; }
         public bool ShowDeleteButton { set; get; }
         public string Code { get; set; }
         public string FirstName { get; set; }
@@ -82,7 +84,6 @@ namespace EyeClinic.WPF.Components.PatientList
         public ICommand AddPatientCommand { get; set; }
         public ICommand EditPatientCommand { get; set; }
         public ICommand DeletePatientCommand { get; set; }
-
         public ICommand BackHomeCommand { get; set; }
         public ICommand GoPatientFileCommand { get; set; }
 
@@ -92,7 +93,7 @@ namespace EyeClinic.WPF.Components.PatientList
                 BusyExecute(async () => {
                     if (string.IsNullOrWhiteSpace(ImageNumber)) {
                         PatientList = new ObservableCollection<PatientDto>(
-                            await _patientRepository.Search(Code, FirstName, LastName, EnableSearchByImageNumber)
+                            await _patientRepository.Search(Code, FirstName, LastName, isoperation ,EnableSearchByImageNumber)
                                 .ConfigureAwait(false));
                     } else {
                         PatientList = new ObservableCollection<PatientDto>(
@@ -115,7 +116,7 @@ namespace EyeClinic.WPF.Components.PatientList
                                  e.PatientId == selectedPatient.Id);
                         if (!exist.IsNullOrEmpty()) {
                             _container.Resolve<IDialogService>()
-                                .ShowInformationDialog("This patient already treated");
+                                .ShowInformationDialog("This Customer already treated");
                             return;
                         }
 
@@ -133,7 +134,7 @@ namespace EyeClinic.WPF.Components.PatientList
                 editor.Operation = Operation.Add;
                 _dialogService.ShowEditorDialog(editor.GetView() as PatientEditorView,
                     async () => {
-                        var patient = await editor.SaveAsync();
+                        var patient = await editor.SaveAsync(isoperation);
                         if (patient == null)
                             return false;
 
@@ -158,7 +159,7 @@ namespace EyeClinic.WPF.Components.PatientList
                     editor.BuildFromModel(selectedPatient);
                     _dialogService.ShowEditorDialog(editor.GetView() as PatientEditorView,
                         async () => {
-                            var patient = await editor.SaveAsync();
+                            var patient = await editor.SaveAsync(isoperation);
                             if (patient == null)
                                 return false;
 

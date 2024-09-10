@@ -78,7 +78,7 @@ namespace EyeClinic.DataAccess.Repositories
             return visit == null ? null : _mapper.Map<Model.PatientDto>(visit.Patient);
         }
 
-        public async Task<List<Model.PatientDto>> Search(string code, string firstName, string lastName, bool includeExcelFile) {
+        public async Task<List<Model.PatientDto>> Search(string code, string firstName, string lastName, bool isoperationdepartment, bool includeExcelFile) {
             var patients = _mapper.Map<List<Model.PatientDto>>(await _context.Patients
                 .Include(e => e.PatientVisits)
                 .Include(e => e.PatientGlass)
@@ -89,6 +89,7 @@ namespace EyeClinic.DataAccess.Repositories
                 .Where(e => string.IsNullOrWhiteSpace(code) || e.Number.ToString() == code)
                 .Where(e => string.IsNullOrWhiteSpace(firstName) || e.FirstName.StartsWith(firstName))
                 .Where(e => string.IsNullOrWhiteSpace(lastName) || e.LastName.StartsWith(lastName))
+                .Where(e=>e.Referral == isoperationdepartment)
                 .ToListAsync());
 
 

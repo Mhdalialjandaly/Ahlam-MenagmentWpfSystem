@@ -21,9 +21,7 @@ namespace EyeClinic.DataAccess.Entities
         public virtual DbSet<MarketsProducts>  MarketsProducts { get; set; }
        
 
-        public virtual DbSet<PublicCustomer> PublicCustomers { get; set; }
-        public virtual DbSet<PublicCustomerOrder> PublicCustomerOrders { get; set; }
-        public virtual DbSet<CustomerNoteStory> CustomerNoteStories { get; set; }
+      
         public virtual DbSet<ReadyProduct> ReadyProducts { get; set; }
         public virtual DbSet<ReadyItemProducting> Producting { get; set; }
         public virtual DbSet<Customer> Customers { set; get; }
@@ -57,7 +55,6 @@ namespace EyeClinic.DataAccess.Entities
         public virtual DbSet<PatientSickStory> PatientSickStories { get; set; }
         public virtual DbSet<PatientVisit> PatientVisits { get; set; }
         public virtual DbSet<Queue> Queues { get; set; }
-        public virtual DbSet<OrderQueue> OrderQueues { get; set; }
         public virtual DbSet<PatientVisitDiagnosis> PatientVisitDiagnoses { get; set; }
         public virtual DbSet<PatientVisitEyeTest> PatientVisitEyeTests { get; set; }
         public virtual DbSet<PatientVisitEyeTestHistory> PatientVisitEyeTestHistories { get; set; }

@@ -97,29 +97,29 @@ namespace EyeClinic.WPF.Components.Shell.Header
         public bool PatientInfoAlreadyVisible { get; set; }
 
         private void EditPatient() {
-            BusyExecute(async () => {
-                if (PatientInfoAlreadyVisible)
-                    return;
+            //BusyExecute(async () => {
+            //    if (PatientInfoAlreadyVisible)
+            //        return;
 
-                var editor = _container.Resolve<PatientEditorViewModel>();
-                await editor.Initialize();
-                editor.BuildFromModel(CurrentPatient);
-                editor.Operation = Operation.Edit;
+            //    var editor = _container.Resolve<PatientEditorViewModel>();
+            //    await editor.Initialize();
+            //    editor.BuildFromModel(CurrentPatient);
+            //    editor.Operation = Operation.Edit;
 
-                _dialogService.ShowEditorDialog(editor.GetView() as PatientEditorView, async () => {
-                    var item = await editor.SaveAsync();
-                    if (item == null)
-                        return false;
+            //    _dialogService.ShowEditorDialog(editor.GetView() as PatientEditorView, async () => {
+            //        var item = await editor.SaveAsync();
+            //        if (item == null)
+            //            return false;
 
-                    CurrentPatient = await _container.Resolve<IPatientRepository>()
-                        .GetById(CurrentPatient.Id);
-                    PatientInfoAlreadyVisible = false;
-                    return true;
-                }, () => {
-                    PatientInfoAlreadyVisible = false;
-                });
-                PatientInfoAlreadyVisible = true;
-            });
+            //        CurrentPatient = await _container.Resolve<IPatientRepository>()
+            //            .GetById(CurrentPatient.Id);
+            //        PatientInfoAlreadyVisible = false;
+            //        return true;
+            //    }, () => {
+            //        PatientInfoAlreadyVisible = false;
+            //    });
+            //    PatientInfoAlreadyVisible = true;
+            //});
         }
     }
 }

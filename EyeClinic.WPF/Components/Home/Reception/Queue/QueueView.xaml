@@ -339,7 +339,7 @@ Height="40" />
                        FontWeight="Bold"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Top"/>
-            <ScrollViewer 
+            <ScrollViewer                 
                 Width="1500">               
                 <Border CornerRadius="10" 
                         Background="{StaticResource NormalBorderBrush}">

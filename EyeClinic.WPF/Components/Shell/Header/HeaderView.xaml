@@ -60,7 +60,7 @@
 
                         <TextBlock Text="{Binding CurrentPatient.ReferralPatient}"  
                                    Margin="0 0 30 0"
-                                   Foreground="white"
+                                   Foreground="Wheat"
                                    FontWeight="Bold"/>
 
 

@@ -1,8 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using EyeClinic.Core.Enums;
 using EyeClinic.Core;
-using EyeClinic.Core.Enums;
 using EyeClinic.Model;
 using EyeClinic.WPF.AppServices.DialogService;
 using EyeClinic.WPF.Base;
@@ -10,41 +7,47 @@ using EyeClinic.WPF.Components.Dialogs.PasswordInput;
 using EyeClinic.WPF.Components.Home.AddressBook;
 using EyeClinic.WPF.Components.Home.CartoonForm;
 using EyeClinic.WPF.Components.Home.Clinic;
-using EyeClinic.WPF.Components.Home.CreatingDepartments;
 using EyeClinic.WPF.Components.Home.Markets;
 using EyeClinic.WPF.Components.Home.Reception;
 using EyeClinic.WPF.Components.Home.Reports;
 using EyeClinic.WPF.Components.Home.Setting;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Unity;
 using EyeClinic.WPF.DataModel;
 using EyeClinic.WPF.Setup;
-using Unity;
 
-namespace EyeClinic.WPF.Components.Home
-{
-    public class HomeViewModel : BaseViewModel<HomeView>
+namespace EyeClinic.WPF.Components.Home.CreatingDepartments
+{   
+    public class CreatingDepartmentsViewModel : BaseViewModel<CreatingDepartmentsView>
     {
         private readonly IUnityContainer _container;
 
-        public HomeViewModel(IUnityContainer container) {
+        public CreatingDepartmentsViewModel(IUnityContainer container)
+        {
             _container = container;
             NavigateCommand = new RelayCommand<string>(Navigate);
         }
 
-        public override Task Initialize() {
-            NavigationList = Navigation.Create();
+        public override Task Initialize()
+        {
+            CreatingNavigationList = CreatingNavigation.Create();
             return base.Initialize();
         }
 
-        public List<Navigation> NavigationList { get; set; }
+        public List<CreatingNavigation> CreatingNavigationList { get; set; }
         public UserDto user { get; set; }
 
         public ICommand NavigateCommand { get; set; }
 
 
-        private void Navigate(string target) {
+        private void Navigate(string target)
+        {
             var loggedUser = Global.GetValue(GlobalKeys.LoggedUser);
 
-            if (loggedUser == null) {
+            if (loggedUser == null)
+            {
                 var password = _container.Resolve<PasswordInputViewModel>();
                 password.OnSuccessLogin += () => Navigate(target);
 
@@ -52,7 +55,7 @@ namespace EyeClinic.WPF.Components.Home
                     ShowPopupContent(password.GetView() as PasswordInputView);
                 return;
             }
-            if (target== "واجهة العملاء")
+            if (target == "واجهة العملاء")
             {
                 target = "Reception";
             }
@@ -60,7 +63,7 @@ namespace EyeClinic.WPF.Components.Home
             {
                 target = "Clinic";
             }
-            else if(target == "تقارير")
+            else if (target == "تقارير")
             {
                 target = "Reports";
             }
@@ -68,11 +71,11 @@ namespace EyeClinic.WPF.Components.Home
             {
                 target = "AddressBook";
             }
-            else if(target == "الكرتون")
+            else if (target == "الكرتون")
             {
                 target = "Payments";
             }
-            else if (target== "واجهة التصنيع")
+            else if (target == "واجهة التصنيع")
             {
                 target = "Operations";
             }
@@ -80,15 +83,16 @@ namespace EyeClinic.WPF.Components.Home
             {
                 target = "PatientEyeImages";
             }
-            else if (target == "العمليات") 
+            else if (target == "الرجوع")
             {
                 target = "OperationView";
             }
 
 
-            switch (target) {
+            switch (target)
+            {
                 case nameof(Services.Reception):
-                   
+
                     BusyExecute(async () => {
                         var reception = _container.Resolve<ReceptionViewModel>();
                         await reception.Initialize();
@@ -96,7 +100,7 @@ namespace EyeClinic.WPF.Components.Home
                     });
                     break;
                 case nameof(Services.Clinic):
-                   
+
                     BusyExecute(async () => {
                         var clinic = _container.Resolve<ClinicViewModel>();
                         await clinic.Initialize();
@@ -104,8 +108,8 @@ namespace EyeClinic.WPF.Components.Home
                     });
                     break;
                 case nameof(Services.Payments):
-                    
-                    BusyExecute(async () => 
+
+                    BusyExecute(async () =>
                     {
                         var cartoonView = _container.Resolve<CartoonViewModel>();
                         await cartoonView.Initialize();
@@ -165,15 +169,12 @@ namespace EyeClinic.WPF.Components.Home
                     //            _container.Navigate(readyItems.GetView() as ReadyItemsView);
                     //        });
                     //        break;
-                    //}  
-                    BusyExecute(async () =>
-                            {
-                                var readyItems = _container.Resolve<CreatingDepartmentsViewModel>();
-                                await readyItems.Initialize();
-                                _container.Navigate(readyItems.GetView() as CreatingDepartmentsView);
-                            });
+                    //}                   
+
+
+
                     break;
-                case nameof(Services.PatientEyeImages):                   
+                case nameof(Services.PatientEyeImages):
                     BusyExecute(async () => {
                         var eyeImages = _container.Resolve<MarketsViewModel>();
                         await eyeImages.Initialize();
@@ -182,12 +183,12 @@ namespace EyeClinic.WPF.Components.Home
                     break;
                 case nameof(Services.Reports):
                     if (!_container.CheckUserRole(UserRoles.Reporter, UserRoles.Admin))
-                        return;                    
+                        return;
                     var report = _container.Resolve<ReportsViewModel>();
-                        _container.Navigate(report.GetView() as ReportsView);                 
+                    _container.Navigate(report.GetView() as ReportsView);
                     break;
                 case nameof(Services.Settings):
-                    
+
                     BusyExecute(async () => {
                         var setting = _container.Resolve<SettingViewModel>();
                         await setting.Initialize();
@@ -195,7 +196,7 @@ namespace EyeClinic.WPF.Components.Home
                     });
                     break;
                 case nameof(Services.AddressBook):
-                   
+
                     BusyExecute(async () => {
                         var setting = _container.Resolve<AddressBookViewModel>();
                         await setting.Initialize();
@@ -203,11 +204,11 @@ namespace EyeClinic.WPF.Components.Home
                     });
                     break;
                 case nameof(Services.OperationView):
-                    
+
                     BusyExecute(async () => {
-                        var setting = _container.Resolve<ReceptionViewModel>();
-                        await setting.Initialize(true);
-                        _container.Navigate(setting.GetView() as ReceptionView);
+                        var setting = _container.Resolve<HomeViewModel>();
+                        await setting.Initialize();
+                        _container.Navigate(setting.GetView() as HomeView);
                     });
                     break;
 

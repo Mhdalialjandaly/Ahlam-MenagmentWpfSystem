@@ -78,7 +78,6 @@
     <None Remove="Fonts\Amiri.ttf" />
     <None Remove="Fonts\Font Awesome 5 Free-Solid-900.otf" />
     <None Remove="Fonts\fontawesome-webfont.ttf" />
-    <None Remove="Images\Navigation\1.png" />
     <None Remove="Images\Navigation\AddressBook.png" />
     <None Remove="Images\Navigation\InsideClinic.png" />
     <None Remove="Images\Navigation\Markiting.png" />
@@ -312,9 +311,6 @@
     <Resource Include="Images\Navigation\Operations.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\Navigation\1.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Images\Navigation\Payments.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -356,6 +352,7 @@
   <ItemGroup>
     <Folder Include="Components\Home\Reports\TotalPatientByGlass\" />
     <Folder Include="Components\Home\Setting\DataBaseControl\" />
+    <Folder Include="Images\CreatingDepartments\" />
   </ItemGroup>
 
 </Project>

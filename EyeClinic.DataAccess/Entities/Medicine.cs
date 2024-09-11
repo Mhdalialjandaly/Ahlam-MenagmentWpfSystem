@@ -17,6 +17,8 @@ namespace EyeClinic.DataAccess.Entities
         public string Code { get; set; }
         public string MedicineName { get; set; }
         public int MedicineTypeId { get; set; }
+        public double MedicinCount { get; set; }
+        public double AvailibleMedicinCount { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime? LastModifiedDate { get; set; }
         public string DeletedBy { get; set; }

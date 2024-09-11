@@ -7,6 +7,8 @@ namespace EyeClinic.Model
         public int Id { get; set; }
         public string Code { get; set; }
         public string MedicineName { get; set; }
+        public double MedicinCount { get; set; }
+        public double AvailibleMedicinCount { get; set; }
         public int MedicineTypeId { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime? LastModifiedDate { get; set; }

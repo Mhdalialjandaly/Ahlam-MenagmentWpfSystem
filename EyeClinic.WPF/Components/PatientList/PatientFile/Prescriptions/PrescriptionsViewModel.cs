@@ -11,11 +11,11 @@ using EyeClinic.WPF.AppServices.NotificationService;
 using EyeClinic.WPF.AppServices.Print;
 using EyeClinic.WPF.Base;
 using EyeClinic.WPF.Base.Extends;
+using EyeClinic.WPF.Components.Home.Reception.Queue.IndexSelector;
 using EyeClinic.WPF.Components.Home.Setting.Medicines.MedicineEditor;
 using EyeClinic.WPF.Components.Home.Setting.MedicineUsage.MedicineUsageEditor;
 using EyeClinic.WPF.Components.PatientList.PatientFile.Prescriptions.PrescriptionHistory;
 using EyeClinic.WPF.Components.PatientList.PatientFile.Prescriptions.ReadyPrescription;
-using Microsoft.EntityFrameworkCore;
 using Unity;
 
 namespace EyeClinic.WPF.Components.PatientList.PatientFile.Prescriptions
@@ -103,23 +103,28 @@ namespace EyeClinic.WPF.Components.PatientList.PatientFile.Prescriptions
                     .GetByKey(e => e.PatientVisitId == patientVisitId))
                 .OrderBy(e => e.RowIndex);
 
-            foreach (var item in prescriptionList) {
+            foreach (var item in prescriptionList)
+            {
                 rowIndex++;
-                
-                PrescriptionItems.Add(new OldMedicineViewTableDto {
+
+                PrescriptionItems.Add(new OldMedicineViewTableDto
+                {
                     MedicineName = item.Medicine.MedicineName,
                     MedicineType = item.Medicine.MedicineType.EnName,
                     PatientVisitId = PatientVisitId,
                     VisitDate = SelectedVisit.VisitDate,
                     Index = PrescriptionItems.Count,
                     RowIndex = rowIndex,
+                    MedicinCount = item.Medicine.MedicinCount
                 });
-                PrescriptionItems.Add(new OldMedicineViewTableDto {
+                PrescriptionItems.Add(new OldMedicineViewTableDto
+                {
                     MedicineName = item.MedicineUsage.UsageName,
                     MedicineType = string.Empty,
                     PatientVisitId = PatientVisitId,
                     VisitDate = SelectedVisit.VisitDate,
-                    Index = PrescriptionItems.Count
+                    Index = PrescriptionItems.Count,
+                    MedicinCount = item.Medicine.MedicinCount
                 });
             }
 
@@ -258,25 +263,38 @@ namespace EyeClinic.WPF.Components.PatientList.PatientFile.Prescriptions
         public void AddMedicine() {
             if (SelectedMedicine == null)
                 return;
+            var indexSelector = _container.Resolve<IndexSelectorViewModel>();
 
-            BusyExecute(async () => {
-                PrescriptionItems ??= new ObservableCollection<OldMedicineViewTableDto>();
-                CurrentIndex++;
-                var item = new OldMedicineViewTableDto {
-                    PatientVisitId = PatientVisitId,
-                    VisitDate = SelectedVisit.VisitDate,
-                    MedicineName = SelectedMedicine.MedicineName,
-                    MedicineType = SelectedMedicine.MedicineType.EnName,
-                    Index = PrescriptionItems.Count,
-                    RowIndex = CurrentIndex
-                };
+            _dialogService.ShowEditorDialog(indexSelector.GetView() as IndexSelector,
+                async () => {
+                    if (indexSelector.Index == 0)
+                    {
+                        _notificationService.Information("  الرجاء ادخال عدد صحيح  ");
+                        return false;
+                    }
+                    PrescriptionItems ??= new ObservableCollection<OldMedicineViewTableDto>();
+                    CurrentIndex++;
+                    var item = new OldMedicineViewTableDto
+                    {
+                        PatientVisitId = PatientVisitId,
+                        VisitDate = SelectedVisit.VisitDate,
+                        MedicineName = SelectedMedicine.MedicineName,
+                        MedicineType = SelectedMedicine.MedicineType.EnName,
+                        Index = PrescriptionItems.Count,
+                        RowIndex = CurrentIndex,
+                        MedicinCount = indexSelector.Index,
+                        
+                    };
 
-                var added = await _oldMedicineRepository.Add(item);
-                item.Id = added.Id;
+                    var added = await _oldMedicineRepository.Add(item);
+                    item.Id = added.Id;
 
-                PrescriptionItems.Add(item);
-                OnSave?.Invoke();
-            });
+                    PrescriptionItems.Add(item);
+                    OnSave?.Invoke();
+                    return true;
+                });           
+               
+           
         }
 
         public void AddUsage() {

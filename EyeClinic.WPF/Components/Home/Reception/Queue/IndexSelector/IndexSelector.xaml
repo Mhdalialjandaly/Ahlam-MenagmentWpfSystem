@@ -4,12 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EyeClinic.WPF.Components.Home.Reception.Queue.IndexSelector"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Style="{StaticResource LocalizationStyle}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel VerticalAlignment="Center"
                 HorizontalAlignment="Center"
-                Orientation="Horizontal">
-        <TextBlock Text="Index" />
+                Orientation="Vertical">        
+        <TextBlock Text="العدد المطلوب للمادة" 
+                   Margin="50"
+                   FontSize="48"
+                   Foreground="Green"/>
         <TextBox Text="{Binding Index,UpdateSourceTrigger=PropertyChanged}" />
     </StackPanel>
 </UserControl>

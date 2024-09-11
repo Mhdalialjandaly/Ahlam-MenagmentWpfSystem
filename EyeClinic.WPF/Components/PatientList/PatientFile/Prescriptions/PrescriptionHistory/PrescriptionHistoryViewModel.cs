@@ -5,7 +5,6 @@ using AutoMapper;
 using EyeClinic.DataAccess.IRepositories;
 using EyeClinic.Model;
 using EyeClinic.WPF.Base;
-using Microsoft.EntityFrameworkCore;
 
 namespace EyeClinic.WPF.Components.PatientList.PatientFile.Prescriptions.PrescriptionHistory
 {

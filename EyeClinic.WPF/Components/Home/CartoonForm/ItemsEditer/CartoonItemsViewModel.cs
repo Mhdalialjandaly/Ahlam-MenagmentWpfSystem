@@ -59,7 +59,10 @@ namespace EyeClinic.WPF.Components.Home.CartoonForm.ItemsEditer
         {
             CartoonItemDataList = new ObservableCollection<CartoonLabelsDto>(
                 await _cartoonItemRepository.GetCartoonItemAsyncById(diseaseDto.Id));
-            
+            FirstTermValue = diseaseDto.FirstValue;
+            TotalDEntry = CartoonItemDataList.Select(e => e.DEntry).Sum();
+            TotalDExtry = CartoonItemDataList.Select(e => e.DExtry).Sum();
+            TotalResult = FirstTermValue + TotalDEntry - TotalDExtry;
             SelectedItem = diseaseDto.ArName;
             disease = diseaseDto;
         }
@@ -71,6 +74,10 @@ namespace EyeClinic.WPF.Components.Home.CartoonForm.ItemsEditer
      
         public string SelectedItem{ get; set; }
         public double   CurrentValue { get; set; }
+        public double FirstTermValue { get; set; }
+        public double TotalDEntry { get; set; }
+        public double TotalDExtry { get; set; }
+        public double TotalResult { get; set; }
         public ICommand SearchCommand { get; set; }
         public ICommand AddCartoonItemCommand { get; set; }
         public ICommand EditCartoonItemCommand { get; set; }

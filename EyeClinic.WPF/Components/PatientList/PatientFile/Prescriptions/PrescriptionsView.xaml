@@ -219,7 +219,7 @@ Height="40" />
                    
                     <controls:AutoScrollToEndListView ItemsSource="{Binding PrescriptionItems}"
                                                       ItemContainerStyle="{StaticResource TransparentListViewItem}"
-                                                        Background="#23D4F9"
+                                                      Background="#2212"
                                                       x:Name="PrescriptionItems">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -237,7 +237,7 @@ Height="40" />
                         </ListView.Resources>
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <DockPanel Margin="8 0">
+                                <DockPanel Margin="10 0">
                                     <Border 
                                             Background="Green"
                                             CornerRadius="15"                                       
@@ -248,10 +248,10 @@ Height="40" />
                                             HorizontalAlignment="Left"
                                             Background="Transparent"
                                              />
-                                    </Border>
+                                    </Border>                                    
                                     <StackPanel Orientation="Horizontal"
-                                                Width="250" 
-                                                >
+                                                Width="600" 
+                                                >                                       
                                         <TextBlock 
                                                  Text="{Binding RowIndex,StringFormat={}{0}-}" 
                                                  FontSize="18"
@@ -259,12 +259,18 @@ Height="40" />
                                                  Visibility="{Binding MedicineType, Converter={StaticResource NullOrEmptyToVisibilityConverter}}"
                                                />
                                         <TextBlock Text="{Binding MedicineName}"
-                                                   Margin="50 0 0 0"
+                                                   Margin="0  0 10 0"
                                                    Foreground="{Binding MedicineType, Converter={StaticResource MedicineToColorConverter}}"
                                                    FontSize="18"
                                                    FontWeight="Bold"
                                                    HorizontalAlignment="Right"
                                                    TextWrapping="Wrap" />
+                                        <TextBlock  Text="{Binding MedicinCount,StringFormat={}(  العدد  المطلوب - {0} ) }"                                                                                                  
+                                                      FontSize="18"
+                                                    Visibility="{Binding MedicineType, Converter={StaticResource NullOrEmptyToVisibilityConverter}}"
+                                                      Foreground="DarkGreen"
+                                                      FontWeight="Bold"
+                                                      TextWrapping="Wrap" />
                                     </StackPanel>
                                     <StackPanel 
                                             Orientation="Horizontal"

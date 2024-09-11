@@ -12,6 +12,7 @@ namespace EyeClinic.DataAccess.Entities
         public DateTime VisitDate { get; set; }
         public string MedicineName { get; set; }
         public string MedicineType { get; set; }
+        public double MedicinCount { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime? LastModifiedDate { get; set; }
         public string DeletedBy { get; set; }

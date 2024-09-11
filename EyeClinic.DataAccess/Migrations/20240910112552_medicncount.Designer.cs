@@ -4,14 +4,16 @@ using EyeClinic.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EyeClinic.DataAccess.Migrations
 {
     [DbContext(typeof(EyeClinicContext))]
-    partial class EyeClinicContextModelSnapshot : ModelSnapshot
+    [Migration("20240910112552_medicncount")]
+    partial class medicncount
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -828,9 +830,6 @@ namespace EyeClinic.DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<double>("AvailibleMedicinCount")
-                        .HasColumnType("float");
-
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -849,9 +848,6 @@ namespace EyeClinic.DataAccess.Migrations
 
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("datetime");
-
-                    b.Property<double>("MedicinCount")
-                        .HasColumnType("float");
 
                     b.Property<string>("MedicineName")
                         .IsRequired()

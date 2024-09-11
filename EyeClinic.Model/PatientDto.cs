@@ -49,7 +49,7 @@ namespace EyeClinic.Model
           .Where(e => e.DiseaseId == 13)
           .Select(e => e.Disease.EnName));
 
-        public string ReferralPatient => IsDrinking == true ? "(زبون وكالة)":"" ;
+        public string ReferralPatient => Referral == true ? "(زبون داخلي)" : " (زبون خارجي)" ;
 
         public string IOPPatient => IsDrawing == true ? "(زبون خارجي)" : "" ;
     

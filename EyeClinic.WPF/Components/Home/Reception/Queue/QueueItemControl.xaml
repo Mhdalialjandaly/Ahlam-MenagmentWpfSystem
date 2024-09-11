@@ -18,7 +18,7 @@
                         <Border BorderBrush="{StaticResource ForegroundVeryDarkBrush}"
                                 BorderThickness="1"
                                 CornerRadius="10"
-                                Width="650"
+                                Width="500"
                                 Background="{StaticResource ForegroundLightBrush}"
                                 Margin="20">
                             <Grid x:Name="container"

@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace EyeClinic.Model
+namespace EyeClinic.DataAccess.Entities
 {
-    public class MarketsEntryDto
+    public class MedicineEntry:IEntityModel
     {
         public int Id { get; set; }
         public double Quinttity { get; set; }
@@ -13,8 +13,6 @@ namespace EyeClinic.Model
         public DateTime? LastModifiedDate { get; set; }
         public string DeletedBy { get; set; }
         public DateTime? DeletedDate { get; set; }
-        public int MarketsProductsId { get; set; }
-
-
+        public int MedicineProductsId { get; set; }
     }
 }

@@ -4,14 +4,16 @@ using EyeClinic.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EyeClinic.DataAccess.Migrations
 {
     [DbContext(typeof(EyeClinicContext))]
-    partial class EyeClinicContextModelSnapshot : ModelSnapshot
+    [Migration("20240912060858_medicineentryandesxtry")]
+    partial class medicineentryandesxtry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

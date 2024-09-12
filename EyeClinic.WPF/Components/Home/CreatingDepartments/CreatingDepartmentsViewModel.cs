@@ -17,6 +17,7 @@ using System.Windows.Input;
 using Unity;
 using EyeClinic.WPF.DataModel;
 using EyeClinic.WPF.Setup;
+using EyeClinic.WPF.Components.Home.CreatingDepartments.CreatingReport;
 
 namespace EyeClinic.WPF.Components.Home.CreatingDepartments
 {   
@@ -54,52 +55,20 @@ namespace EyeClinic.WPF.Components.Home.CreatingDepartments
                 _container.Resolve<IDialogService>().
                     ShowPopupContent(password.GetView() as PasswordInputView);
                 return;
-            }
-            if (target == "واجهة العملاء")
-            {
-                target = "Reception";
-            }
-            else if (target == "واجهة العمل الجماعي")
-            {
-                target = "Clinic";
-            }
-            else if (target == "تقارير")
-            {
-                target = "Reports";
-            }
-            else if (target == "واجهة المراسلات")
-            {
-                target = "AddressBook";
-            }
-            else if (target == "الكرتون")
-            {
-                target = "Payments";
-            }
-            else if (target == "واجهة التصنيع")
-            {
-                target = "Operations";
-            }
-            else if (target == "الماركات")
-            {
-                target = "PatientEyeImages";
-            }
-            else if (target == "الرجوع")
-            {
-                target = "OperationView";
-            }
+            }           
 
 
             switch (target)
             {
-                case nameof(Services.Reception):
+                case nameof(CreatingServices.التحضير1):
 
                     BusyExecute(async () => {
-                        var reception = _container.Resolve<ReceptionViewModel>();
+                        var reception = _container.Resolve<CreatingReportViewModel>();
                         await reception.Initialize();
-                        _container.Navigate(reception.GetView() as ReceptionView);
+                        _container.Navigate(reception.GetView() as CreatingReportView);
                     });
                     break;
-                case nameof(Services.Clinic):
+                case nameof(CreatingServices.التحضير2):
 
                     BusyExecute(async () => {
                         var clinic = _container.Resolve<ClinicViewModel>();
@@ -107,7 +76,7 @@ namespace EyeClinic.WPF.Components.Home.CreatingDepartments
                         _container.Navigate(clinic.GetView() as ClinicView);
                     });
                     break;
-                case nameof(Services.Payments):
+                case nameof(CreatingServices.الحلاوة):
 
                     BusyExecute(async () =>
                     {
@@ -116,78 +85,24 @@ namespace EyeClinic.WPF.Components.Home.CreatingDepartments
                         _container.Navigate(cartoonView.GetView() as CartoonView);
                     });
                     break;
-                case nameof(Services.Operations):
-                    // var userod = Global.GetValue(GlobalKeys.LoggedUser);
-                    //user = (UserDto)userod ;
-                    //switch (user.RoleId)
-                    //{
-                    //    case 1:
-                    //        BusyExecute(async () =>
-                    //        {
-                    //            var readyItems = _container.Resolve<ReadyItemsViewModel>();
-                    //            await readyItems.Initialize();
-                    //            _container.Navigate(readyItems.GetView() as ReadyItemsView);
-                    //        });
-                    //        break;
-                    //    case 2:
-                    //        BusyExecute(async () =>
-                    //        {
-                    //            var readyItems = _container.Resolve<ReadyItemsViewModel>();
-                    //            await readyItems.Initialize();
-                    //            _container.Navigate(readyItems.GetView() as ReadyItemsView);
-                    //        });
-                    //        break;
-                    //    case 3:
-                    //        BusyExecute(async () =>
-                    //        {
-                    //            var readyItems = _container.Resolve<ReadyItemsViewModel>();
-                    //            await readyItems.Initialize();
-                    //            _container.Navigate(readyItems.GetView() as ReadyItemsView);
-                    //        });
-                    //        break;
-                    //    case 4:
-                    //        BusyExecute(async () =>
-                    //        {
-                    //            var readyItems = _container.Resolve<ReadyItemsViewModel>();
-                    //            await readyItems.Initialize();
-                    //            _container.Navigate(readyItems.GetView() as ReadyItemsView);
-                    //        });
-                    //        break;
-                    //    case 5:
-                    //        BusyExecute(async () =>
-                    //        {
-                    //            var readyItems = _container.Resolve<ReadyItemsViewModel>();
-                    //            await readyItems.Initialize();
-                    //            _container.Navigate(readyItems.GetView() as ReadyItemsView);
-                    //        });
-                    //        break;
-                    //    case 6:
-                    //        BusyExecute(async () =>
-                    //        {
-                    //            var readyItems = _container.Resolve<ReadyItemsViewModel>();
-                    //            await readyItems.Initialize();
-                    //            _container.Navigate(readyItems.GetView() as ReadyItemsView);
-                    //        });
-                    //        break;
-                    //}                   
-
-
+                case nameof(CreatingServices.زيت):
+                            
 
                     break;
-                case nameof(Services.PatientEyeImages):
+                case nameof(CreatingServices.طبخ):
                     BusyExecute(async () => {
                         var eyeImages = _container.Resolve<MarketsViewModel>();
                         await eyeImages.Initialize();
                         _container.Navigate(eyeImages.GetView() as MarketsView);
                     });
                     break;
-                case nameof(Services.Reports):
+                case nameof(CreatingServices.لبنة):
                     if (!_container.CheckUserRole(UserRoles.Reporter, UserRoles.Admin))
                         return;
                     var report = _container.Resolve<ReportsViewModel>();
                     _container.Navigate(report.GetView() as ReportsView);
                     break;
-                case nameof(Services.Settings):
+                case nameof(CreatingServices.مربى):
 
                     BusyExecute(async () => {
                         var setting = _container.Resolve<SettingViewModel>();
@@ -195,7 +110,7 @@ namespace EyeClinic.WPF.Components.Home.CreatingDepartments
                         _container.Navigate(setting.GetView() as SettingView);
                     });
                     break;
-                case nameof(Services.AddressBook):
+                case nameof(CreatingServices.طحينة):
 
                     BusyExecute(async () => {
                         var setting = _container.Resolve<AddressBookViewModel>();
@@ -203,7 +118,23 @@ namespace EyeClinic.WPF.Components.Home.CreatingDepartments
                         _container.Navigate(setting.GetView() as AddressBookView);
                     });
                     break;
-                case nameof(Services.OperationView):
+                case nameof(CreatingServices.معلبات):
+
+                    BusyExecute(async () => {
+                        var setting = _container.Resolve<HomeViewModel>();
+                        await setting.Initialize();
+                        _container.Navigate(setting.GetView() as HomeView);
+                    });
+                    break;
+                case nameof(CreatingServices.الزيتون):
+
+                    BusyExecute(async () => {
+                        var setting = _container.Resolve<CreatingReportViewModel>();
+                        await setting.Initialize(target);
+                        _container.Navigate(setting.GetView() as CreatingReportView);
+                    });
+                    break;
+                case nameof(CreatingServices.خروج):
 
                     BusyExecute(async () => {
                         var setting = _container.Resolve<HomeViewModel>();

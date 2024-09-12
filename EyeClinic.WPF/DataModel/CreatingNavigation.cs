@@ -15,17 +15,17 @@ namespace EyeClinic.WPF.DataModel
         {
             return new()
                 {
-                    new() { Name = "قسم التحضير 1", Image = "/Images/Navigation/edit1.png", Pending = 1 },
-                    new() { Name = "قسم التحضير 2", Image = "/Images/Navigation/WaitingRoom1.png", Pending = 0 },
-                    new() { Name = "قسم الحلاوة", Image = "/Images/Navigation/WaitingRoom.png", Pending = 3 },
-                    new() { Name = "قسم الخل والزيت", Image = "/Images/Navigation/WaitingRoom.png", Pending = 3 },
-                    new() { Name = "قسم الطبخ", Image = "/Images/Navigation/WaitingRoom.png", Pending = 3 },
-                    new() { Name = "قسم اللبنة", Image = "/Images/Navigation/WaitingRoom.png", Pending = 3 },
-                    new() { Name = "قسم المربيات", Image = "/Images/Navigation/WaitingRoom.png", Pending = 3 },
-                    new() { Name = "قسم الطحينة", Image = "/Images/Navigation/WaitingRoom.png", Pending = 3 },
-                    new() { Name = "قسم المعلبات", Image = "/Images/Navigation/WaitingRoom.png", Pending = 3},
-                    new() { Name = "قسم الزيتون", Image = "/Images/Navigation/WaitingRoom.png", Pending = 3},
-                    new() { Name = "الرجوع", Image = "/Images/Navigation/WaitingRoom.png", Pending = 3}
+                    new() { Name = "التحضير1", Image = "/Images/Navigation/3.png", Pending = 1 },
+                    new() { Name = "التحضير2", Image = "/Images/Navigation/3.png", Pending = 0 },
+                    new() { Name = "الحلاوة", Image = "/Images/Navigation/4.png", Pending = 3 },
+                    new() { Name = "زيت", Image = "/Images/Navigation/5.png", Pending = 3 },
+                    new() { Name = "طبخ", Image = "/Images/Navigation/6.png", Pending = 3 },
+                    new() { Name = "لبنة", Image = "/Images/Navigation/7.png", Pending = 3 },
+                    new() { Name = "مربى", Image = "/Images/Navigation/8.png", Pending = 3 },
+                    new() { Name = "طحينة", Image = "/Images/Navigation/9.png", Pending = 3 },
+                    new() { Name = "معلبات", Image = "/Images/Navigation/10.png", Pending = 3},
+                    new() { Name = "الزيتون", Image = "/Images/Navigation/11.png", Pending = 3},
+                    new() { Name = "خروج", Image = "/Images/Navigation/Logo1.png", Pending = 3}
 
                 };
 

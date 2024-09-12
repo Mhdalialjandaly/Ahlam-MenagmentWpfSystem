@@ -78,8 +78,20 @@
     <None Remove="Fonts\Amiri.ttf" />
     <None Remove="Fonts\Font Awesome 5 Free-Solid-900.otf" />
     <None Remove="Fonts\fontawesome-webfont.ttf" />
+    <None Remove="Images\Navigation\10.png" />
+    <None Remove="Images\Navigation\11.png" />
+    <None Remove="Images\Navigation\12.png" />
+    <None Remove="Images\Navigation\2.png" />
+    <None Remove="Images\Navigation\3.png" />
+    <None Remove="Images\Navigation\4.png" />
+    <None Remove="Images\Navigation\5.png" />
+    <None Remove="Images\Navigation\6.png" />
+    <None Remove="Images\Navigation\7.png" />
+    <None Remove="Images\Navigation\8.png" />
+    <None Remove="Images\Navigation\9.png" />
     <None Remove="Images\Navigation\AddressBook.png" />
     <None Remove="Images\Navigation\InsideClinic.png" />
+    <None Remove="Images\Navigation\Logo1.png" />
     <None Remove="Images\Navigation\Markiting.png" />
     <None Remove="Images\Navigation\Operation.png" />
     <None Remove="Images\Navigation\Operations.png" />
@@ -296,6 +308,24 @@
     <Resource Include="Fonts\Amiri.ttf" />
     <Resource Include="Fonts\Font Awesome 5 Free-Solid-900.otf" />
     <Resource Include="Fonts\fontawesome-webfont.ttf" />
+    <Resource Include="Images\Navigation\12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Navigation\8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Navigation\11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Navigation\10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Navigation\9.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Navigation\Logo1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\Navigation\Operation.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -306,6 +336,24 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Navigation\InsideClinic.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Navigation\2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Navigation\3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Navigation\4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Navigation\5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Navigation\6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Navigation\7.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Navigation\Operations.png">
@@ -350,9 +398,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Components\Home\CreatingDepartments\RecivingReport\" />
+    <Folder Include="Components\Home\CreatingDepartments\SendingReport\" />
+    <Folder Include="Components\Home\CreatingDepartments\ReapirReport\" />
     <Folder Include="Components\Home\Reports\TotalPatientByGlass\" />
     <Folder Include="Components\Home\Setting\DataBaseControl\" />
-    <Folder Include="Images\CreatingDepartments\" />
   </ItemGroup>
 
 </Project>

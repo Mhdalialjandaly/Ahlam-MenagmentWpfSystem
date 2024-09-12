@@ -19,11 +19,15 @@ namespace EyeClinic.DataAccess.Entities
         public int MedicineTypeId { get; set; }
         public double MedicinCount { get; set; }
         public double AvailibleMedicinCount { get; set; }
+        public double FirstTermValue { get; set; }      
+        public string Status { get; set; }
+        public string Note { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime? LastModifiedDate { get; set; }
         public string DeletedBy { get; set; }
         public DateTime? DeletedDate { get; set; }
-
+        public virtual ICollection<MedicineEntry> MedicineEntries { get; set; }
+        public virtual ICollection<MedicineExtry> MedicineExtries { get; set; }
         public virtual MedicineType MedicineType { get; set; }
         public virtual ICollection<PatientVisitPrescription> PatientVisitPrescriptions { get; set; }
         public virtual ICollection<ReadyPrescriptionMedicine> ReadyPrescriptionMedicines { get; set; }

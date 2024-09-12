@@ -31,7 +31,7 @@
                     </LinearGradientBrush>
                 </Grid.Background>
                 <Border 
-                     Background="White"
+                     Background="Gray"  
                      CornerRadius="8"
                      Opacity="0.3"
                      Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"

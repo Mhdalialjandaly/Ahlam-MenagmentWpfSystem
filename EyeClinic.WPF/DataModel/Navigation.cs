@@ -16,7 +16,7 @@ namespace EyeClinic.WPF.DataModel
                 {
                     new() { Name = "واجهة العملاء", Image = "/Images/Navigation/WaitingRoom.png", Pending = 1 },
                     new() { Name = "واجهة العمل الجماعي", Image = "/Images/Navigation/InsideClinic.png", Pending = 0 },
-                    new() { Name = "الكرتون", Image = "/Images/Navigation/1.png", Pending = 3 },
+                    new() { Name = "الكرتون", Image = "/Images/Navigation/2.png", Pending = 3 },
                     new() { Name = "واجهة التصنيع", Image = "/Images/Navigation/Payments.png", Pending = 3 },
                     new() { Name = "الماركات", Image = "/Images/Navigation/Markiting.png", Pending = 3 },
                     new() { Name = "تقارير", Image = "/Images/Navigation/Reports.png", Pending = 3 },
